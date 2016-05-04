@@ -11,9 +11,11 @@
 
 
 
+
      {%for dirs in Directory %}
-      <p><a href="{{ path('Fotos')}}/{{ dirs.relativePathname }} ">{{ dirs.relativePathname }}</a></p>
+      <p><a href="{{ path('Fotos')}}/{{ dirs }} ">{{ dirs }}</a></p>
      {% endfor %}
+
 
 
 

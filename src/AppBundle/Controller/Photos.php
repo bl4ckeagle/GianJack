@@ -25,24 +25,25 @@ class Photos extends controller
     public function photosAction()
     {
         $finder =new Finder();
+        $directory= $finder->directories()->in('../web/bundles/framework/images/album/');
 
 
-     $files= $finder->directories()->in('../web/bundles/framework/images/album/');
-
-
-        foreach ($files as $finding)
+        foreach($directory as $find)
         {
-            $findings[] =$finding;
+
+            $contents[]=  $find->getRelativePathname();
+
+        }
+        foreach($contents as $file)
+        {
+            
         }
 
 
 
 
 
-
-
-
-        return $this->render("photos/photos.html.twig",array("Directory"=>$findings));
+        return $this->render("photos/photos.html.twig",array("Directory"=>$contents,"dump"=>1));
 
     }
 

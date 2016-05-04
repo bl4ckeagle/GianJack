@@ -22,32 +22,32 @@ class __TwigTemplate_ca8a41fbec32e03987bca04e7fac03576f6b58d19210e32a8392726feb2
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_c1db86a26eb5b217267b01242cd2bd39538704863b48074b0f77bb3ae9a21061 = $this->env->getExtension("native_profiler");
-        $__internal_c1db86a26eb5b217267b01242cd2bd39538704863b48074b0f77bb3ae9a21061->enter($__internal_c1db86a26eb5b217267b01242cd2bd39538704863b48074b0f77bb3ae9a21061_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "photos/photos.html.twig"));
+        $__internal_978fbd1c7be684f748800451357a79b9bfccc309f2172eb41412f3a61d696dde = $this->env->getExtension("native_profiler");
+        $__internal_978fbd1c7be684f748800451357a79b9bfccc309f2172eb41412f3a61d696dde->enter($__internal_978fbd1c7be684f748800451357a79b9bfccc309f2172eb41412f3a61d696dde_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "photos/photos.html.twig"));
 
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
-        $__internal_c1db86a26eb5b217267b01242cd2bd39538704863b48074b0f77bb3ae9a21061->leave($__internal_c1db86a26eb5b217267b01242cd2bd39538704863b48074b0f77bb3ae9a21061_prof);
+        $__internal_978fbd1c7be684f748800451357a79b9bfccc309f2172eb41412f3a61d696dde->leave($__internal_978fbd1c7be684f748800451357a79b9bfccc309f2172eb41412f3a61d696dde_prof);
 
     }
 
     // line 4
     public function block_title($context, array $blocks = array())
     {
-        $__internal_557c9c09a4eee3ec7f8484372eb06bebbb677a38f20f45fb7322616d2b228323 = $this->env->getExtension("native_profiler");
-        $__internal_557c9c09a4eee3ec7f8484372eb06bebbb677a38f20f45fb7322616d2b228323->enter($__internal_557c9c09a4eee3ec7f8484372eb06bebbb677a38f20f45fb7322616d2b228323_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "title"));
+        $__internal_1a04f47560574b4b506156c5ea094e0179279ababb2e0079a4c9a0131c76af50 = $this->env->getExtension("native_profiler");
+        $__internal_1a04f47560574b4b506156c5ea094e0179279ababb2e0079a4c9a0131c76af50->enter($__internal_1a04f47560574b4b506156c5ea094e0179279ababb2e0079a4c9a0131c76af50_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "title"));
 
         echo "Photos";
         
-        $__internal_557c9c09a4eee3ec7f8484372eb06bebbb677a38f20f45fb7322616d2b228323->leave($__internal_557c9c09a4eee3ec7f8484372eb06bebbb677a38f20f45fb7322616d2b228323_prof);
+        $__internal_1a04f47560574b4b506156c5ea094e0179279ababb2e0079a4c9a0131c76af50->leave($__internal_1a04f47560574b4b506156c5ea094e0179279ababb2e0079a4c9a0131c76af50_prof);
 
     }
 
     // line 5
     public function block_contentmaster($context, array $blocks = array())
     {
-        $__internal_309aa948ee821b1423318035eabbcaa4e920ffb9bb425f86629538a3c007a663 = $this->env->getExtension("native_profiler");
-        $__internal_309aa948ee821b1423318035eabbcaa4e920ffb9bb425f86629538a3c007a663->enter($__internal_309aa948ee821b1423318035eabbcaa4e920ffb9bb425f86629538a3c007a663_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "contentmaster"));
+        $__internal_80d81ebba39b1c0488e2da85197be7125b24b252e3a21c5b5c137c0d119cbfd5 = $this->env->getExtension("native_profiler");
+        $__internal_80d81ebba39b1c0488e2da85197be7125b24b252e3a21c5b5c137c0d119cbfd5->enter($__internal_80d81ebba39b1c0488e2da85197be7125b24b252e3a21c5b5c137c0d119cbfd5_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "contentmaster"));
 
         // line 6
         echo " <div class=\"photos\">
@@ -61,26 +61,28 @@ class __TwigTemplate_ca8a41fbec32e03987bca04e7fac03576f6b58d19210e32a8392726feb2
 
 
 
+
      ";
-        // line 14
+        // line 15
         $context['_parent'] = $context;
         $context['_seq'] = twig_ensure_traversable((isset($context["Directory"]) ? $context["Directory"] : $this->getContext($context, "Directory")));
         foreach ($context['_seq'] as $context["_key"] => $context["dirs"]) {
-            // line 15
+            // line 16
             echo "      <p><a href=\"";
             echo $this->env->getExtension('routing')->getPath("Fotos");
             echo "/";
-            echo twig_escape_filter($this->env, $this->getAttribute($context["dirs"], "relativePathname", array()), "html", null, true);
+            echo twig_escape_filter($this->env, $context["dirs"], "html", null, true);
             echo " \">";
-            echo twig_escape_filter($this->env, $this->getAttribute($context["dirs"], "relativePathname", array()), "html", null, true);
+            echo twig_escape_filter($this->env, $context["dirs"], "html", null, true);
             echo "</a></p>
      ";
         }
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['dirs'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 17
+        // line 18
         echo "
+
 
 
 
@@ -89,7 +91,7 @@ class __TwigTemplate_ca8a41fbec32e03987bca04e7fac03576f6b58d19210e32a8392726feb2
 
 ";
         
-        $__internal_309aa948ee821b1423318035eabbcaa4e920ffb9bb425f86629538a3c007a663->leave($__internal_309aa948ee821b1423318035eabbcaa4e920ffb9bb425f86629538a3c007a663_prof);
+        $__internal_80d81ebba39b1c0488e2da85197be7125b24b252e3a21c5b5c137c0d119cbfd5->leave($__internal_80d81ebba39b1c0488e2da85197be7125b24b252e3a21c5b5c137c0d119cbfd5_prof);
 
     }
 
@@ -105,7 +107,7 @@ class __TwigTemplate_ca8a41fbec32e03987bca04e7fac03576f6b58d19210e32a8392726feb2
 
     public function getDebugInfo()
     {
-        return array (  83 => 17,  70 => 15,  66 => 14,  57 => 8,  53 => 6,  47 => 5,  35 => 4,  11 => 1,);
+        return array (  84 => 18,  71 => 16,  67 => 15,  57 => 8,  53 => 6,  47 => 5,  35 => 4,  11 => 1,);
     }
 }
 /* {% extends 'BaseTemplate1.html.twig ' %}*/
@@ -121,9 +123,11 @@ class __TwigTemplate_ca8a41fbec32e03987bca04e7fac03576f6b58d19210e32a8392726feb2
 /* */
 /* */
 /* */
+/* */
 /*      {%for dirs in Directory %}*/
-/*       <p><a href="{{ path('Fotos')}}/{{ dirs.relativePathname }} ">{{ dirs.relativePathname }}</a></p>*/
+/*       <p><a href="{{ path('Fotos')}}/{{ dirs }} ">{{ dirs }}</a></p>*/
 /*      {% endfor %}*/
+/* */
 /* */
 /* */
 /* */
