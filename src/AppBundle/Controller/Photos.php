@@ -17,33 +17,31 @@ class Photos extends controller
 {
 
 
-
     /**
      * @return mixed
      * @Route("/photos",name="Fotos")
      */
     public function photosAction()
     {
-        $finder =new Finder();
-        $directory= $finder->directories()->in('../web/bundles/framework/images/album/');
+        $finder = new Finder();
+        $directory = $finder->directories()->in('../web/bundles/framework/images/album/');
 
 
-        foreach($directory as $find)
-        {
+        foreach ($directory as $find) {
 
-            $contents[]=  $find->getRelativePathname();
+            $directoryname[] = $find->getRelativePathname();
+
+
+            foreach($finder->files()->in($find->getRealpath())as $files)
+                    {
+                        $filename[$find->getRelativePathname()]=array($files->getFilename());
+
+                    }
 
         }
-        foreach($contents as $file)
-        {
-            
-        }
 
 
-
-
-
-        return $this->render("photos/photos.html.twig",array("Directory"=>$contents,"dump"=>1));
+        return $this->render("photos/photos.html.twig", array("Directory" => $directoryname, "Files" => $filename));
 
     }
 
