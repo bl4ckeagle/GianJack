@@ -27,19 +27,12 @@ class Photos extends controller
         $finder =new Finder();
 
 
-     $direcotires= $finder->directories()->in('../web/bundles/framework/images/album/');
+     $files= $finder->directories()->in('../web/bundles/framework/images/album/');
 
 
-        foreach ($direcotires as $finding)
+        foreach ($files as $finding)
         {
             $findings[] =$finding;
-
-        }
-        foreach($files as $ffinding)
-        {
-            $ffindings[]=$ffinding;
-
-
         }
 
 
@@ -49,7 +42,7 @@ class Photos extends controller
 
 
 
-        return $this->render("photos/photos.html.twig",array("Directory"=>$findings,"Files"=>$ffindings));
+        return $this->render("photos/photos.html.twig",array("Directory"=>$findings));
 
     }
 
