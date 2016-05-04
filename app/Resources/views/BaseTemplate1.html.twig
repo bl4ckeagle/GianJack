@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    {% block stylesheets %}<link href="{{ asset('bundles/framework/css/bootstrap.css') }}" rel="stylesheet"/>{% endblock %}
+
+    <meta charset="UTF-8"/>
+    <title>{% block title %}Test Application{% endblock %}</title>
+
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"/>
+
+</head>
+
+<body>
+
+<div class="homebody">
+    <div class="container-fluid">
+    {#Banner Logo#}
+    <div class="container-fluid">
+        <div class="banner">
+            <img class="img-responsive" src="{{ asset('bundles/framework/images/banner/banner.png') }}">  </img>
+        </div>
+        </div>
+    {#Banner Logo end#}
+    {#Nav Bar#}
+
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <img class="homelogo"  src={{ asset('bundles/framework/images/NavLogo/homelogo.png') }}>
+
+            </div>
+
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" style="margin-left: 40%">
+                <ul class="nav navbar-nav">
+                    <li><a href="{{ path('index') }}">Home <span class="sr-only">(current)</span></a></li>
+                    <li><a href="{{ path('Tour') }}">Tour</a></li>
+                    <li><a href="{{ path('Fotos') }}">Photos</a></li>
+                    <script>alert</script>
+
+                </ul>
+
+            </div>
+        </div>
+    </nav>
+    {#Nave End#}
+        {%block contentmaster  %}
+        <div class="container">
+            <div class="row">
+                <div    class="col-lg-4">
+                    <div class="jumbotron">
+                        {% block sidebarcontent %}
+                        <h1>Test123</h1>
+                        <p>Text Text Text</p>
+                        <p>Text Text Text</p>
+                        <p>Text Text Text</p>
+                        <p>Text Text Text</p>
+                        <p>Text Text Text</p>
+                        {% endblock %}
+                    </div>
+</div>
+                    <div class="col-lg-8">
+                        {% block content %}
+
+                        {% endblock %}
+                    </div>
+                    </div>
+
+            </div>
+        {% endblock %}
+        </div>
+</div>
+
+
+
+
+
+
+
+
+
+{% block javascripts %}
+    <script src="{{ asset('bundles/framework/js/jquery-2.2.3.min.js') }}"></script>
+    <script src="{{ asset('bundles/framework/js/bootstrap.js') }}"></script>
+
+{% endblock %}
+</body>
+
+
+</html>
+

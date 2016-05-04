@@ -1,0 +1,39 @@
+{% extends 'BaseTemplate1.html.twig ' %}
+
+
+{% block title %}Tour{% endblock %}
+{%block contentmaster  %}
+ <div class="Tour">
+<div class="jumbotron">
+<table class="table table-striped table-hover ">
+    <caption >Tour</caption>
+    <thead>
+    <tr>
+        <td>Location</td>
+        <td>Date</td>
+        <td>Country</td>
+        <td>Tickets</td>
+
+
+    </tr>
+    </thead>
+    <tbody>
+
+        {% for tours in Tour %}
+        <tr>
+        <td><a href={{ tours.locationLink }}>{{ tours.location }}</a> </td>
+        <td>{{ tours.date|date("d-m-Y h:m") }}</td>
+        <td>{{ tours.country }}</td>
+        <td>{{ tours.ticketLink }}</td>
+        </tr>
+        {% endfor %}
+
+
+
+
+    </tbody>
+
+    </table>
+</div>
+ </div>
+{% endblock %}

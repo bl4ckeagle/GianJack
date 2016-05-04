@@ -1,0 +1,24 @@
+{% extends 'BaseTemplate1.html.twig ' %}
+
+
+{% block title %}Photos{% endblock %}
+{%block contentmaster  %}
+ <div class="photos">
+<div class="jumbotron">
+ {{ dump() }}
+</div>
+ <div class="jumbotron">
+
+
+
+     {%for dirs in Directory %}
+      <p><a href="{{ path('Fotos')}}/{{ dirs.relativePathname }} ">{{ dirs.relativePathname }}</a></p>
+     {% endfor %}
+
+
+
+
+ </div>
+</div>
+
+{% endblock %}
