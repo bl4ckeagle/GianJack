@@ -2,25 +2,23 @@
 
 
 {% block title %}Photos{% endblock %}
-{%block contentmaster  %}
- <div class="photos">
-<div class="jumbotron">
- {{ dump() }}
-</div>
- <div class="jumbotron">
+{% block contentmaster %}
+    <div class="photos">
+        <div class="jumbotron">
+            {{ dump() }}
+        </div>
+        <div class="jumbotron">
+
+
+            {% for key, values in Values %}
+
+                <p>{{ key }}{{ values }}</p>
+            {% endfor %}
 
 
 
 
-     {%for dirs in Directory %}
-      <p><a href="{{ path('Fotos')}}/{{ dirs }} ">{{ dirs }}</a></p>
-     {% endfor %}
-
-
-
-
-
- </div>
-</div>
+        </div>
+    </div>
 
 {% endblock %}

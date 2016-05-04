@@ -22,76 +22,72 @@ class __TwigTemplate_ca8a41fbec32e03987bca04e7fac03576f6b58d19210e32a8392726feb2
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_978fbd1c7be684f748800451357a79b9bfccc309f2172eb41412f3a61d696dde = $this->env->getExtension("native_profiler");
-        $__internal_978fbd1c7be684f748800451357a79b9bfccc309f2172eb41412f3a61d696dde->enter($__internal_978fbd1c7be684f748800451357a79b9bfccc309f2172eb41412f3a61d696dde_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "photos/photos.html.twig"));
+        $__internal_be3dfb340cce69ea53da264d9994676ada4cce46e49ff9ce78b0cce88cc94e2e = $this->env->getExtension("native_profiler");
+        $__internal_be3dfb340cce69ea53da264d9994676ada4cce46e49ff9ce78b0cce88cc94e2e->enter($__internal_be3dfb340cce69ea53da264d9994676ada4cce46e49ff9ce78b0cce88cc94e2e_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "photos/photos.html.twig"));
 
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
-        $__internal_978fbd1c7be684f748800451357a79b9bfccc309f2172eb41412f3a61d696dde->leave($__internal_978fbd1c7be684f748800451357a79b9bfccc309f2172eb41412f3a61d696dde_prof);
+        $__internal_be3dfb340cce69ea53da264d9994676ada4cce46e49ff9ce78b0cce88cc94e2e->leave($__internal_be3dfb340cce69ea53da264d9994676ada4cce46e49ff9ce78b0cce88cc94e2e_prof);
 
     }
 
     // line 4
     public function block_title($context, array $blocks = array())
     {
-        $__internal_1a04f47560574b4b506156c5ea094e0179279ababb2e0079a4c9a0131c76af50 = $this->env->getExtension("native_profiler");
-        $__internal_1a04f47560574b4b506156c5ea094e0179279ababb2e0079a4c9a0131c76af50->enter($__internal_1a04f47560574b4b506156c5ea094e0179279ababb2e0079a4c9a0131c76af50_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "title"));
+        $__internal_f1d37548b0e5e8b0b84402f941a5028931bd06377252753dfffa38fbd4454b99 = $this->env->getExtension("native_profiler");
+        $__internal_f1d37548b0e5e8b0b84402f941a5028931bd06377252753dfffa38fbd4454b99->enter($__internal_f1d37548b0e5e8b0b84402f941a5028931bd06377252753dfffa38fbd4454b99_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "title"));
 
         echo "Photos";
         
-        $__internal_1a04f47560574b4b506156c5ea094e0179279ababb2e0079a4c9a0131c76af50->leave($__internal_1a04f47560574b4b506156c5ea094e0179279ababb2e0079a4c9a0131c76af50_prof);
+        $__internal_f1d37548b0e5e8b0b84402f941a5028931bd06377252753dfffa38fbd4454b99->leave($__internal_f1d37548b0e5e8b0b84402f941a5028931bd06377252753dfffa38fbd4454b99_prof);
 
     }
 
     // line 5
     public function block_contentmaster($context, array $blocks = array())
     {
-        $__internal_80d81ebba39b1c0488e2da85197be7125b24b252e3a21c5b5c137c0d119cbfd5 = $this->env->getExtension("native_profiler");
-        $__internal_80d81ebba39b1c0488e2da85197be7125b24b252e3a21c5b5c137c0d119cbfd5->enter($__internal_80d81ebba39b1c0488e2da85197be7125b24b252e3a21c5b5c137c0d119cbfd5_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "contentmaster"));
+        $__internal_1cc2f69e8ab6925b3f1c5ed40985f145764ce6cb89f05f666735fd571e98d5cb = $this->env->getExtension("native_profiler");
+        $__internal_1cc2f69e8ab6925b3f1c5ed40985f145764ce6cb89f05f666735fd571e98d5cb->enter($__internal_1cc2f69e8ab6925b3f1c5ed40985f145764ce6cb89f05f666735fd571e98d5cb_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "contentmaster"));
 
         // line 6
-        echo " <div class=\"photos\">
-<div class=\"jumbotron\">
- ";
+        echo "    <div class=\"photos\">
+        <div class=\"jumbotron\">
+            ";
         // line 8
         echo $this->env->getExtension('dump')->dump($this->env, $context);
         echo "
-</div>
- <div class=\"jumbotron\">
+        </div>
+        <div class=\"jumbotron\">
 
 
-
-
-     ";
-        // line 15
+            ";
+        // line 13
         $context['_parent'] = $context;
-        $context['_seq'] = twig_ensure_traversable((isset($context["Directory"]) ? $context["Directory"] : $this->getContext($context, "Directory")));
-        foreach ($context['_seq'] as $context["_key"] => $context["dirs"]) {
-            // line 16
-            echo "      <p><a href=\"";
-            echo $this->env->getExtension('routing')->getPath("Fotos");
-            echo "/";
-            echo twig_escape_filter($this->env, $context["dirs"], "html", null, true);
-            echo " \">";
-            echo twig_escape_filter($this->env, $context["dirs"], "html", null, true);
-            echo "</a></p>
-     ";
+        $context['_seq'] = twig_ensure_traversable((isset($context["Values"]) ? $context["Values"] : $this->getContext($context, "Values")));
+        foreach ($context['_seq'] as $context["key"] => $context["values"]) {
+            // line 14
+            echo "
+                <p>";
+            // line 15
+            echo twig_escape_filter($this->env, $context["key"], "html", null, true);
+            echo twig_escape_filter($this->env, $context["values"], "html", null, true);
+            echo "</p>
+            ";
         }
         $_parent = $context['_parent'];
-        unset($context['_seq'], $context['_iterated'], $context['_key'], $context['dirs'], $context['_parent'], $context['loop']);
+        unset($context['_seq'], $context['_iterated'], $context['key'], $context['values'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 18
+        // line 17
         echo "
 
 
 
-
- </div>
-</div>
+        </div>
+    </div>
 
 ";
         
-        $__internal_80d81ebba39b1c0488e2da85197be7125b24b252e3a21c5b5c137c0d119cbfd5->leave($__internal_80d81ebba39b1c0488e2da85197be7125b24b252e3a21c5b5c137c0d119cbfd5_prof);
+        $__internal_1cc2f69e8ab6925b3f1c5ed40985f145764ce6cb89f05f666735fd571e98d5cb->leave($__internal_1cc2f69e8ab6925b3f1c5ed40985f145764ce6cb89f05f666735fd571e98d5cb_prof);
 
     }
 
@@ -107,33 +103,31 @@ class __TwigTemplate_ca8a41fbec32e03987bca04e7fac03576f6b58d19210e32a8392726feb2
 
     public function getDebugInfo()
     {
-        return array (  84 => 18,  71 => 16,  67 => 15,  57 => 8,  53 => 6,  47 => 5,  35 => 4,  11 => 1,);
+        return array (  81 => 17,  72 => 15,  69 => 14,  65 => 13,  57 => 8,  53 => 6,  47 => 5,  35 => 4,  11 => 1,);
     }
 }
 /* {% extends 'BaseTemplate1.html.twig ' %}*/
 /* */
 /* */
 /* {% block title %}Photos{% endblock %}*/
-/* {%block contentmaster  %}*/
-/*  <div class="photos">*/
-/* <div class="jumbotron">*/
-/*  {{ dump() }}*/
-/* </div>*/
-/*  <div class="jumbotron">*/
+/* {% block contentmaster %}*/
+/*     <div class="photos">*/
+/*         <div class="jumbotron">*/
+/*             {{ dump() }}*/
+/*         </div>*/
+/*         <div class="jumbotron">*/
+/* */
+/* */
+/*             {% for key, values in Values %}*/
+/* */
+/*                 <p>{{ key }}{{ values }}</p>*/
+/*             {% endfor %}*/
 /* */
 /* */
 /* */
 /* */
-/*      {%for dirs in Directory %}*/
-/*       <p><a href="{{ path('Fotos')}}/{{ dirs }} ">{{ dirs }}</a></p>*/
-/*      {% endfor %}*/
-/* */
-/* */
-/* */
-/* */
-/* */
-/*  </div>*/
-/* </div>*/
+/*         </div>*/
+/*     </div>*/
 /* */
 /* {% endblock %}*/
 /* */
