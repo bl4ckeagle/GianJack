@@ -114,9 +114,17 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             return $this->mergeDefaults(array_replace($matches, array('_route' => 'app_lucky_index')), array (  '_controller' => 'AppBundle\\Controller\\LuckyController::indexAction',));
         }
 
-        // Fotos
-        if ($pathinfo === '/photos') {
-            return array (  '_controller' => 'AppBundle\\Controller\\Photos::photosAction',  '_route' => 'Fotos',);
+        if (0 === strpos($pathinfo, '/photos')) {
+            // Fotos
+            if ($pathinfo === '/photos') {
+                return array (  '_controller' => 'AppBundle\\Controller\\Photos::photosAction',  '_route' => 'Fotos',);
+            }
+
+            // app_photos_album
+            if (preg_match('#^/photos/(?P<slug>[^/]++)$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'app_photos_album')), array (  '_controller' => 'AppBundle\\Controller\\Photos::albumAction',));
+            }
+
         }
 
         if (0 === strpos($pathinfo, '/t')) {

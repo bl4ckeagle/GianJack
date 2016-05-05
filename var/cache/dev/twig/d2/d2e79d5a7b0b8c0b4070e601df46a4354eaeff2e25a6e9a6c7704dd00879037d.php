@@ -22,72 +22,51 @@ class __TwigTemplate_ca8a41fbec32e03987bca04e7fac03576f6b58d19210e32a8392726feb2
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_be3dfb340cce69ea53da264d9994676ada4cce46e49ff9ce78b0cce88cc94e2e = $this->env->getExtension("native_profiler");
-        $__internal_be3dfb340cce69ea53da264d9994676ada4cce46e49ff9ce78b0cce88cc94e2e->enter($__internal_be3dfb340cce69ea53da264d9994676ada4cce46e49ff9ce78b0cce88cc94e2e_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "photos/photos.html.twig"));
+        $__internal_91bf43271d15d42070f0231d7a7573fd0051fdee5a9c3ceac31d2fc02934a0aa = $this->env->getExtension("native_profiler");
+        $__internal_91bf43271d15d42070f0231d7a7573fd0051fdee5a9c3ceac31d2fc02934a0aa->enter($__internal_91bf43271d15d42070f0231d7a7573fd0051fdee5a9c3ceac31d2fc02934a0aa_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "photos/photos.html.twig"));
 
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
-        $__internal_be3dfb340cce69ea53da264d9994676ada4cce46e49ff9ce78b0cce88cc94e2e->leave($__internal_be3dfb340cce69ea53da264d9994676ada4cce46e49ff9ce78b0cce88cc94e2e_prof);
+        $__internal_91bf43271d15d42070f0231d7a7573fd0051fdee5a9c3ceac31d2fc02934a0aa->leave($__internal_91bf43271d15d42070f0231d7a7573fd0051fdee5a9c3ceac31d2fc02934a0aa_prof);
 
     }
 
     // line 4
     public function block_title($context, array $blocks = array())
     {
-        $__internal_f1d37548b0e5e8b0b84402f941a5028931bd06377252753dfffa38fbd4454b99 = $this->env->getExtension("native_profiler");
-        $__internal_f1d37548b0e5e8b0b84402f941a5028931bd06377252753dfffa38fbd4454b99->enter($__internal_f1d37548b0e5e8b0b84402f941a5028931bd06377252753dfffa38fbd4454b99_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "title"));
+        $__internal_c8a7fdc4d79fa6f91fdccfc5849b59a2469fa96254d47edd9604a12fbc899eb1 = $this->env->getExtension("native_profiler");
+        $__internal_c8a7fdc4d79fa6f91fdccfc5849b59a2469fa96254d47edd9604a12fbc899eb1->enter($__internal_c8a7fdc4d79fa6f91fdccfc5849b59a2469fa96254d47edd9604a12fbc899eb1_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "title"));
 
         echo "Photos";
         
-        $__internal_f1d37548b0e5e8b0b84402f941a5028931bd06377252753dfffa38fbd4454b99->leave($__internal_f1d37548b0e5e8b0b84402f941a5028931bd06377252753dfffa38fbd4454b99_prof);
+        $__internal_c8a7fdc4d79fa6f91fdccfc5849b59a2469fa96254d47edd9604a12fbc899eb1->leave($__internal_c8a7fdc4d79fa6f91fdccfc5849b59a2469fa96254d47edd9604a12fbc899eb1_prof);
 
     }
 
     // line 5
     public function block_contentmaster($context, array $blocks = array())
     {
-        $__internal_1cc2f69e8ab6925b3f1c5ed40985f145764ce6cb89f05f666735fd571e98d5cb = $this->env->getExtension("native_profiler");
-        $__internal_1cc2f69e8ab6925b3f1c5ed40985f145764ce6cb89f05f666735fd571e98d5cb->enter($__internal_1cc2f69e8ab6925b3f1c5ed40985f145764ce6cb89f05f666735fd571e98d5cb_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "contentmaster"));
+        $__internal_8008f04d22e61f7808cf792b0c9d6957d275a0b00177525ba8892dc878156781 = $this->env->getExtension("native_profiler");
+        $__internal_8008f04d22e61f7808cf792b0c9d6957d275a0b00177525ba8892dc878156781->enter($__internal_8008f04d22e61f7808cf792b0c9d6957d275a0b00177525ba8892dc878156781_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "contentmaster"));
 
         // line 6
         echo "    <div class=\"photos\">
+
         <div class=\"jumbotron\">
+
             ";
-        // line 8
+        // line 10
         echo $this->env->getExtension('dump')->dump($this->env, $context);
         echo "
-        </div>
-        <div class=\"jumbotron\">
-
-
-            ";
-        // line 13
-        $context['_parent'] = $context;
-        $context['_seq'] = twig_ensure_traversable((isset($context["Values"]) ? $context["Values"] : $this->getContext($context, "Values")));
-        foreach ($context['_seq'] as $context["key"] => $context["values"]) {
-            // line 14
-            echo "
-                <p>";
-            // line 15
-            echo twig_escape_filter($this->env, $context["key"], "html", null, true);
-            echo twig_escape_filter($this->env, $context["values"], "html", null, true);
-            echo "</p>
-            ";
-        }
-        $_parent = $context['_parent'];
-        unset($context['_seq'], $context['_iterated'], $context['key'], $context['values'], $context['_parent'], $context['loop']);
-        $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 17
-        echo "
-
-
 
         </div>
-    </div>
+";
+        // line 33
+        echo "</div>
 
 ";
         
-        $__internal_1cc2f69e8ab6925b3f1c5ed40985f145764ce6cb89f05f666735fd571e98d5cb->leave($__internal_1cc2f69e8ab6925b3f1c5ed40985f145764ce6cb89f05f666735fd571e98d5cb_prof);
+        $__internal_8008f04d22e61f7808cf792b0c9d6957d275a0b00177525ba8892dc878156781->leave($__internal_8008f04d22e61f7808cf792b0c9d6957d275a0b00177525ba8892dc878156781_prof);
 
     }
 
@@ -103,7 +82,7 @@ class __TwigTemplate_ca8a41fbec32e03987bca04e7fac03576f6b58d19210e32a8392726feb2
 
     public function getDebugInfo()
     {
-        return array (  81 => 17,  72 => 15,  69 => 14,  65 => 13,  57 => 8,  53 => 6,  47 => 5,  35 => 4,  11 => 1,);
+        return array (  65 => 33,  59 => 10,  53 => 6,  47 => 5,  35 => 4,  11 => 1,);
     }
 }
 /* {% extends 'BaseTemplate1.html.twig ' %}*/
@@ -112,22 +91,33 @@ class __TwigTemplate_ca8a41fbec32e03987bca04e7fac03576f6b58d19210e32a8392726feb2
 /* {% block title %}Photos{% endblock %}*/
 /* {% block contentmaster %}*/
 /*     <div class="photos">*/
-/*         <div class="jumbotron">*/
-/*             {{ dump() }}*/
-/*         </div>*/
+/* */
 /*         <div class="jumbotron">*/
 /* */
+/*             {{ dump() }}*/
+/* */
+/*         </div>*/
+/* {#*/
+/*             <div class="container-fluid">*/
+/*             <div class="row">*/
 /* */
 /*             {% for key, values in Values %}*/
+/*                 <div class="col-md-4">*/
+/*                 <div class="jumbotron">*/
+/*                     <h3 >{{ key }}</h3>*/
+/*                 <a href="{{ path('Fotos') }}/{{ key }}" class="thumbnail" >*/
 /* */
-/*                 <p>{{ key }}{{ values }}</p>*/
+/*                 <img src="{{ asset('bundles/framework/images/album/') }}{{ key }}/{{ values }}"  class="thumb">*/
+/*                 </a>*/
+/*                 </div>*/
+/*                 </div>*/
 /*             {% endfor %}*/
 /* */
+/*             </div>*/
 /* */
 /* */
-/* */
-/*         </div>*/
-/*     </div>*/
+/*         </div>#}*/
+/* </div>*/
 /* */
 /* {% endblock %}*/
 /* */

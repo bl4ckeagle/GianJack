@@ -17,9 +17,9 @@
             <div class="jumbotron">
         <img class="img" src="{{ asset('bundles/framework/images/News/') }}{{ content.picturePath}}" > </img>
 
-                <p>{{ content.title }}</p>
+                <h1>{{ content.title }}</h1>
                 <p>{{ content.content }}</p>
-                <p>{{ content.date|date('d-m-Y') }}</p>
+                <small class="text-right">{{ content.date|date('d.m.Y') }}</small>
             </div>
     </div>
     

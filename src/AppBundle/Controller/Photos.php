@@ -5,12 +5,12 @@
  * Date: 03.05.2016
  * Time: 18:19
  */
-
 namespace AppBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\Finder\Finder;
+use Symfony\Component\Finder\SplFileInfo;
 
 
 class Photos extends controller
@@ -38,6 +38,7 @@ class Photos extends controller
             $files=($finder2->files()->in($find->getRealpath()));
             foreach($files as $founds)
             {
+
                 $filename[$find->getRelativePathname()]=$founds->getFileName();
 
             }
@@ -48,6 +49,37 @@ class Photos extends controller
         return $this->render("photos/photos.html.twig", array("Values" => $filename));
 
     }
+
+    /**
+     * @param $slug
+     * @return \Symfony\Component\HttpFoundation\Response
+     * @Route("/photos/{slug}")
+     */
+
+    public function albumAction($slug)
+    {
+
+        $finder = new Finder;
+        $files= $finder->files()->in('../web/bundles/framework/images/album/'.$slug);
+
+        /**
+         * @var SplFileInfo $file
+         */
+        foreach ($files as $file)
+        {
+            $pictures[]=$file->getFilename();
+
+        }
+
+
+
+
+
+
+        return $this->render("photos/album.html.twig",array("values"=>$pictures));
+
+
+}
 
 
 }

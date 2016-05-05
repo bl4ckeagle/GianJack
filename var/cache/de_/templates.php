@@ -112,6 +112,7 @@
   '::BaseTemplate1.html.twig' => 'C:\\xampp\\htdocs\\GiantJack\\app/Resources\\views/BaseTemplate1.html.twig',
   ':default:index.html.twig' => 'C:\\xampp\\htdocs\\GiantJack\\app/Resources\\views/default/index.html.twig',
   ':lucky:lucky.html.twig' => 'C:\\xampp\\htdocs\\GiantJack\\app/Resources\\views/lucky/lucky.html.twig',
+  ':photos:album.html.twig' => 'C:\\xampp\\htdocs\\GiantJack\\app/Resources\\views/photos/album.html.twig',
   ':photos:photos.html.twig' => 'C:\\xampp\\htdocs\\GiantJack\\app/Resources\\views/photos/photos.html.twig',
   ':Tour:tour.html.twig' => 'C:\\xampp\\htdocs\\GiantJack\\app/Resources\\views/Tour/tour.html.twig',
 );
