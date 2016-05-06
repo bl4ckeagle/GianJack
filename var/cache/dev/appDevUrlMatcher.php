@@ -120,9 +120,9 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                 return array (  '_controller' => 'AppBundle\\Controller\\Photos::photosAction',  '_route' => 'Fotos',);
             }
 
-            // app_photos_album
+            // album
             if (preg_match('#^/photos/(?P<slug>[^/]++)$#s', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'app_photos_album')), array (  '_controller' => 'AppBundle\\Controller\\Photos::albumAction',));
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'album')), array (  '_controller' => 'AppBundle\\Controller\\Photos::albumAction',));
             }
 
         }
@@ -138,6 +138,11 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                 return array (  '_controller' => 'AppBundle\\Controller\\TourController::tourAction',  '_route' => 'Tour',);
             }
 
+        }
+
+        // videos
+        if ($pathinfo === '/videos') {
+            return array (  '_controller' => 'AppBundle\\Controller\\VideoController::indexAction',  '_route' => 'videos',);
         }
 
         throw 0 < count($allow) ? new MethodNotAllowedException(array_unique($allow)) : new ResourceNotFoundException();

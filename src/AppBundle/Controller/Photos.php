@@ -24,26 +24,30 @@ class Photos extends controller
     public function photosAction()
     {
         $finder = new Finder();
-        $finder2=new Finder();
+        $finder2 = new Finder();
         $directory = $finder->directories()->in('../web/bundles/framework/images/album/');
-     
 
 
-
+        /**
+         * @var SplFileInfo $founds
+         * @var SplFileInfo $find
+         */
         foreach ($directory as $find) {
 
 
+            $files = ($finder2->files()->in($find->getPathname()));
+
+            foreach ($files as $founds) {
 
 
-            $files=($finder2->files()->in($find->getRealpath()));
-            foreach($files as $founds)
-            {
+                $filename[$find->getRelativePathname()] = $founds->getFilename();
 
-                $filename[$find->getRelativePathname()]=$founds->getFileName();
+
 
             }
-        }
 
+
+        }
 
 
         return $this->render("photos/photos.html.twig", array("Values" => $filename));
@@ -53,33 +57,30 @@ class Photos extends controller
     /**
      * @param $slug
      * @return \Symfony\Component\HttpFoundation\Response
-     * @Route("/photos/{slug}")
+     * @Route("/photos/{slug}" ,name="album")
      */
 
     public function albumAction($slug)
     {
 
         $finder = new Finder;
-        $files= $finder->files()->in('../web/bundles/framework/images/album/'.$slug);
+        $files = $finder->files()->in('../web/bundles/framework/images/album/' . $slug);
 
         /**
          * @var SplFileInfo $file
          */
-        foreach ($files as $file)
-        {
-            $pictures[]=$file->getFilename();
+        foreach ($files as $file) {
+            $pictures[] = $file->getFilename();
 
         }
 
 
 
 
+        return $this->render("photos/album.html.twig", array("Values" => $pictures, "path" => $slug));
 
 
-        return $this->render("photos/album.html.twig",array("values"=>$pictures));
-
-
-}
+    }
 
 
 }

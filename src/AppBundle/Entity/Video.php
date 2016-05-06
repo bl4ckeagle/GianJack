@@ -35,7 +35,15 @@ class Video
      */
     private $title;
 
-
+    /**
+     * @var \Contentuser
+     *
+     * @ORM\ManyToOne(targetEntity="Album")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="album", referencedColumnName="alben_id")
+     * })
+     */
+    private $album;
 
     /**
      * Get videoId
@@ -57,7 +65,7 @@ class Video
     public function setLink($link)
     {
         $this->link = $link;
-    
+
         return $this;
     }
 
@@ -81,7 +89,7 @@ class Video
     public function setTitle($title)
     {
         $this->title = $title;
-    
+
         return $this;
     }
 
@@ -93,5 +101,29 @@ class Video
     public function getTitle()
     {
         return $this->title;
+    }
+
+    /**
+     * Set album
+     *
+     * @param \AppBundle\Entity\Album $album
+     *
+     * @return Video
+     */
+    public function setAlbum(\AppBundle\Entity\Album $album = null)
+    {
+        $this->album = $album;
+
+        return $this;
+    }
+
+    /**
+     * Get album
+     *
+     * @return \AppBundle\Entity\Album
+     */
+    public function getAlbum()
+    {
+        return $this->album;
     }
 }
