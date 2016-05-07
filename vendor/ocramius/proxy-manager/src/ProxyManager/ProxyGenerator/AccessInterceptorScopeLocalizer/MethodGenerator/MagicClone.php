@@ -38,8 +38,7 @@ class MagicClone extends MagicMethodGenerator
         ReflectionClass $originalClass,
         PropertyGenerator $prefixInterceptors,
         PropertyGenerator $suffixInterceptors
-    )
-    {
+    ) {
         parent::__construct($originalClass, '__clone');
 
         $this->setBody(

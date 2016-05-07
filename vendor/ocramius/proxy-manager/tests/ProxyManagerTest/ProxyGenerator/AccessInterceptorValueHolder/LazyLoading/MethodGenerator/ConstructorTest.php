@@ -38,7 +38,7 @@ class ConstructorTest extends PHPUnit_Framework_TestCase
     public function testBodyStructure()
     {
         $initializer = $this->getMock('Zend\\Code\\Generator\\PropertyGenerator');
-        $reflection = new ReflectionClass(
+        $reflection  = new ReflectionClass(
             'ProxyManagerTestAsset\\ProxyGenerator\\LazyLoading\\MethodGenerator\\ClassWithTwoPublicProperties'
         );
 

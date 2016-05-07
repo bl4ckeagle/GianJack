@@ -56,11 +56,11 @@ class FileNotWritableException extends UnexpectedValueException implements Excep
     {
         $messages = array();
 
-        if (($destination = realpath($path)) && !is_file($destination)) {
+        if (($destination = realpath($path)) && ! is_file($destination)) {
             $messages[] = 'exists and is not a file';
         }
 
-        if (!is_writable($destination)) {
+        if (! is_writable($destination)) {
             $messages[] = 'is not writable';
         }
 

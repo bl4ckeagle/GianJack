@@ -63,16 +63,16 @@ abstract class AbstractBaseFactory
         }
 
         $proxyParameters = array(
-            'className' => $className,
-            'factory' => get_class($this),
+            'className'           => $className,
+            'factory'             => get_class($this),
             'proxyManagerVersion' => Version::VERSION
         );
-        $proxyClassName = $this
+        $proxyClassName  = $this
             ->configuration
             ->getClassNameInflector()
             ->getProxyClassName($className, $proxyParameters);
 
-        if (!class_exists($proxyClassName)) {
+        if (! class_exists($proxyClassName)) {
             $this->generateProxyClass($proxyClassName, $className, $proxyParameters);
         }
 
@@ -93,14 +93,14 @@ abstract class AbstractBaseFactory
      * Generates the provided `$proxyClassName` from the given `$className` and `$proxyParameters`
      * @param string $proxyClassName
      * @param string $className
-     * @param array $proxyParameters
+     * @param array  $proxyParameters
      *
      * @return void
      */
     private function generateProxyClass($proxyClassName, $className, array $proxyParameters)
     {
         $className = $this->configuration->getClassNameInflector()->getUserClassName($className);
-        $phpClass = new ClassGenerator($proxyClassName);
+        $phpClass  = new ClassGenerator($proxyClassName);
 
         $this->getGenerator()->generate(new ReflectionClass($className), $phpClass);
 

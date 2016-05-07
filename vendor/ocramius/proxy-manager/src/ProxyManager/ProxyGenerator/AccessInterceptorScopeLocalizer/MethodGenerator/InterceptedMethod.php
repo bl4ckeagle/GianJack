@@ -42,14 +42,13 @@ class InterceptedMethod extends MethodGenerator
         MethodReflection $originalMethod,
         PropertyGenerator $prefixInterceptors,
         PropertyGenerator $suffixInterceptors
-    )
-    {
+    ) {
         /* @var $method self */
-        $method = static::fromReflection($originalMethod);
+        $method          = static::fromReflection($originalMethod);
         $forwardedParams = array();
 
         foreach ($originalMethod->getParameters() as $parameter) {
-            $forwardedParams[] = '$' . $parameter->getName();
+            $forwardedParams[]   = '$' . $parameter->getName();
         }
 
         $method->setDocblock('{@inheritDoc}');

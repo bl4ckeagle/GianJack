@@ -52,8 +52,8 @@ class MagicUnsetTest extends PHPUnit_Framework_TestCase
      */
     protected function setUp()
     {
-        $this->initializer = $this->getMock('Zend\\Code\\Generator\\PropertyGenerator');
-        $this->initMethod = $this->getMock('Zend\\Code\\Generator\\MethodGenerator');
+        $this->initializer      = $this->getMock('Zend\\Code\\Generator\\PropertyGenerator');
+        $this->initMethod       = $this->getMock('Zend\\Code\\Generator\\MethodGenerator');
         $this->publicProperties = $this
             ->getMockBuilder('ProxyManager\\ProxyGenerator\\PropertyGenerator\\PublicPropertiesMap')
             ->disableOriginalConstructor()

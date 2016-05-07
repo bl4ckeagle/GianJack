@@ -39,13 +39,12 @@ class Constructor extends MethodGenerator
         ReflectionClass $originalClass,
         PropertyGenerator $prefixInterceptors,
         PropertyGenerator $suffixInterceptors
-    )
-    {
+    ) {
         parent::__construct('__construct');
 
         $localizedObject = new ParameterGenerator('localizedObject');
-        $prefix = new ParameterGenerator('prefixInterceptors');
-        $suffix = new ParameterGenerator('suffixInterceptors');
+        $prefix          = new ParameterGenerator('prefixInterceptors');
+        $suffix          = new ParameterGenerator('suffixInterceptors');
 
         $localizedObject->setType($originalClass->getName());
         $prefix->setDefaultValue(array());
@@ -60,7 +59,7 @@ class Constructor extends MethodGenerator
         $localizedProperties = array();
 
         foreach ($originalClass->getProperties() as $originalProperty) {
-            if ((!method_exists('Closure', 'bind')) && $originalProperty->isPrivate()) {
+            if ((! method_exists('Closure', 'bind')) && $originalProperty->isPrivate()) {
                 // @codeCoverageIgnoreStart
                 throw UnsupportedProxiedClassException::unsupportedLocalizedReflectionProperty($originalProperty);
                 // @codeCoverageIgnoreEnd

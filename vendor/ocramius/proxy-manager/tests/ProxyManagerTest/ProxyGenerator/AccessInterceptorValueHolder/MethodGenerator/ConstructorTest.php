@@ -37,10 +37,10 @@ class ConstructorTest extends PHPUnit_Framework_TestCase
      */
     public function testBodyStructure()
     {
-        $valueHolder = $this->getMock('Zend\\Code\\Generator\\PropertyGenerator');
+        $valueHolder        = $this->getMock('Zend\\Code\\Generator\\PropertyGenerator');
         $prefixInterceptors = $this->getMock('Zend\\Code\\Generator\\PropertyGenerator');
         $suffixInterceptors = $this->getMock('Zend\\Code\\Generator\\PropertyGenerator');
-        $reflection = new ReflectionClass(
+        $reflection         = new ReflectionClass(
             'ProxyManagerTestAsset\\ProxyGenerator\\LazyLoading\\MethodGenerator\\ClassWithTwoPublicProperties'
         );
 
@@ -64,10 +64,10 @@ class ConstructorTest extends PHPUnit_Framework_TestCase
      */
     public function testBodyStructureWithoutPublicProperties()
     {
-        $valueHolder = $this->getMock('Zend\\Code\\Generator\\PropertyGenerator');
+        $valueHolder        = $this->getMock('Zend\\Code\\Generator\\PropertyGenerator');
         $prefixInterceptors = $this->getMock('Zend\\Code\\Generator\\PropertyGenerator');
         $suffixInterceptors = $this->getMock('Zend\\Code\\Generator\\PropertyGenerator');
-        $reflection = new ReflectionClass('ProxyManagerTestAsset\\EmptyClass');
+        $reflection         = new ReflectionClass('ProxyManagerTestAsset\\EmptyClass');
 
         $valueHolder->expects($this->any())->method('getName')->will($this->returnValue('foo'));
         $prefixInterceptors->expects($this->any())->method('getName')->will($this->returnValue('pre'));

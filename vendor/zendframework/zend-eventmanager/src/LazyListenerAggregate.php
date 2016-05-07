@@ -69,7 +69,7 @@ class LazyListenerAggregate implements ListenerAggregateInterface
     public function __construct(array $listeners, ContainerInterface $container, array $env = [])
     {
         $this->container = $container;
-        $this->env = $env;
+        $this->env       = $env;
 
         // This would raise an exception for invalid structs
         foreach ($listeners as $listener) {
@@ -77,7 +77,7 @@ class LazyListenerAggregate implements ListenerAggregateInterface
                 $listener = new LazyEventListener($listener, $container, $env);
             }
 
-            if (!$listener instanceof LazyEventListener) {
+            if (! $listener instanceof LazyEventListener) {
                 throw new Exception\InvalidArgumentException(sprintf(
                     'All listeners must be LazyEventListener instances or definitions; received %s',
                     (is_object($listener) ? get_class($listener) : gettype($listener))

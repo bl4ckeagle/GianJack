@@ -30,11 +30,11 @@ namespace ProxyManagerTest\Functional;
 abstract class BaseLazyLoadingPerformanceTest extends BasePerformanceTest
 {
     /**
-     * @param string $className
-     * @param object[] $instances
+     * @param string                                     $className
+     * @param object[]                                   $instances
      * @param \ProxyManager\Proxy\LazyLoadingInterface[] $proxies
-     * @param string $methodName
-     * @param array $parameters
+     * @param string                                     $methodName
+     * @param array                                      $parameters
      */
     protected function profileMethodAccess($className, array $instances, array $proxies, $methodName, array $parameters)
     {
@@ -62,10 +62,10 @@ abstract class BaseLazyLoadingPerformanceTest extends BasePerformanceTest
     }
 
     /**
-     * @param string $className
-     * @param object[] $instances
+     * @param string                                     $className
+     * @param object[]                                   $instances
      * @param \ProxyManager\Proxy\LazyLoadingInterface[] $proxies
-     * @param string $property
+     * @param string                                     $property
      */
     protected function profilePropertyWrites($className, array $instances, array $proxies, $property)
     {
@@ -93,10 +93,10 @@ abstract class BaseLazyLoadingPerformanceTest extends BasePerformanceTest
     }
 
     /**
-     * @param string $className
-     * @param object[] $instances
+     * @param string                                     $className
+     * @param object[]                                   $instances
      * @param \ProxyManager\Proxy\LazyLoadingInterface[] $proxies
-     * @param string $property
+     * @param string                                     $property
      */
     protected function profilePropertyReads($className, array $instances, array $proxies, $property)
     {
@@ -124,10 +124,10 @@ abstract class BaseLazyLoadingPerformanceTest extends BasePerformanceTest
     }
 
     /**
-     * @param string $className
-     * @param object[] $instances
+     * @param string                                     $className
+     * @param object[]                                   $instances
      * @param \ProxyManager\Proxy\LazyLoadingInterface[] $proxies
-     * @param string $property
+     * @param string                                     $property
      */
     protected function profilePropertyIsset($className, array $instances, array $proxies, $property)
     {
@@ -155,10 +155,10 @@ abstract class BaseLazyLoadingPerformanceTest extends BasePerformanceTest
     }
 
     /**
-     * @param string $className
-     * @param object[] $instances
+     * @param string                                     $className
+     * @param object[]                                   $instances
      * @param \ProxyManager\Proxy\LazyLoadingInterface[] $proxies
-     * @param string $property
+     * @param string                                     $property
      */
     protected function profilePropertyUnset($className, array $instances, array $proxies, $property)
     {

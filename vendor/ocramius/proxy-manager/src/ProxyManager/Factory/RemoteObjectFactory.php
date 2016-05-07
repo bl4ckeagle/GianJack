@@ -44,7 +44,7 @@ class RemoteObjectFactory extends AbstractBaseFactory
      * {@inheritDoc}
      *
      * @param AdapterInterface $adapter
-     * @param Configuration $configuration
+     * @param Configuration    $configuration
      */
     public function __construct(AdapterInterface $adapter, Configuration $configuration = null)
     {
@@ -60,7 +60,7 @@ class RemoteObjectFactory extends AbstractBaseFactory
      */
     public function createProxy($instanceOrClassName)
     {
-        $className = is_object($instanceOrClassName) ? get_class($instanceOrClassName) : $instanceOrClassName;
+        $className      = is_object($instanceOrClassName) ? get_class($instanceOrClassName) : $instanceOrClassName;
         $proxyClassName = $this->generateProxy($className);
 
         return new $proxyClassName($this->adapter);

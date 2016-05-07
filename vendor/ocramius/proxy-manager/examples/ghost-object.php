@@ -15,7 +15,7 @@ class Foo
 
     public function setFoo($foo)
     {
-        $this->foo = (string)$foo;
+        $this->foo = (string) $foo;
     }
 
     public function getFoo()
@@ -25,13 +25,13 @@ class Foo
 }
 
 $startTime = microtime(true);
-$factory = new LazyLoadingGhostFactory();
+$factory   = new LazyLoadingGhostFactory();
 
 for ($i = 0; $i < 1000; $i += 1) {
     $proxy = $factory->createProxy(
         'Foo',
         function ($proxy, $method, $parameters, & $initializer) {
-            $initializer = null;
+            $initializer   = null;
             $proxy->setFoo('Hello World!');
 
             return true;

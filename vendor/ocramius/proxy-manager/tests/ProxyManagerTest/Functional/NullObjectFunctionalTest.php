@@ -46,7 +46,7 @@ class NullObjectFunctionalTest extends PHPUnit_Framework_TestCase
         $proxyName = $this->generateProxy($className);
 
         /* @var $proxy \ProxyManager\Proxy\NullObjectInterface */
-        $proxy = new $proxyName();
+        $proxy     = new $proxyName();
 
         $this->assertSame(null, call_user_func_array(array($proxy, $method), $params));
     }
@@ -58,7 +58,7 @@ class NullObjectFunctionalTest extends PHPUnit_Framework_TestCase
     {
         $proxyName = $this->generateProxy($className);
         /* @var $proxy \ProxyManager\Proxy\NullObjectInterface */
-        $proxy = unserialize(serialize(new $proxyName()));
+        $proxy     = unserialize(serialize(new $proxyName()));
 
         $this->assertSame(null, call_user_func_array(array($proxy, $method), $params));
     }
@@ -71,8 +71,8 @@ class NullObjectFunctionalTest extends PHPUnit_Framework_TestCase
         $proxyName = $this->generateProxy($className);
 
         /* @var $proxy \ProxyManager\Proxy\NullObjectInterface */
-        $proxy = new $proxyName();
-        $cloned = clone $proxy;
+        $proxy     = new $proxyName();
+        $cloned    = clone $proxy;
 
         $this->assertSame(null, call_user_func_array(array($cloned, $method), $params));
     }
@@ -92,7 +92,7 @@ class NullObjectFunctionalTest extends PHPUnit_Framework_TestCase
     public function testPropertyWriteAccess($instance, $proxy, $publicProperty)
     {
         /* @var $proxy \ProxyManager\Proxy\NullObjectInterface */
-        $newValue = uniqid();
+        $newValue               = uniqid();
         $proxy->$publicProperty = $newValue;
 
         $this->assertSame($newValue, $proxy->$publicProperty);
@@ -129,9 +129,9 @@ class NullObjectFunctionalTest extends PHPUnit_Framework_TestCase
     private function generateProxy($parentClassName)
     {
         $generatedClassName = __NAMESPACE__ . '\\' . UniqueIdentifierGenerator::getIdentifier('Foo');
-        $generator = new NullObjectGenerator();
-        $generatedClass = new ClassGenerator($generatedClassName);
-        $strategy = new EvaluatingGeneratorStrategy();
+        $generator          = new NullObjectGenerator();
+        $generatedClass     = new ClassGenerator($generatedClassName);
+        $strategy           = new EvaluatingGeneratorStrategy();
 
         $generator->generate(new ReflectionClass($parentClassName), $generatedClass);
         $strategy->generate($generatedClass);
@@ -200,9 +200,9 @@ class NullObjectFunctionalTest extends PHPUnit_Framework_TestCase
      */
     public function getPropertyAccessProxies()
     {
-        $instance1 = new BaseClass();
+        $instance1  = new BaseClass();
         $proxyName1 = $this->generateProxy(get_class($instance1));
-        $instance2 = new BaseClass();
+        $instance2  = new BaseClass();
         $proxyName2 = $this->generateProxy(get_class($instance2));
 
         return array(

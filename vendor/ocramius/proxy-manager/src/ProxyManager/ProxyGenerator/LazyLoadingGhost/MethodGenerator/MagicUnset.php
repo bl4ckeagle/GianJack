@@ -35,9 +35,9 @@ use Zend\Code\Generator\PropertyGenerator;
 class MagicUnset extends MagicMethodGenerator
 {
     /**
-     * @param \ReflectionClass $originalClass
-     * @param \Zend\Code\Generator\PropertyGenerator $initializerProperty
-     * @param \Zend\Code\Generator\MethodGenerator $callInitializer
+     * @param \ReflectionClass                                                   $originalClass
+     * @param \Zend\Code\Generator\PropertyGenerator                             $initializerProperty
+     * @param \Zend\Code\Generator\MethodGenerator                               $callInitializer
      * @param \ProxyManager\ProxyGenerator\PropertyGenerator\PublicPropertiesMap $publicProperties
      */
     public function __construct(
@@ -45,16 +45,15 @@ class MagicUnset extends MagicMethodGenerator
         PropertyGenerator $initializerProperty,
         MethodGenerator $callInitializer,
         PublicPropertiesMap $publicProperties
-    )
-    {
+    ) {
         parent::__construct($originalClass, '__unset', array(new ParameterGenerator('name')));
 
-        $override = $originalClass->hasMethod('__unset');
+        $override   = $originalClass->hasMethod('__unset');
         $callParent = '';
 
         $this->setDocblock(($override ? "{@inheritDoc}\n" : '') . '@param string $name');
 
-        if (!$publicProperties->isEmpty()) {
+        if (! $publicProperties->isEmpty()) {
             $callParent = 'if (isset(self::$' . $publicProperties->getName() . "[\$name])) {\n"
                 . '    unset($this->$name);'
                 . "\n\n    return;"

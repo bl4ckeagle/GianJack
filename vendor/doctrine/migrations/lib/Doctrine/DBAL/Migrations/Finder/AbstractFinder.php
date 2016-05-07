@@ -59,7 +59,7 @@ abstract class AbstractFinder implements MigrationFinderInterface
         foreach ($files as $file) {
             static::requireOnce($file);
             $className = basename($file, '.php');
-            $version = (string)substr($className, 7);
+            $version = (string) substr($className, 7);
             if ($version === '0') {
                 throw new \InvalidArgumentException(sprintf(
                     'Cannot load a migrations with the name "%s" because it is a reserved number by doctrine migraitons' . PHP_EOL .
@@ -78,8 +78,7 @@ abstract class AbstractFinder implements MigrationFinderInterface
      *
      * @return callable
      */
-    protected function getFileSortCallback()
-    {
+    protected function getFileSortCallback(){
         return function ($a, $b) {
             return (basename($a) < basename($b)) ? -1 : 1;
         };

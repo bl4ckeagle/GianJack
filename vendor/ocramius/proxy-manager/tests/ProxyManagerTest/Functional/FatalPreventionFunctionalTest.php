@@ -62,7 +62,7 @@ PHP;
      *
      * @param string $generatorClass an instantiable class (no arguments) implementing
      *                               the {@see \ProxyManager\ProxyGenerator\ProxyGeneratorInterface}
-     * @param string $className a valid (existing/autoloadable) class name
+     * @param string $className      a valid (existing/autoloadable) class name
      *
      * @dataProvider getTestedClasses
      */
@@ -149,9 +149,9 @@ PHP;
             get_declared_classes(),
             function ($className) use ($skippedPaths) {
                 $reflectionClass = new ReflectionClass($className);
-                $fileName = $reflectionClass->getFileName();
+                $fileName        = $reflectionClass->getFileName();
 
-                if (!$fileName) {
+                if (! $fileName) {
                     return false;
                 }
 

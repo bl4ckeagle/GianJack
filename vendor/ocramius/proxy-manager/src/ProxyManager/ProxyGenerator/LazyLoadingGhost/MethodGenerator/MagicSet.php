@@ -35,9 +35,9 @@ use Zend\Code\Generator\PropertyGenerator;
 class MagicSet extends MagicMethodGenerator
 {
     /**
-     * @param \ReflectionClass $originalClass
-     * @param \Zend\Code\Generator\PropertyGenerator $initializerProperty
-     * @param \Zend\Code\Generator\MethodGenerator $callInitializer
+     * @param \ReflectionClass                                                   $originalClass
+     * @param \Zend\Code\Generator\PropertyGenerator                             $initializerProperty
+     * @param \Zend\Code\Generator\MethodGenerator                               $callInitializer
      * @param \ProxyManager\ProxyGenerator\PropertyGenerator\PublicPropertiesMap $publicProperties
      */
     public function __construct(
@@ -45,20 +45,19 @@ class MagicSet extends MagicMethodGenerator
         PropertyGenerator $initializerProperty,
         MethodGenerator $callInitializer,
         PublicPropertiesMap $publicProperties
-    )
-    {
+    ) {
         parent::__construct(
             $originalClass,
             '__set',
             array(new ParameterGenerator('name'), new ParameterGenerator('value'))
         );
 
-        $override = $originalClass->hasMethod('__set');
+        $override   = $originalClass->hasMethod('__set');
         $callParent = '';
 
         $this->setDocblock(($override ? "{@inheritDoc}\n" : '') . '@param string $name');
 
-        if (!$publicProperties->isEmpty()) {
+        if (! $publicProperties->isEmpty()) {
             $callParent = 'if (isset(self::$' . $publicProperties->getName() . "[\$name])) {\n"
                 . '    return ($this->$name = $value);'
                 . "\n}\n\n";

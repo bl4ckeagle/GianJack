@@ -30,22 +30,21 @@ use ReflectionMethod;
 class ProxiedMethodsFilter
 {
     /**
-     * @param ReflectionClass $class reflection class from which methods should be extracted
-     * @param string[] $excluded methods to be ignored
+     * @param ReflectionClass $class    reflection class from which methods should be extracted
+     * @param string[]        $excluded methods to be ignored
      *
      * @return ReflectionMethod[]
      */
     public static function getProxiedMethods(
         ReflectionClass $class,
         array $excluded = array('__get', '__set', '__isset', '__unset', '__clone', '__sleep', '__wakeup')
-    )
-    {
+    ) {
         $ignored = array_flip(array_map('strtolower', $excluded));
 
         return array_filter(
             $class->getMethods(ReflectionMethod::IS_PUBLIC),
             function (ReflectionMethod $method) use ($ignored) {
-                return !(
+                return ! (
                     $method->isConstructor()
                     || isset($ignored[strtolower($method->getName())])
                     || $method->isFinal()

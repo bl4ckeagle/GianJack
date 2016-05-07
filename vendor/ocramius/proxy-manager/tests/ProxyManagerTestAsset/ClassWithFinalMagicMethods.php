@@ -54,7 +54,7 @@ class ClassWithFinalMagicMethods
      */
     final public function __isset($name)
     {
-        return (bool)$name;
+        return (bool) $name;
     }
 
     /**
@@ -62,7 +62,7 @@ class ClassWithFinalMagicMethods
      */
     final public function __unset($name)
     {
-        return (bool)$name;
+        return (bool) $name;
     }
 
     /**

@@ -41,17 +41,16 @@ class MagicUnset extends MagicMethodGenerator
         PropertyGenerator $initializerProperty,
         PropertyGenerator $valueHolderProperty,
         PublicPropertiesMap $publicProperties
-    )
-    {
+    ) {
         parent::__construct($originalClass, '__unset', array(new ParameterGenerator('name')));
 
         $initializer = $initializerProperty->getName();
         $valueHolder = $valueHolderProperty->getName();
-        $callParent = '';
+        $callParent  = '';
 
         $this->setDocblock(($originalClass->hasMethod('__isset') ? "{@inheritDoc}\n" : '') . '@param string $name');
 
-        if (!$publicProperties->isEmpty()) {
+        if (! $publicProperties->isEmpty()) {
             $callParent = 'if (isset(self::$' . $publicProperties->getName() . "[\$name])) {\n"
                 . '    unset($this->' . $valueHolder . '->$name);' . "\n\n    return;"
                 . "\n}\n\n";

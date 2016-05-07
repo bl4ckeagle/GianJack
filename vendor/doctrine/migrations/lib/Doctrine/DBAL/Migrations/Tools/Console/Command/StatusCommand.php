@@ -51,7 +51,7 @@ You can output a list of all available migrations and their status with <comment
 
     <info>%command.full_name% --show-versions</info>
 EOT
-            );
+        );
 
         parent::configure();
     }
@@ -67,7 +67,7 @@ EOT
             if ($name == 'New Migrations') {
                 $value = $value > 0 ? '<question>' . $value . '</question>' : 0;
             }
-            if ($name == 'Executed Unavailable Migrations') {
+            if($name == 'Executed Unavailable Migrations') {
                 $value = $value > 0 ? '<error>' . $value . '</error>' : 0;
             }
             $this->writeStatusInfosLineAligned($output, $name, $value);
@@ -99,7 +99,7 @@ EOT
     {
         $migratedVersions = $configuration->getMigratedVersions();
 
-        foreach ($migrations as $version) {
+        foreach($migrations as $version) {
             $isMigrated = in_array($version->getVersion(), $migratedVersions);
             $status = $isMigrated ? '<info>migrated</info>' : '<error>not migrated</error>';
 
@@ -111,8 +111,8 @@ EOT
 
             $output->writeln('    <comment>>></comment> ' . $formattedVersion .
                 ' (<comment>' . $version->getVersion() . '</comment>)' .
-                str_repeat(' ', 49 - strlen($formattedVersion) - strlen($version->getVersion())) .
-                $status . $migrationDescription);
+                str_repeat(' ', 49 - strlen($formattedVersion) - strlen($version->getVersion()))  .
+                $status  . $migrationDescription);
         }
     }
 }

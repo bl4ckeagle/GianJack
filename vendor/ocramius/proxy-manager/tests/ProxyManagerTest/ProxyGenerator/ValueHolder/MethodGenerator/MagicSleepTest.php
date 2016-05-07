@@ -37,7 +37,7 @@ class MagicSleepTest extends PHPUnit_Framework_TestCase
      */
     public function testBodyStructure()
     {
-        $reflection = new ReflectionClass('ProxyManagerTestAsset\\EmptyClass');
+        $reflection  = new ReflectionClass('ProxyManagerTestAsset\\EmptyClass');
         $valueHolder = $this->getMock('Zend\\Code\\Generator\\PropertyGenerator');
 
         $valueHolder->expects($this->any())->method('getName')->will($this->returnValue('bar'));

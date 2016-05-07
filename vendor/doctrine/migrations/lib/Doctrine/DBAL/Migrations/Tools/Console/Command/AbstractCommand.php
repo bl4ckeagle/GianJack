@@ -97,7 +97,7 @@ abstract class AbstractCommand extends Command
      * of the configuration one (if any).
      * Else a new configuration is created and assigned to the migrationConfiguration property.
      *
-     * @param InputInterface $input
+     * @param InputInterface  $input
      * @param OutputInterface $output
      *
      * @return Configuration
@@ -106,8 +106,7 @@ abstract class AbstractCommand extends Command
     {
         if (!$this->migrationConfiguration) {
             if ($this->getHelperSet()->has('configuration')
-                && $this->getHelperSet()->get('configuration') instanceof ConfigurationHelper
-            ) {
+                && $this->getHelperSet()->get('configuration') instanceof ConfigurationHelper) {
                 $configHelper = $this->getHelperSet()->get('configuration');
             } else {
                 $configHelper = new ConfigurationHelper($this->getConnection($input), $this->configuration);
@@ -144,7 +143,7 @@ abstract class AbstractCommand extends Command
     private function getOutputWriter(OutputInterface $output)
     {
         if (!$this->outputWriter) {
-            $this->outputWriter = new OutputWriter(function ($message) use ($output) {
+            $this->outputWriter = new OutputWriter(function($message) use ($output) {
                 return $output->writeln($message);
             });
         }

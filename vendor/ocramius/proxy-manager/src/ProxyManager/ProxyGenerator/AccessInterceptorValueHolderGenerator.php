@@ -61,8 +61,8 @@ class AccessInterceptorValueHolderGenerator implements ProxyGeneratorInterface
     {
         CanProxyAssertion::assertClassCanBeProxied($originalClass);
 
-        $publicProperties = new PublicPropertiesMap($originalClass);
-        $interfaces = array(
+        $publicProperties    = new PublicPropertiesMap($originalClass);
+        $interfaces          = array(
             'ProxyManager\\Proxy\\AccessInterceptorInterface',
             'ProxyManager\\Proxy\\ValueHolderInterface',
         );

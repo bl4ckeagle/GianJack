@@ -34,7 +34,7 @@ use Zend\Code\Generator\PropertyGenerator;
 class MagicSet extends MagicMethodGenerator
 {
     /**
-     * @param \ReflectionClass $originalClass
+     * @param \ReflectionClass                       $originalClass
      * @param \Zend\Code\Generator\PropertyGenerator $prefixInterceptors
      * @param \Zend\Code\Generator\PropertyGenerator $suffixInterceptors
      */
@@ -42,8 +42,7 @@ class MagicSet extends MagicMethodGenerator
         ReflectionClass $originalClass,
         PropertyGenerator $prefixInterceptors,
         PropertyGenerator $suffixInterceptors
-    )
-    {
+    ) {
         parent::__construct(
             $originalClass,
             '__set',

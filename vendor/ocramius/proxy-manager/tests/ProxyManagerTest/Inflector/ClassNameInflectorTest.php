@@ -35,10 +35,10 @@ class ClassNameInflectorTest extends PHPUnit_Framework_TestCase
     /**
      * @dataProvider getClassNames
      *
-     * @covers       \ProxyManager\Inflector\ClassNameInflector::__construct
-     * @covers       \ProxyManager\Inflector\ClassNameInflector::getUserClassName
-     * @covers       \ProxyManager\Inflector\ClassNameInflector::getProxyClassName
-     * @covers       \ProxyManager\Inflector\ClassNameInflector::isProxyClassName
+     * @covers \ProxyManager\Inflector\ClassNameInflector::__construct
+     * @covers \ProxyManager\Inflector\ClassNameInflector::getUserClassName
+     * @covers \ProxyManager\Inflector\ClassNameInflector::getProxyClassName
+     * @covers \ProxyManager\Inflector\ClassNameInflector::isProxyClassName
      */
     public function testInflector($realClassName, $proxyClassName)
     {
@@ -109,12 +109,12 @@ class ClassNameInflectorTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers       \ProxyManager\Inflector\ClassNameInflector::getProxyClassName
+     * @covers \ProxyManager\Inflector\ClassNameInflector::getProxyClassName
      *
      * @dataProvider getClassAndParametersCombinations
      *
      * @param string $className
-     * @param array $parameters
+     * @param array  $parameters
      */
     public function testClassNameIsValidClassIdentifier($className, array $parameters)
     {

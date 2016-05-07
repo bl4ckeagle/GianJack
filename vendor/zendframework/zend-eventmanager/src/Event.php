@@ -148,7 +148,7 @@ class Event implements EventInterface
      */
     public function setName($name)
     {
-        $this->name = (string)$name;
+        $this->name = (string) $name;
     }
 
     /**
@@ -186,7 +186,7 @@ class Event implements EventInterface
      */
     public function stopPropagation($flag = true)
     {
-        $this->stopPropagation = (bool)$flag;
+        $this->stopPropagation = (bool) $flag;
     }
 
     /**

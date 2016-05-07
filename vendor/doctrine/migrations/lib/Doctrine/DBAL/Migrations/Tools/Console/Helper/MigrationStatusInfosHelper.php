@@ -18,7 +18,7 @@ class MigrationStatusInfosHelper
     /** @var Version[] */
     private $executedUnavailableMigrations;
 
-    /** @var Configuration */
+    /** @var Configuration  */
     private $configuration;
 
     public function __construct(Configuration $configuration)
@@ -35,22 +35,22 @@ class MigrationStatusInfosHelper
         $numNewMigrations = count(array_diff($this->availableMigrations, $this->executedMigrations));
 
         $infos = [
-            'Name' => $this->configuration->getName() ? $this->configuration->getName() : 'Doctrine Database Migrations',
-            'Database Driver' => $this->configuration->getConnection()->getDriver()->getName(),
-            'Database Name' => $this->configuration->getConnection()->getDatabase(),
-            'Configuration Source' => $this->configuration instanceof AbstractFileConfiguration ? $this->configuration->getFile() : 'manually configured',
-            'Version Table Name' => $this->configuration->getMigrationsTableName(),
-            'Version Column Name' => $this->configuration->getMigrationsColumnName(),
-            'Migrations Namespace' => $this->configuration->getMigrationsNamespace(),
-            'Migrations Directory' => $this->configuration->getMigrationsDirectory(),
-            'Previous Version' => $this->getFormattedVersionAlias('prev'),
-            'Current Version' => $this->getFormattedVersionAlias('current'),
-            'Next Version' => $this->getFormattedVersionAlias('next'),
-            'Latest Version' => $this->getFormattedVersionAlias('latest'),
-            'Executed Migrations' => count($this->executedMigrations),
-            'Executed Unavailable Migrations' => $numExecutedUnavailableMigrations,
-            'Available Migrations' => count($this->availableMigrations),
-            'New Migrations' => $numNewMigrations,
+            'Name'                              => $this->configuration->getName() ? $this->configuration->getName() : 'Doctrine Database Migrations',
+            'Database Driver'                   => $this->configuration->getConnection()->getDriver()->getName(),
+            'Database Name'                     => $this->configuration->getConnection()->getDatabase(),
+            'Configuration Source'              => $this->configuration instanceof AbstractFileConfiguration ? $this->configuration->getFile() : 'manually configured',
+            'Version Table Name'                => $this->configuration->getMigrationsTableName(),
+            'Version Column Name'               => $this->configuration->getMigrationsColumnName(),
+            'Migrations Namespace'              => $this->configuration->getMigrationsNamespace(),
+            'Migrations Directory'              => $this->configuration->getMigrationsDirectory(),
+            'Previous Version'                  => $this->getFormattedVersionAlias('prev'),
+            'Current Version'                   => $this->getFormattedVersionAlias('current'),
+            'Next Version'                      => $this->getFormattedVersionAlias('next'),
+            'Latest Version'                    => $this->getFormattedVersionAlias('latest'),
+            'Executed Migrations'               => count($this->executedMigrations),
+            'Executed Unavailable Migrations'   => $numExecutedUnavailableMigrations,
+            'Available Migrations'              => count($this->availableMigrations),
+            'New Migrations'                    => $numNewMigrations,
         ];
 
         return $infos;

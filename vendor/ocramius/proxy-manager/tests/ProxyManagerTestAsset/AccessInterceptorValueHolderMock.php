@@ -48,7 +48,7 @@ class AccessInterceptorValueHolderMock
      */
     public function __construct($instance, $prefixInterceptors, $suffixInterceptors)
     {
-        $this->instance = $instance;
+        $this->instance           = $instance;
         $this->prefixInterceptors = $prefixInterceptors;
         $this->suffixInterceptors = $suffixInterceptors;
     }

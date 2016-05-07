@@ -34,7 +34,7 @@ use Zend\Code\Generator\PropertyGenerator;
 class MagicGet extends MagicMethodGenerator
 {
     /**
-     * @param ReflectionClass $originalClass
+     * @param ReflectionClass   $originalClass
      * @param PropertyGenerator $prefixInterceptors
      * @param PropertyGenerator $suffixInterceptors
      */
@@ -42,8 +42,7 @@ class MagicGet extends MagicMethodGenerator
         ReflectionClass $originalClass,
         PropertyGenerator $prefixInterceptors,
         PropertyGenerator $suffixInterceptors
-    )
-    {
+    ) {
         parent::__construct($originalClass, '__get', array(new ParameterGenerator('name')));
 
         $override = $originalClass->hasMethod('__get');

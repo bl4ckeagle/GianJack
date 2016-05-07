@@ -34,7 +34,7 @@ class MethodGenerator extends AbstractMemberGenerator
      */
     public static function fromReflection(MethodReflection $reflectionMethod)
     {
-        $method = new static();
+        $method         = new static();
         $declaringClass = $reflectionMethod->getDeclaringClass();
 
         $method->setSourceContent($reflectionMethod->getContents(false));
@@ -173,8 +173,7 @@ class MethodGenerator extends AbstractMemberGenerator
         $flags = self::FLAG_PUBLIC,
         $body = null,
         $docBlock = null
-    )
-    {
+    ) {
         if ($name) {
             $this->setName($name);
         }

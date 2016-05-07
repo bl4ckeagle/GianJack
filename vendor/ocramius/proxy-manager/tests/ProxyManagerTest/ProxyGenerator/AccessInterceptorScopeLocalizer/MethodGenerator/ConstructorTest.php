@@ -34,7 +34,6 @@ class ConstructorTest extends PHPUnit_Framework_TestCase
 {
     private $prefixInterceptors;
     private $suffixInterceptors;
-
     public function setUp()
     {
         $this->prefixInterceptors = $this->getMock('Zend\\Code\\Generator\\PropertyGenerator');
@@ -149,7 +148,7 @@ $this->post = $suffixInterceptors;',
      */
     public function testBodyStructureWithPrivateProperties()
     {
-        if (!method_exists('Closure', 'bind')) {
+        if (! method_exists('Closure', 'bind')) {
             $this->setExpectedException('ProxyManager\Exception\UnsupportedProxiedClassException');
         }
 

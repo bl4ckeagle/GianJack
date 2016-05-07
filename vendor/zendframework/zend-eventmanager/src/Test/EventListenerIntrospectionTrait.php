@@ -68,7 +68,7 @@ trait EventListenerIntrospectionTrait
         $r->setAccessible(true);
         $listeners = $r->getValue($events);
 
-        if (!isset($listeners[$event])) {
+        if (! isset($listeners[$event])) {
             return $this->traverseListeners([]);
         }
 
@@ -90,15 +90,14 @@ trait EventListenerIntrospectionTrait
         $event,
         EventManager $events,
         $message = ''
-    )
-    {
+    ) {
         $message = $message ?: sprintf(
             'Listener not found for event "%s" and priority %d',
             $event,
             $expectedPriority
         );
         $listeners = $this->getListenersForEvent($event, $events, true);
-        $found = false;
+        $found     = false;
         foreach ($listeners as $priority => $listener) {
             if ($listener === $expectedListener
                 && $priority === $expectedPriority
@@ -137,7 +136,7 @@ trait EventListenerIntrospectionTrait
         krsort($queue, SORT_NUMERIC);
 
         foreach ($queue as $priority => $listeners) {
-            $priority = (int)$priority;
+            $priority = (int) $priority;
             foreach ($listeners as $listener) {
                 if ($withPriority) {
                     yield $priority => $listener;

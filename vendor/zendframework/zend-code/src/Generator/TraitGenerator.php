@@ -76,7 +76,7 @@ class TraitGenerator extends ClassGenerator
      */
     public static function fromArray(array $array)
     {
-        if (!isset($array['name'])) {
+        if (! isset($array['name'])) {
             throw new Exception\InvalidArgumentException(
                 'Class generator requires that a name is provided for this object'
             );

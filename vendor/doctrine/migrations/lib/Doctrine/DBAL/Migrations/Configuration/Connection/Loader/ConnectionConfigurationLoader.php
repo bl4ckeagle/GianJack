@@ -30,7 +30,7 @@ class ConnectionConfigurationLoader implements ConnectionLoaderInterface
     /** @var Configuration */
     private $configuration;
 
-    public function __construct(Configuration $configuration = null)
+    public function __construct(Configuration $configuration=null)
     {
         if ($configuration !== null) {
             $this->configuration = $configuration;

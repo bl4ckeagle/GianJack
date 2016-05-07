@@ -44,8 +44,8 @@ class LazyEventListener extends LazyListener
     {
         parent::__construct($definition, $container, $env);
 
-        if ((!isset($definition['event'])
-            || !is_string($definition['event'])
+        if ((! isset($definition['event'])
+            || ! is_string($definition['event'])
             || empty($definition['event']))
         ) {
             throw new Exception\InvalidArgumentException(
@@ -53,8 +53,8 @@ class LazyEventListener extends LazyListener
             );
         }
 
-        $this->event = $definition['event'];
-        $this->priority = isset($definition['priority']) ? (int)$definition['priority'] : null;
+        $this->event     = $definition['event'];
+        $this->priority  = isset($definition['priority']) ? (int) $definition['priority'] : null;
     }
 
     /**

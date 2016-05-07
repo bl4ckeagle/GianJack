@@ -46,7 +46,7 @@ class SignatureGeneratorTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @param array $parameters
+     * @param array  $parameters
      * @param string $expected
      *
      * @dataProvider signatures
@@ -57,7 +57,7 @@ class SignatureGeneratorTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @param array $parameters
+     * @param array  $parameters
      * @param string $expected
      *
      * @dataProvider signatureKeys

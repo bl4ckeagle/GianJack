@@ -27,7 +27,7 @@ class DoctrineMigrationsExtension extends Extension
     /**
      * Responds to the migrations configuration parameter.
      *
-     * @param array $configs
+     * @param array            $configs
      * @param ContainerBuilder $container
      */
     public function load(array $configs, ContainerBuilder $container)
@@ -37,7 +37,7 @@ class DoctrineMigrationsExtension extends Extension
         $config = $this->processConfiguration($configuration, $configs);
 
         foreach ($config as $key => $value) {
-            $container->setParameter($this->getAlias() . '.' . $key, $value);
+            $container->setParameter($this->getAlias().'.'.$key, $value);
         }
     }
 
@@ -48,7 +48,7 @@ class DoctrineMigrationsExtension extends Extension
      */
     public function getXsdValidationBasePath()
     {
-        return __DIR__ . '/../Resources/config/schema';
+        return __DIR__.'/../Resources/config/schema';
     }
 
     public function getNamespace()

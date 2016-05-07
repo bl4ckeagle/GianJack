@@ -38,7 +38,7 @@ class GenerateCommand extends AbstractCommand
 {
 
     private static $_template =
-        '<?php
+            '<?php
 
 namespace <namespace>;
 
@@ -73,10 +73,10 @@ class Version<version> extends AbstractMigration
     protected function configure()
     {
         $this
-            ->setName('migrations:generate')
-            ->setDescription('Generate a blank migration class.')
-            ->addOption('editor-cmd', null, InputOption::VALUE_OPTIONAL, 'Open file with this command upon creation.')
-            ->setHelp(<<<EOT
+                ->setName('migrations:generate')
+                ->setDescription('Generate a blank migration class.')
+                ->addOption('editor-cmd', null, InputOption::VALUE_OPTIONAL, 'Open file with this command upon creation.')
+                ->setHelp(<<<EOT
 The <info>%command.name%</info> command generates a blank migration class:
 
     <info>%command.full_name%</info>
@@ -85,7 +85,7 @@ You can optionally specify a <comment>--editor-cmd</comment> option to open the 
 
     <info>%command.full_name% --editor-cmd=mate</info>
 EOT
-            );
+        );
 
         parent::configure();
     }

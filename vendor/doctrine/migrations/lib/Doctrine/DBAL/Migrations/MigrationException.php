@@ -69,8 +69,7 @@ class MigrationException extends \Exception
     public static function configurationIncompatibleWithFinder(
         $configurationParameterName,
         MigrationFinderInterface $finder
-    )
-    {
+    ) {
         return new self(
             sprintf(
                 'Configuration-parameter "%s" cannot be used with finder of type "%s"',

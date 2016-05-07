@@ -47,7 +47,7 @@ class FileWriterGeneratorStrategy implements GeneratorStrategyInterface
      */
     public function __construct(FileLocatorInterface $fileLocator)
     {
-        $this->fileLocator = $fileLocator;
+        $this->fileLocator       = $fileLocator;
         $this->emptyErrorHandler = function () {
         };
     }
@@ -59,10 +59,10 @@ class FileWriterGeneratorStrategy implements GeneratorStrategyInterface
      */
     public function generate(ClassGenerator $classGenerator)
     {
-        $className = trim($classGenerator->getNamespaceName(), '\\')
+        $className     = trim($classGenerator->getNamespaceName(), '\\')
             . '\\' . trim($classGenerator->getName(), '\\');
         $generatedCode = $classGenerator->generate();
-        $fileName = $this->fileLocator->getProxyFileName($className);
+        $fileName      = $this->fileLocator->getProxyFileName($className);
 
         set_error_handler($this->emptyErrorHandler);
 
@@ -90,13 +90,13 @@ class FileWriterGeneratorStrategy implements GeneratorStrategyInterface
      */
     private function writeFile($source, $location)
     {
-        $tmpFileName = $location . '.' . uniqid('', true);
+        $tmpFileName   = $location . '.' . uniqid('', true);
 
-        if (!file_put_contents($tmpFileName, $source)) {
+        if (! file_put_contents($tmpFileName, $source)) {
             throw FileNotWritableException::fromNonWritableLocation($tmpFileName);
         }
 
-        if (!rename($tmpFileName, $location)) {
+        if (! rename($tmpFileName, $location)) {
             unlink($tmpFileName);
 
             throw FileNotWritableException::fromInvalidMoveOperation($tmpFileName, $location);

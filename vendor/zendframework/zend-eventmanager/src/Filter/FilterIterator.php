@@ -48,7 +48,7 @@ class FilterIterator extends FastPriorityQueue
      */
     public function insert($value, $priority)
     {
-        if (!is_callable($value)) {
+        if (! is_callable($value)) {
             throw new Exception\InvalidArgumentException(sprintf(
                 '%s can only aggregate callables; received %s',
                 __CLASS__,
@@ -73,9 +73,9 @@ class FilterIterator extends FastPriorityQueue
 
         // Iterate and remove any matches
         $removed = false;
-        $items = [];
+        $items   = [];
         $this->rewind();
-        while (!$this->isEmpty()) {
+        while (! $this->isEmpty()) {
             $item = $this->extract();
             if ($item['data'] === $datum) {
                 $removed = true;

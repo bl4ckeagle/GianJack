@@ -37,8 +37,8 @@ class MagicCloneTest extends PHPUnit_Framework_TestCase
      */
     public function testBodyStructure()
     {
-        $reflection = new ReflectionClass('ProxyManagerTestAsset\\EmptyClass');
-        $valueHolder = $this->getMock('Zend\\Code\\Generator\\PropertyGenerator');
+        $reflection         = new ReflectionClass('ProxyManagerTestAsset\\EmptyClass');
+        $valueHolder        = $this->getMock('Zend\\Code\\Generator\\PropertyGenerator');
         $prefixInterceptors = $this->getMock('Zend\\Code\\Generator\\PropertyGenerator');
         $suffixInterceptors = $this->getMock('Zend\\Code\\Generator\\PropertyGenerator');
 

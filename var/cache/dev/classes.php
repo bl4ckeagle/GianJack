@@ -803,6 +803,7 @@ protected $strictRequirements = true;
 protected $logger;
 protected $decodedChars = array('%2F'=>'/','%40'=>'@','%3A'=>':','%3B'=>';','%2C'=>',','%3D'=>'=','%2B'=>'+','%21'=>'!','%2A'=>'*','%7C'=>'|',
 );
+private $urlEncodingSkipRegexp ='#[^-.~a-zA-Z0-9_/@:;,=+!*|]#';
 public function __construct(RouteCollection $routes, RequestContext $context, LoggerInterface $logger = null)
 {
 $this->routes = $routes;
@@ -865,13 +866,16 @@ $optional = false;
 }
 if (''=== $url) {
 $url ='/';
-}
+} elseif (preg_match($this->urlEncodingSkipRegexp, $url)) {
 $url = strtr(rawurlencode($url), $this->decodedChars);
+}
+if (false !== strpos($url,'/.')) {
 $url = strtr($url, array('/../'=>'/%2E%2E/','/./'=>'/%2E/'));
 if ('/..'=== substr($url, -3)) {
 $url = substr($url, 0, -2).'%2E%2E';
 } elseif ('/.'=== substr($url, -2)) {
 $url = substr($url, 0, -1).'%2E';
+}
 }
 $schemeAuthority ='';
 if ($host = $this->context->getHost()) {
@@ -924,9 +928,11 @@ $url = self::getRelativePath($this->context->getPathInfo(), $url);
 } else {
 $url = $schemeAuthority.$this->context->getBaseUrl().$url;
 }
-$extra = array_diff_key($parameters, $variables, $defaults);
+$extra = array_udiff_assoc(array_diff_key($parameters, $variables), $defaults, function ($a, $b) {
+return $a == $b ? 0 : 1;
+});
 if ($extra && $query = http_build_query($extra,'','&')) {
-$url .='?'.strtr($query, array('%2F'=>'/'));
+$url .='?'.(false === strpos($query,'%2F') ? $query : strtr($query, array('%2F'=>'/')));
 }
 return $url;
 }
@@ -1748,10 +1754,10 @@ $this->removeListener($eventName, array($subscriber, is_string($params) ? $param
 protected function doDispatch($listeners, $eventName, Event $event)
 {
 foreach ($listeners as $listener) {
-call_user_func($listener, $event, $eventName, $this);
 if ($event->isPropagationStopped()) {
 break;
 }
+call_user_func($listener, $event, $eventName, $this);
 }
 }
 private function sortListeners($eventName)
@@ -2428,6 +2434,9 @@ return parent::createController($controller);
 }
 protected function instantiateController($class)
 {
+if ($this->container->has($class)) {
+return $this->container->get($class);
+}
 $controller = parent::instantiateController($class);
 if ($controller instanceof ContainerAwareInterface) {
 $controller->setContainer($this->container);

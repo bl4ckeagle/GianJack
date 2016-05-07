@@ -48,7 +48,7 @@ class ClassSignatureGeneratorTest extends PHPUnit_Framework_TestCase
      */
     protected function setUp()
     {
-        $this->signatureGenerator = $this->getMock('ProxyManager\\Signature\\SignatureGeneratorInterface');
+        $this->signatureGenerator      = $this->getMock('ProxyManager\\Signature\\SignatureGeneratorInterface');
         $this->classSignatureGenerator = new ClassSignatureGenerator($this->signatureGenerator);
     }
 
@@ -62,9 +62,9 @@ class ClassSignatureGeneratorTest extends PHPUnit_Framework_TestCase
             ->method('addPropertyFromGenerator')
             ->with($this->callback(function (PropertyGenerator $property) {
                 return $property->getName() === 'signaturePropertyName'
-                && $property->isStatic()
-                && $property->getVisibility() === 'private'
-                && $property->getDefaultValue()->getValue() === 'valid-signature';
+                    && $property->isStatic()
+                    && $property->getVisibility() === 'private'
+                    && $property->getDefaultValue()->getValue() === 'valid-signature';
             }));
 
         $this

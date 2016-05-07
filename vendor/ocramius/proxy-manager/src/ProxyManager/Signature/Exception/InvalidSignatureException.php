@@ -31,9 +31,9 @@ class InvalidSignatureException extends UnexpectedValueException implements Exce
 {
     /**
      * @param ReflectionClass $class
-     * @param array $parameters
-     * @param string $signature
-     * @param string $expected
+     * @param array           $parameters
+     * @param string          $signature
+     * @param string          $expected
      *
      * @return self
      */

@@ -41,8 +41,8 @@ abstract class DoctrineCommand extends BaseCommand
             // class Kernel has method getKernelParameters with some of the important path parameters
             $pathPlaceholderArray = array('kernel.root_dir', 'kernel.cache_dir', 'kernel.logs_dir');
             foreach ($pathPlaceholderArray as $pathPlaceholder) {
-                if ($container->hasParameter($pathPlaceholder) && preg_match('/\%' . $pathPlaceholder . '\%/', $dir)) {
-                    $dir = str_replace('%' . $pathPlaceholder . '%', $container->getParameter($pathPlaceholder), $dir);
+                if ($container->hasParameter($pathPlaceholder) && preg_match('/\%'.$pathPlaceholder.'\%/', $dir)) {
+                    $dir = str_replace('%'.$pathPlaceholder.'%', $container->getParameter($pathPlaceholder), $dir);
                 }
             }
             if (!file_exists($dir)) {

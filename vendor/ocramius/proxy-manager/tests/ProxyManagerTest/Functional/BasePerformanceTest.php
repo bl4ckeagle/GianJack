@@ -34,7 +34,7 @@ abstract class BasePerformanceTest extends PHPUnit_Framework_TestCase
     /**
      * @var float time when last capture was started
      */
-    private $startTime = 0;
+    private $startTime   = 0;
 
     /**
      * @var int bytes when last capture was started
@@ -57,7 +57,7 @@ abstract class BasePerformanceTest extends PHPUnit_Framework_TestCase
     protected function startCapturing()
     {
         $this->startMemory = memory_get_usage();
-        $this->startTime = microtime(true);
+        $this->startTime   = microtime(true);
     }
 
     /**
@@ -69,8 +69,8 @@ abstract class BasePerformanceTest extends PHPUnit_Framework_TestCase
      */
     protected function endCapturing($messageTemplate)
     {
-        $time = microtime(true) - $this->startTime;
-        $memory = memory_get_usage() - $this->startMemory;
+        $time     = microtime(true) - $this->startTime;
+        $memory   = memory_get_usage() - $this->startMemory;
 
         if (gc_enable()) {
             gc_collect_cycles();
@@ -79,7 +79,7 @@ abstract class BasePerformanceTest extends PHPUnit_Framework_TestCase
         echo sprintf($messageTemplate, $time, $memory / 1024) . "\n";
 
         return array(
-            'time' => $time,
+            'time'   => $time,
             'memory' => $memory
         );
     }
@@ -92,8 +92,8 @@ abstract class BasePerformanceTest extends PHPUnit_Framework_TestCase
      */
     protected function compareProfile(array $baseProfile, array $proxyProfile)
     {
-        $baseMemory = max(1, $baseProfile['memory']);
-        $timeOverhead = (($proxyProfile['time'] / $baseProfile['time']) - 1) * 100;
+        $baseMemory     = max(1, $baseProfile['memory']);
+        $timeOverhead   = (($proxyProfile['time'] / $baseProfile['time']) - 1) * 100;
         $memoryOverhead = (($proxyProfile['memory'] / $baseMemory) - 1) * 100;
 
         echo sprintf('Comparison time / memory: %.2f%% / %.2f%%', $timeOverhead, $memoryOverhead) . "\n\n";

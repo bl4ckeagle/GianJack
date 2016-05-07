@@ -35,7 +35,7 @@ class InterceptedMethodTest extends PHPUnit_Framework_TestCase
 {
     public function testBodyStructure()
     {
-        $valueHolder = $this->getMock('Zend\\Code\\Generator\\PropertyGenerator');
+        $valueHolder        = $this->getMock('Zend\\Code\\Generator\\PropertyGenerator');
         $prefixInterceptors = $this->getMock('Zend\\Code\\Generator\\PropertyGenerator');
         $suffixInterceptors = $this->getMock('Zend\\Code\\Generator\\PropertyGenerator');
 

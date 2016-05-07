@@ -38,7 +38,7 @@ class EvaluatingGeneratorStrategy implements GeneratorStrategyInterface
      */
     public function __construct()
     {
-        $this->canEval = !ini_get('suhosin.executor.disable_eval');
+        $this->canEval = ! ini_get('suhosin.executor.disable_eval');
     }
 
     /**
@@ -50,7 +50,7 @@ class EvaluatingGeneratorStrategy implements GeneratorStrategyInterface
     {
         $code = $classGenerator->generate();
 
-        if (!$this->canEval) {
+        if (! $this->canEval) {
             // @codeCoverageIgnoreStart
             $fileName = sys_get_temp_dir() . '/EvaluatingGeneratorStrategy.php.tmp.' . uniqid('', true);
 

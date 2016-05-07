@@ -48,11 +48,11 @@ final class SignatureChecker implements SignatureCheckerInterface
      */
     public function checkSignature(ReflectionClass $class, array $parameters)
     {
-        $propertyName = 'signature' . $this->signatureGenerator->generateSignatureKey($parameters);
-        $signature = $this->signatureGenerator->generateSignature($parameters);
+        $propertyName      = 'signature' . $this->signatureGenerator->generateSignatureKey($parameters);
+        $signature         = $this->signatureGenerator->generateSignature($parameters);
         $defaultProperties = $class->getDefaultProperties();
 
-        if (!isset($defaultProperties[$propertyName])) {
+        if (! isset($defaultProperties[$propertyName])) {
             throw MissingSignatureException::fromMissingSignature($class, $parameters, $signature);
         }
 

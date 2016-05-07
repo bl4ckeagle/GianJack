@@ -34,7 +34,7 @@ class UniqueIdentifierGeneratorTest extends PHPUnit_Framework_TestCase
     /**
      * @dataProvider getBaseIdentifierNames
      *
-     * @covers       \ProxyManager\Generator\Util\UniqueIdentifierGenerator::getIdentifier
+     * @covers \ProxyManager\Generator\Util\UniqueIdentifierGenerator::getIdentifier
      */
     public function testGeneratesUniqueIdentifiers($name)
     {
@@ -47,7 +47,7 @@ class UniqueIdentifierGeneratorTest extends PHPUnit_Framework_TestCase
     /**
      * @dataProvider getBaseIdentifierNames
      *
-     * @covers       \ProxyManager\Generator\Util\UniqueIdentifierGenerator::getIdentifier
+     * @covers \ProxyManager\Generator\Util\UniqueIdentifierGenerator::getIdentifier
      */
     public function testGeneratesValidIdentifiers($name)
     {

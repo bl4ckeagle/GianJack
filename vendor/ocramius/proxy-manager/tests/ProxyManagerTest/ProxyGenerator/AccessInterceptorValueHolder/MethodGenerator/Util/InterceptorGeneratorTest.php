@@ -36,10 +36,10 @@ class InterceptorGeneratorTest extends PHPUnit_Framework_TestCase
      */
     public function testInterceptorGenerator()
     {
-        $method = $this->getMock('ProxyManager\\Generator\\MethodGenerator');
-        $bar = $this->getMock('ProxyManager\\Generator\\ParameterGenerator');
-        $baz = $this->getMock('ProxyManager\\Generator\\ParameterGenerator');
-        $valueHolder = $this->getMock('Zend\\Code\\Generator\\PropertyGenerator');
+        $method             = $this->getMock('ProxyManager\\Generator\\MethodGenerator');
+        $bar                = $this->getMock('ProxyManager\\Generator\\ParameterGenerator');
+        $baz                = $this->getMock('ProxyManager\\Generator\\ParameterGenerator');
+        $valueHolder        = $this->getMock('Zend\\Code\\Generator\\PropertyGenerator');
         $prefixInterceptors = $this->getMock('Zend\\Code\\Generator\\PropertyGenerator');
         $suffixInterceptors = $this->getMock('Zend\\Code\\Generator\\PropertyGenerator');
 

@@ -38,7 +38,7 @@ class NullObjectMethodInterceptorTest extends PHPUnit_Framework_TestCase
     public function testBodyStructure()
     {
         $reflection = new MethodReflection('ProxyManagerTestAsset\\BaseClass', 'publicByReferenceParameterMethod');
-        $method = NullObjectMethodInterceptor::generateMethod($reflection);
+        $method     = NullObjectMethodInterceptor::generateMethod($reflection);
 
         $this->assertSame('publicByReferenceParameterMethod', $method->getName());
         $this->assertCount(2, $method->getParameters());

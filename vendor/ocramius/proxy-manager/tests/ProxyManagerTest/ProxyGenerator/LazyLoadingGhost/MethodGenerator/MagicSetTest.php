@@ -52,8 +52,8 @@ class MagicSetTest extends PHPUnit_Framework_TestCase
      */
     protected function setUp()
     {
-        $this->initializer = $this->getMock('Zend\\Code\\Generator\\PropertyGenerator');
-        $this->initMethod = $this->getMock('Zend\\Code\\Generator\\MethodGenerator');
+        $this->initializer      = $this->getMock('Zend\\Code\\Generator\\PropertyGenerator');
+        $this->initMethod       = $this->getMock('Zend\\Code\\Generator\\MethodGenerator');
         $this->publicProperties = $this
             ->getMockBuilder('ProxyManager\\ProxyGenerator\\PropertyGenerator\\PublicPropertiesMap')
             ->disableOriginalConstructor()
@@ -71,7 +71,7 @@ class MagicSetTest extends PHPUnit_Framework_TestCase
     public function testBodyStructure()
     {
         $reflection = new ReflectionClass('ProxyManagerTestAsset\\EmptyClass');
-        $magicSet = new MagicSet($reflection, $this->initializer, $this->initMethod, $this->publicProperties);
+        $magicSet   = new MagicSet($reflection, $this->initializer, $this->initMethod, $this->publicProperties);
 
         $this->assertSame('__set', $magicSet->getName());
         $this->assertCount(2, $magicSet->getParameters());
@@ -92,7 +92,7 @@ class MagicSetTest extends PHPUnit_Framework_TestCase
             'ProxyManagerTestAsset\\ProxyGenerator\\LazyLoading\\MethodGenerator\\ClassWithTwoPublicProperties'
         );
 
-        $magicSet = new MagicSet($reflection, $this->initializer, $this->initMethod, $this->publicProperties);
+        $magicSet   = new MagicSet($reflection, $this->initializer, $this->initMethod, $this->publicProperties);
 
         $this->assertSame('__set', $magicSet->getName());
         $this->assertCount(2, $magicSet->getParameters());
@@ -110,7 +110,7 @@ class MagicSetTest extends PHPUnit_Framework_TestCase
     public function testBodyStructureWithOverriddenMagicGet()
     {
         $reflection = new ReflectionClass('ProxyManagerTestAsset\\ClassWithMagicMethods');
-        $magicSet = new MagicSet($reflection, $this->initializer, $this->initMethod, $this->publicProperties);
+        $magicSet   = new MagicSet($reflection, $this->initializer, $this->initMethod, $this->publicProperties);
 
         $this->assertSame('__set', $magicSet->getName());
         $this->assertCount(2, $magicSet->getParameters());

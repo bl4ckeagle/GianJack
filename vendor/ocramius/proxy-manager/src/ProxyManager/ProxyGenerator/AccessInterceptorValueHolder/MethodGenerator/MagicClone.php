@@ -38,13 +38,12 @@ class MagicClone extends MagicMethodGenerator
         PropertyGenerator $valueHolderProperty,
         PropertyGenerator $prefixInterceptors,
         PropertyGenerator $suffixInterceptors
-    )
-    {
+    ) {
         parent::__construct($originalClass, '__clone');
 
         $valueHolder = $valueHolderProperty->getName();
-        $prefix = $prefixInterceptors->getName();
-        $suffix = $suffixInterceptors->getName();
+        $prefix      = $prefixInterceptors->getName();
+        $suffix      = $suffixInterceptors->getName();
 
         $this->setBody(
             "\$this->$valueHolder = clone \$this->$valueHolder;\n\n"

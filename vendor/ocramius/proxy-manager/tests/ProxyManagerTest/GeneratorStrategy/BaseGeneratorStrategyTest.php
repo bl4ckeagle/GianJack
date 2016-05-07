@@ -38,10 +38,10 @@ class BaseGeneratorStrategyTest extends PHPUnit_Framework_TestCase
      */
     public function testGenerate()
     {
-        $strategy = new BaseGeneratorStrategy();
-        $className = UniqueIdentifierGenerator::getIdentifier('Foo');
+        $strategy       = new BaseGeneratorStrategy();
+        $className      = UniqueIdentifierGenerator::getIdentifier('Foo');
         $classGenerator = new ClassGenerator($className);
-        $generated = $strategy->generate($classGenerator);
+        $generated      = $strategy->generate($classGenerator);
 
         $this->assertGreaterThan(0, strpos($generated, $className));
     }

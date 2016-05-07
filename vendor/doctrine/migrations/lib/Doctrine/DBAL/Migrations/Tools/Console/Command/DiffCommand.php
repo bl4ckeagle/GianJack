@@ -43,7 +43,7 @@ class DiffCommand extends GenerateCommand
      */
     protected $schemaProvider;
 
-    public function __construct(SchemaProviderInterface $schemaProvider = null)
+    public function __construct(SchemaProviderInterface $schemaProvider=null)
     {
         $this->schemaProvider = $schemaProvider;
         parent::__construct();
@@ -68,7 +68,8 @@ EOT
             )
             ->addOption('filter-expression', null, InputOption::VALUE_OPTIONAL, 'Tables which are filtered by Regular Expression.')
             ->addOption('formatted', null, InputOption::VALUE_NONE, 'Format the generated SQL.')
-            ->addOption('line-length', null, InputOption::VALUE_OPTIONAL, 'Max line length of unformatted lines.', 120);
+            ->addOption('line-length', null, InputOption::VALUE_OPTIONAL, 'Max line length of unformatted lines.', 120)
+        ;
     }
 
     public function execute(InputInterface $input, OutputInterface $output)
@@ -92,10 +93,10 @@ EOT
         $toSchema = $this->getSchemaProvider()->createSchema();
 
         //Not using value from options, because filters can be set from config.yml
-        if (!$isDbalOld && $filterExpr = $conn->getConfiguration()->getFilterSchemaAssetsExpression()) {
+        if ( ! $isDbalOld && $filterExpr = $conn->getConfiguration()->getFilterSchemaAssetsExpression()) {
             foreach ($toSchema->getTables() as $table) {
                 $tableName = $table->getName();
-                if (!preg_match($filterExpr, $this->resolveTableName($tableName))) {
+                if ( ! preg_match($filterExpr, $this->resolveTableName($tableName))) {
                     $toSchema->dropTable($tableName);
                 }
             }
@@ -114,7 +115,7 @@ EOT
             $input->getOption('line-length')
         );
 
-        if (!$up && !$down) {
+        if (! $up && ! $down) {
             $output->writeln('No changes detected in your mapping information.', 'ERROR');
 
             return;
@@ -126,7 +127,7 @@ EOT
         $output->writeln(sprintf('Generated new migration class to "<info>%s</info>" from schema differences.', $path));
     }
 
-    private function buildCodeFromSql(Configuration $configuration, array $sql, $formatted = false, $lineLength = 120)
+    private function buildCodeFromSql(Configuration $configuration, array $sql, $formatted=false, $lineLength=120)
     {
         $currentPlatform = $configuration->getConnection()->getDatabasePlatform()->getName();
         $code = [];
@@ -138,7 +139,7 @@ EOT
             if ($formatted) {
                 if (!class_exists('\SqlFormatter')) {
                     throw new \InvalidArgumentException(
-                        'The "--formatted" option can only be used if the sql formatter is installed.' .
+                        'The "--formatted" option can only be used if the sql formatter is installed.'.
                         'Please run "composer require jdorn/sql-formatter".'
                     );
                 }

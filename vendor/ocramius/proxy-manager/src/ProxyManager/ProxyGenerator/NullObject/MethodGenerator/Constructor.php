@@ -41,7 +41,7 @@ class Constructor extends MethodGenerator
 
         /* @var $publicProperties \ReflectionProperty[] */
         $publicProperties = $originalClass->getProperties(ReflectionProperty::IS_PUBLIC);
-        $nullableProperties = array();
+        $nullableProperties  = array();
 
         foreach ($publicProperties as $publicProperty) {
             $nullableProperties[] = '$this->' . $publicProperty->getName() . ' = null;';
@@ -49,7 +49,7 @@ class Constructor extends MethodGenerator
 
         $this->setDocblock("@override constructor for null object initialization");
         if ($nullableProperties) {
-            $this->setBody(implode("\n", $nullableProperties));
+                $this->setBody(implode("\n", $nullableProperties));
         }
     }
 }

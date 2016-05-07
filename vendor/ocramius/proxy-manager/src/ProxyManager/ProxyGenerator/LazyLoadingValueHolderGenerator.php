@@ -61,8 +61,8 @@ class LazyLoadingValueHolderGenerator implements ProxyGeneratorInterface
     {
         CanProxyAssertion::assertClassCanBeProxied($originalClass);
 
-        $interfaces = array('ProxyManager\\Proxy\\VirtualProxyInterface');
-        $publicProperties = new PublicPropertiesMap($originalClass);
+        $interfaces          = array('ProxyManager\\Proxy\\VirtualProxyInterface');
+        $publicProperties    = new PublicPropertiesMap($originalClass);
 
         if ($originalClass->isInterface()) {
             $interfaces[] = $originalClass->getName();

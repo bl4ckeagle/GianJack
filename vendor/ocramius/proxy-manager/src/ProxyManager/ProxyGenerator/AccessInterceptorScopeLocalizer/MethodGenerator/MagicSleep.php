@@ -38,8 +38,7 @@ class MagicSleep extends MagicMethodGenerator
         ReflectionClass $originalClass,
         PropertyGenerator $prefixInterceptors,
         PropertyGenerator $suffixInterceptors
-    )
-    {
+    ) {
         parent::__construct($originalClass, '__sleep');
 
         $callParent = $originalClass->hasMethod('__sleep')

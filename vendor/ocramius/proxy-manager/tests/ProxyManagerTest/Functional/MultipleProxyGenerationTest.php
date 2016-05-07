@@ -48,17 +48,17 @@ class MultipleProxyGenerationTest extends PHPUnit_Framework_TestCase
      */
     public function testCanGenerateMultipleDifferentProxiesForSameClass($className)
     {
-        $skipScopeLocalizerTests = false;
-        $ghostProxyFactory = new LazyLoadingGhostFactory();
-        $virtualProxyFactory = new LazyLoadingValueHolderFactory();
-        $accessInterceptorFactory = new AccessInterceptorValueHolderFactory();
+        $skipScopeLocalizerTests                = false;
+        $ghostProxyFactory                      = new LazyLoadingGhostFactory();
+        $virtualProxyFactory                    = new LazyLoadingValueHolderFactory();
+        $accessInterceptorFactory               = new AccessInterceptorValueHolderFactory();
         $accessInterceptorScopeLocalizerFactory = new AccessInterceptorScopeLocalizerFactory();
-        $initializer = function () {
+        $initializer                            = function () {
         };
 
         $reflectionClass = new ReflectionClass($className);
 
-        if ((!method_exists('Closure', 'bind')) && $reflectionClass->getProperties(ReflectionProperty::IS_PRIVATE)) {
+        if ((! method_exists('Closure', 'bind')) && $reflectionClass->getProperties(ReflectionProperty::IS_PRIVATE)) {
             $skipScopeLocalizerTests = true;
         }
 
@@ -68,7 +68,7 @@ class MultipleProxyGenerationTest extends PHPUnit_Framework_TestCase
             $accessInterceptorFactory->createProxy(new $className()),
         );
 
-        if (!$skipScopeLocalizerTests) {
+        if (! $skipScopeLocalizerTests) {
             $generated[] = $accessInterceptorScopeLocalizerFactory->createProxy(new $className());
         }
 
@@ -89,7 +89,7 @@ class MultipleProxyGenerationTest extends PHPUnit_Framework_TestCase
         $this->assertInstanceOf('ProxyManager\Proxy\AccessInterceptorInterface', $generated[2]);
         $this->assertInstanceOf('ProxyManager\Proxy\ValueHolderInterface', $generated[2]);
 
-        if (!$skipScopeLocalizerTests) {
+        if (! $skipScopeLocalizerTests) {
             $this->assertInstanceOf('ProxyManager\Proxy\AccessInterceptorInterface', $generated[3]);
         }
     }

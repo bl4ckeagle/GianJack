@@ -32,7 +32,7 @@ interface ClassSignatureGeneratorInterface
      * Applies a signature to a given class generator
      *
      * @param ClassGenerator $classGenerator
-     * @param array $parameters
+     * @param array          $parameters
      *
      * @return ClassGenerator
      */

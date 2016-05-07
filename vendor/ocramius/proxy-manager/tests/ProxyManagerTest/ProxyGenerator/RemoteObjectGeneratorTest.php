@@ -43,11 +43,11 @@ class RemoteObjectGeneratorTest extends PHPUnit_Framework_TestCase
      */
     public function testGeneratesValidCode($className)
     {
-        $generator = $this->getProxyGenerator();
+        $generator          = $this->getProxyGenerator();
         $generatedClassName = UniqueIdentifierGenerator::getIdentifier('AbstractProxyGeneratorTest');
-        $generatedClass = new ClassGenerator($generatedClassName);
-        $originalClass = new ReflectionClass($className);
-        $generatorStrategy = new EvaluatingGeneratorStrategy();
+        $generatedClass     = new ClassGenerator($generatedClassName);
+        $originalClass      = new ReflectionClass($className);
+        $generatorStrategy  = new EvaluatingGeneratorStrategy();
 
         $generator->generate($originalClass, $generatedClass);
         $generatorStrategy->generate($generatedClass);

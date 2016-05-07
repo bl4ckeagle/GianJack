@@ -142,7 +142,7 @@ class Configuration
      */
     public function setProxiesTargetDir($proxiesTargetDir)
     {
-        $this->proxiesTargetDir = (string)$proxiesTargetDir;
+        $this->proxiesTargetDir = (string) $proxiesTargetDir;
     }
 
     /**

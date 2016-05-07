@@ -105,7 +105,7 @@ abstract class AbstractMigration
      * Print a warning message if the condition evaluates to TRUE.
      *
      * @param boolean $condition
-     * @param string $message
+     * @param string  $message
      */
     public function warnIf($condition, $message = '')
     {
@@ -123,7 +123,7 @@ abstract class AbstractMigration
      * Abort the migration if the condition evaluates to TRUE.
      *
      * @param boolean $condition
-     * @param string $message
+     * @param string  $message
      *
      * @throws AbortMigrationException
      */
@@ -138,7 +138,7 @@ abstract class AbstractMigration
      * Skip this migration (but not the next ones) if condition evaluates to TRUE.
      *
      * @param boolean $condition
-     * @param string $message
+     * @param string  $message
      *
      * @throws SkipMigrationException
      */
@@ -166,7 +166,6 @@ abstract class AbstractMigration
     }
 
     abstract public function up(Schema $schema);
-
     abstract public function down(Schema $schema);
 
     protected function addSql($sql, array $params = [], array $types = [])

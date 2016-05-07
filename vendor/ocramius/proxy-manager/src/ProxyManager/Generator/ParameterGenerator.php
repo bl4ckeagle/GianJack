@@ -87,9 +87,9 @@ class ParameterGenerator extends ZendParameterGenerator
     public function generate()
     {
         return $this->getGeneratedType()
-        . (true === $this->passedByReference ? '&' : '')
-        . '$' . $this->name
-        . $this->generateDefaultValue();
+            . (true === $this->passedByReference ? '&' : '')
+            . '$' . $this->name
+            . $this->generateDefaultValue();
     }
 
     /**
@@ -117,7 +117,7 @@ class ParameterGenerator extends ZendParameterGenerator
      */
     private function getGeneratedType()
     {
-        if (!$this->type || in_array($this->type, static::$simple)) {
+        if (! $this->type || in_array($this->type, static::$simple)) {
             return '';
         }
 
@@ -132,13 +132,12 @@ class ParameterGenerator extends ZendParameterGenerator
      * Set the default value for a parameter (if it is optional)
      *
      * @param ZendParameterGenerator $parameterGenerator
-     * @param ParameterReflection $reflectionParameter
+     * @param ParameterReflection    $reflectionParameter
      */
     private static function setOptionalParameter(
         ZendParameterGenerator $parameterGenerator,
         ParameterReflection $reflectionParameter
-    )
-    {
+    ) {
         if ($reflectionParameter->isOptional()) {
             try {
                 $parameterGenerator->setDefaultValue($reflectionParameter->getDefaultValue());

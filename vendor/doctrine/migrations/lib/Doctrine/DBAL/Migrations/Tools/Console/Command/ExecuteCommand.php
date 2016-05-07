@@ -66,7 +66,7 @@ Or you can also execute the migration without a warning message which you need t
 
     <info>%command.full_name% --no-interaction</info>
 EOT
-            );
+        );
 
         parent::configure();
     }
@@ -93,7 +93,7 @@ EOT
             }
 
             if ($execute) {
-                $version->execute($direction, (boolean)$input->getOption('dry-run'), $timeAllqueries);
+                $version->execute($direction, (boolean) $input->getOption('dry-run'), $timeAllqueries);
             } else {
                 $output->writeln('<error>Migration cancelled!</error>');
             }

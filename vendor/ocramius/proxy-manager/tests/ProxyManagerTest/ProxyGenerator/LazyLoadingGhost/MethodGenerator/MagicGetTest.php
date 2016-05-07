@@ -52,8 +52,8 @@ class MagicGetTest extends PHPUnit_Framework_TestCase
      */
     protected function setUp()
     {
-        $this->initializer = $this->getMock('Zend\\Code\\Generator\\PropertyGenerator');
-        $this->initMethod = $this->getMock('Zend\\Code\\Generator\\MethodGenerator');
+        $this->initializer      = $this->getMock('Zend\\Code\\Generator\\PropertyGenerator');
+        $this->initMethod       = $this->getMock('Zend\\Code\\Generator\\MethodGenerator');
         $this->publicProperties = $this
             ->getMockBuilder('ProxyManager\\ProxyGenerator\\PropertyGenerator\\PublicPropertiesMap')
             ->disableOriginalConstructor()
@@ -71,7 +71,7 @@ class MagicGetTest extends PHPUnit_Framework_TestCase
     public function testBodyStructure()
     {
         $reflection = new ReflectionClass('ProxyManagerTestAsset\\EmptyClass');
-        $magicGet = new MagicGet($reflection, $this->initializer, $this->initMethod, $this->publicProperties);
+        $magicGet   = new MagicGet($reflection, $this->initializer, $this->initMethod, $this->publicProperties);
 
         $this->assertSame('__get', $magicGet->getName());
         $this->assertCount(1, $magicGet->getParameters());
@@ -110,7 +110,7 @@ class MagicGetTest extends PHPUnit_Framework_TestCase
     public function testBodyStructureWithOverriddenMagicGet()
     {
         $reflection = new ReflectionClass('ProxyManagerTestAsset\\ClassWithMagicMethods');
-        $magicGet = new MagicGet($reflection, $this->initializer, $this->initMethod, $this->publicProperties);
+        $magicGet   = new MagicGet($reflection, $this->initializer, $this->initMethod, $this->publicProperties);
 
         $this->assertSame('__get', $magicGet->getName());
         $this->assertCount(1, $magicGet->getParameters());

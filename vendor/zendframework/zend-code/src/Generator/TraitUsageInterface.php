@@ -121,6 +121,7 @@ interface TraitUsageInterface
      * This method provides 2 ways for defining the trait method.
      * Option 1: String of trait to replace
      * Option 2: Array of strings of traits to replace
+
      * @param mixed $method
      * @param mixed $traitToReplace
      */

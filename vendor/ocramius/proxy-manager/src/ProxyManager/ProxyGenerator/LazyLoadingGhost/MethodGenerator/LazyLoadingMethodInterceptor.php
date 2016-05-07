@@ -34,7 +34,7 @@ class LazyLoadingMethodInterceptor extends MethodGenerator
     /**
      * @param \Zend\Code\Reflection\MethodReflection $originalMethod
      * @param \Zend\Code\Generator\PropertyGenerator $initializerProperty
-     * @param \Zend\Code\Generator\MethodGenerator $callInitializer
+     * @param \Zend\Code\Generator\MethodGenerator   $callInitializer
      *
      * @return LazyLoadingMethodInterceptor|static
      */
@@ -42,26 +42,25 @@ class LazyLoadingMethodInterceptor extends MethodGenerator
         MethodReflection $originalMethod,
         PropertyGenerator $initializerProperty,
         ZendMethodGenerator $callInitializer
-    )
-    {
+    ) {
         /* @var $method self */
-        $method = static::fromReflection($originalMethod);
-        $parameters = $originalMethod->getParameters();
-        $methodName = $originalMethod->getName();
+        $method            = static::fromReflection($originalMethod);
+        $parameters        = $originalMethod->getParameters();
+        $methodName        = $originalMethod->getName();
         $initializerParams = array();
-        $forwardedParams = array();
+        $forwardedParams   = array();
 
         foreach ($parameters as $parameter) {
-            $parameterName = $parameter->getName();
+            $parameterName       = $parameter->getName();
             $initializerParams[] = var_export($parameterName, true) . ' => $' . $parameterName;
-            $forwardedParams[] = '$' . $parameterName;
+            $forwardedParams[]   = '$' . $parameterName;
         }
 
         $method->setBody(
             '$this->' . $initializerProperty->getName()
             . ' && $this->' . $callInitializer->getName()
             . '(' . var_export($methodName, true)
-            . ', array(' . implode(', ', $initializerParams) . "));\n\n"
+            . ', array(' . implode(', ', $initializerParams) .  "));\n\n"
             . 'return parent::'
             . $methodName . '(' . implode(', ', $forwardedParams) . ');'
         );

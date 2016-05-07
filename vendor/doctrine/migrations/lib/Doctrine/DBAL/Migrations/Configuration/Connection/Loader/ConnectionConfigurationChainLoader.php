@@ -41,7 +41,7 @@ final class ConnectionConfigurationChainLoader implements ConnectionLoaderInterf
      */
     public function chosen()
     {
-        foreach ($this->loaders as $loader) {
+        foreach($this->loaders as $loader) {
             if (null !== $confObj = $loader->chosen()) {
                 return $confObj;
             }

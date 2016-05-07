@@ -31,8 +31,8 @@ class MissingSignatureException extends UnexpectedValueException implements Exce
 {
     /**
      * @param ReflectionClass $class
-     * @param array $parameters
-     * @param string $expected
+     * @param array           $parameters
+     * @param string          $expected
      *
      * @return self
      */

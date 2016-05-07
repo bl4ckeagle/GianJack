@@ -37,7 +37,7 @@ class InitializeProxyTest extends PHPUnit_Framework_TestCase
     public function testBodyStructure()
     {
         $initializer = $this->getMock('Zend\\Code\\Generator\\PropertyGenerator');
-        $initCall = $this->getMock('Zend\\Code\\Generator\\MethodGenerator');
+        $initCall    = $this->getMock('Zend\\Code\\Generator\\MethodGenerator');
 
         $initializer->expects($this->any())->method('getName')->will($this->returnValue('foo'));
         $initCall->expects($this->any())->method('getName')->will($this->returnValue('bar'));

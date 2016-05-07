@@ -35,7 +35,8 @@ class MigrationsVersionDoctrineCommand extends VersionCommand
             ->setName('doctrine:migrations:version')
             ->addOption('db', null, InputOption::VALUE_REQUIRED, 'The database connection to use for this command.')
             ->addOption('em', null, InputOption::VALUE_REQUIRED, 'The entity manager to use for this command.')
-            ->addOption('shard', null, InputOption::VALUE_REQUIRED, 'The shard connection to use for this command.');
+            ->addOption('shard', null, InputOption::VALUE_REQUIRED, 'The shard connection to use for this command.')
+        ;
     }
 
     public function execute(InputInterface $input, OutputInterface $output)

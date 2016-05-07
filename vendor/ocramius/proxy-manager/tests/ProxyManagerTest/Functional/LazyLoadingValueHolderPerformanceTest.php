@@ -41,18 +41,18 @@ class LazyLoadingValueHolderPerformanceTest extends BaseLazyLoadingPerformanceTe
      * @dataProvider getTestedClasses
      *
      * @param string $className
-     * @param array $methods
-     * @param array $properties
+     * @param array  $methods
+     * @param array  $properties
      *
      * @return void
      */
     public function testProxyInstantiationPerformance($className, array $methods, array $properties)
     {
-        $proxyName = $this->generateProxy($className);
-        $iterations = 20000;
-        $instances = array();
+        $proxyName   = $this->generateProxy($className);
+        $iterations  = 20000;
+        $instances   = array();
         /* @var $proxies \ProxyManager\Proxy\VirtualProxyInterface[] */
-        $proxies = array();
+        $proxies     = array();
         $initializer = function (
             & $valueHolder,
             VirtualProxyInterface $proxy,
@@ -122,9 +122,9 @@ class LazyLoadingValueHolderPerformanceTest extends BaseLazyLoadingPerformanceTe
     protected function generateProxy($parentClassName)
     {
         $generatedClassName = __NAMESPACE__ . '\\' . UniqueIdentifierGenerator::getIdentifier('Foo');
-        $generator = new LazyLoadingValueHolderGenerator();
-        $generatedClass = new ClassGenerator($generatedClassName);
-        $strategy = new EvaluatingGeneratorStrategy();
+        $generator          = new LazyLoadingValueHolderGenerator();
+        $generatedClass     = new ClassGenerator($generatedClassName);
+        $strategy           = new EvaluatingGeneratorStrategy();
 
         $generator->generate(new ReflectionClass($parentClassName), $generatedClass);
         $strategy->generate($generatedClass);

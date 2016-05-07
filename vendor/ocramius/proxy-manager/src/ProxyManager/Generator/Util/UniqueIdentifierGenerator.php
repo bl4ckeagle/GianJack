@@ -44,8 +44,8 @@ abstract class UniqueIdentifierGenerator
             '',
             uniqid(
                 preg_match(static::VALID_IDENTIFIER_FORMAT, $name)
-                    ? $name
-                    : static::DEFAULT_IDENTIFIER,
+                ? $name
+                : static::DEFAULT_IDENTIFIER,
                 true
             )
         );

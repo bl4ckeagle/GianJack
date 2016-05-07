@@ -77,7 +77,7 @@ class Migration
      * Write a migration SQL file to the given path
      *
      * @param string $path The path to write the migration SQL file.
-     * @param string $to The version to migrate to.
+     * @param string $to   The version to migrate to.
      *
      * @return boolean $written
      */
@@ -115,8 +115,8 @@ class Migration
     /**
      * Run a migration to the current version or the given target version.
      *
-     * @param string $to The version to migrate to.
-     * @param boolean $dryRun Whether or not to make this a dry run and not execute anything.
+     * @param string  $to             The version to migrate to.
+     * @param boolean $dryRun         Whether or not to make this a dry run and not execute anything.
      * @param boolean $timeAllQueries Measuring or not the execution time of each SQL query.
      *
      * @return array $sql     The array of migration sql statements
@@ -132,8 +132,8 @@ class Migration
             $to = $this->configuration->getLatestVersion();
         }
 
-        $from = (string)$this->configuration->getCurrentVersion();
-        $to = (string)$to;
+        $from = (string) $this->configuration->getCurrentVersion();
+        $to   = (string) $to;
 
         /**
          * Throw an error if we can't find the migration to migrate to in the registered

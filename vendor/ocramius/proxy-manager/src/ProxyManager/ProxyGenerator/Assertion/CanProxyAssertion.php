@@ -43,7 +43,7 @@ final class CanProxyAssertion
 
     /**
      * @param ReflectionClass $originalClass
-     * @param bool $allowInterfaces
+     * @param bool            $allowInterfaces
      *
      * @throws InvalidProxiedClassException
      */
@@ -52,7 +52,7 @@ final class CanProxyAssertion
         self::isNotFinal($originalClass);
         self::hasNoAbstractProtectedMethods($originalClass);
 
-        if (!$allowInterfaces) {
+        if (! $allowInterfaces) {
             self::isNotInterface($originalClass);
         }
     }

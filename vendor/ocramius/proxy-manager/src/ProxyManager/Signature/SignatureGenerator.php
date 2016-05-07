@@ -45,7 +45,7 @@ final class SignatureGenerator implements SignatureGeneratorInterface
     public function __construct()
     {
         $this->parameterEncoder = new ParameterEncoder();
-        $this->parameterHasher = new ParameterHasher();
+        $this->parameterHasher  = new ParameterHasher();
     }
 
     /**

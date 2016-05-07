@@ -31,6 +31,6 @@ class Soap extends BaseAdapter
      */
     protected function getServiceName($wrappedClass, $method)
     {
-        return (string)$method;
+        return (string) $method;
     }
 }

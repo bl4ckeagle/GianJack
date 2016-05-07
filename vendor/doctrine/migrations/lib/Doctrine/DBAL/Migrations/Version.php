@@ -37,7 +37,7 @@ use ProxyManager\Factory\LazyLoadingValueHolderFactory;
 class Version
 {
     const STATE_NONE = 0;
-    const STATE_PRE = 1;
+    const STATE_PRE  = 1;
     const STATE_EXEC = 2;
     const STATE_POST = 3;
 
@@ -102,7 +102,7 @@ class Version
     /** @var SchemaDiffProviderInterface */
     private $schemaProvider;
 
-    public function __construct(Configuration $configuration, $version, $class, SchemaDiffProviderInterface $schemaProvider = null)
+    public function __construct(Configuration $configuration, $version, $class, SchemaDiffProviderInterface $schemaProvider=null)
     {
         $this->configuration = $configuration;
         $this->outputWriter = $configuration->getOutputWriter();
@@ -114,7 +114,7 @@ class Version
         if ($schemaProvider !== null) {
             $this->schemaProvider = $schemaProvider;
         }
-        if ($schemaProvider === null) {
+        if($schemaProvider === null) {
             $schemaProvider = new SchemaDiffProvider($this->connection->getSchemaManager(),
                 $this->connection->getDatabasePlatform());
             $this->schemaProvider = LazySchemaDiffProvider::fromDefaultProxyFacyoryConfiguration($schemaProvider);
@@ -176,8 +176,8 @@ class Version
      * Add some SQL queries to this versions migration
      *
      * @param array|string $sql
-     * @param array $params
-     * @param array $types
+     * @param array        $params
+     * @param array        $types
      */
     public function addSql($sql, array $params = [], array $types = [])
     {
@@ -211,7 +211,7 @@ class Version
     /**
      * Write a migration SQL file to the given path
      *
-     * @param string $path The path to write the migration SQL file.
+     * @param string $path      The path to write the migration SQL file.
      * @param string $direction The direction to execute.
      *
      * @return boolean $written
@@ -220,7 +220,7 @@ class Version
     {
         $queries = $this->execute($direction, true);
 
-        if (!empty($this->params)) {
+        if ( ! empty($this->params)) {
             throw MigrationException::migrationNotConvertibleToSql($this->class);
         }
 
@@ -252,8 +252,8 @@ class Version
      * The schema is passed to the pre and post method only to be able to test the presence of some table, And the
      * connection that can get used trough it allow for the test of the presence of records.
      *
-     * @param string $direction The direction to execute the migration.
-     * @param boolean $dryRun Whether to not actually execute the migration SQL and just do a dry run.
+     * @param string  $direction      The direction to execute the migration.
+     * @param boolean $dryRun         Whether to not actually execute the migration SQL and just do a dry run.
      * @param boolean $timeAllQueries Measuring or not the execution time of each SQL query.
      *
      * @return array $sql
@@ -296,7 +296,7 @@ class Version
             $this->state = self::STATE_POST;
             $this->migration->{'post' . ucfirst($direction)}($toSchema);
 
-            if (!$dryRun) {
+            if (! $dryRun) {
                 if ($direction === self::DIRECTION_UP) {
                     $this->markMigrated();
                 } else {
@@ -335,7 +335,7 @@ class Version
                 }
             }
 
-            $this->outputWriter->write(sprintf("\n  <info>SS</info> skipped (Reason: %s)", $e->getMessage()));
+            $this->outputWriter->write(sprintf("\n  <info>SS</info> skipped (Reason: %s)",  $e->getMessage()));
 
             $this->state = self::STATE_NONE;
 
@@ -398,12 +398,12 @@ class Version
 
     private function executeRegisteredSql($dryRun = false, $timeAllQueries = false)
     {
-        if (!$dryRun) {
+        if (! $dryRun) {
             if (!empty($this->sql)) {
                 foreach ($this->sql as $key => $query) {
                     $queryStart = microtime(true);
 
-                    if (!isset($this->params[$key])) {
+                    if ( ! isset($this->params[$key])) {
                         $this->outputWriter->write('     <comment>-></comment> ' . $query);
                         $this->connection->executeQuery($query);
                     } else {

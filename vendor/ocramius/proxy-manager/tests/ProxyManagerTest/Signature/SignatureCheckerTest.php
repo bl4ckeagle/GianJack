@@ -54,7 +54,7 @@ class SignatureCheckerTest extends PHPUnit_Framework_TestCase
     protected function setUp()
     {
         $this->signatureGenerator = $this->getMock('ProxyManager\Signature\SignatureGeneratorInterface');
-        $this->signatureChecker = new SignatureChecker($this->signatureGenerator);
+        $this->signatureChecker   = new SignatureChecker($this->signatureGenerator);
     }
 
     public function testCheckSignatureWithValidKey()

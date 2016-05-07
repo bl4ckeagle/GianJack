@@ -41,28 +41,27 @@ class LazyLoadingMethodInterceptor extends MethodGenerator
         MethodReflection $originalMethod,
         PropertyGenerator $initializerProperty,
         PropertyGenerator $valueHolderProperty
-    )
-    {
+    ) {
         /* @var $method self */
-        $method = static::fromReflection($originalMethod);
-        $initializerName = $initializerProperty->getName();
-        $valueHolderName = $valueHolderProperty->getName();
-        $parameters = $originalMethod->getParameters();
-        $methodName = $originalMethod->getName();
+        $method            = static::fromReflection($originalMethod);
+        $initializerName   = $initializerProperty->getName();
+        $valueHolderName   = $valueHolderProperty->getName();
+        $parameters        = $originalMethod->getParameters();
+        $methodName        = $originalMethod->getName();
         $initializerParams = array();
-        $forwardedParams = array();
+        $forwardedParams   = array();
 
         foreach ($parameters as $parameter) {
-            $parameterName = $parameter->getName();
+            $parameterName       = $parameter->getName();
             $initializerParams[] = var_export($parameterName, true) . ' => $' . $parameterName;
-            $forwardedParams[] = '$' . $parameterName;
+            $forwardedParams[]   = '$' . $parameterName;
         }
 
         $method->setBody(
             '$this->' . $initializerName
             . ' && $this->' . $initializerName
             . '->__invoke($this->' . $valueHolderName . ', $this, ' . var_export($methodName, true)
-            . ', array(' . implode(', ', $initializerParams) . '), $this->' . $initializerName . ");\n\n"
+            . ', array(' . implode(', ', $initializerParams) .  '), $this->' . $initializerName . ");\n\n"
             . 'return $this->' . $valueHolderName . '->'
             . $methodName . '(' . implode(', ', $forwardedParams) . ');'
         );

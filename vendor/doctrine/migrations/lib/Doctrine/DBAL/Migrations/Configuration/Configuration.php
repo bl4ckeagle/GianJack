@@ -142,9 +142,9 @@ class Configuration
     /**
      * Construct a migration configuration object.
      *
-     * @param Connection $connection A Connection instance
-     * @param OutputWriter $outputWriter A OutputWriter instance
-     * @param MigrationFinderInterface $finder Migration files finder
+     * @param Connection               $connection   A Connection instance
+     * @param OutputWriter             $outputWriter A OutputWriter instance
+     * @param MigrationFinderInterface $finder       Migration files finder
      */
     public function __construct(Connection $connection, OutputWriter $outputWriter = null, MigrationFinderInterface $finder = null)
     {
@@ -360,8 +360,7 @@ class Configuration
     public function setMigrationsFinder(MigrationFinderInterface $finder)
     {
         if (($this->migrationsAreOrganizedByYear || $this->migrationsAreOrganizedByYearAndMonth) &&
-            !($finder instanceof MigrationDeepFinderInterface)
-        ) {
+            !($finder instanceof MigrationDeepFinderInterface)) {
 
             throw MigrationException::configurationIncompatibleWithFinder(
                 'organize-migrations',
@@ -393,7 +392,7 @@ class Configuration
      * class.
      *
      * @param string $version The version of the migration in the format YYYYMMDDHHMMSS.
-     * @param string $class The migration class to execute for the version.
+     * @param string $class   The migration class to execute for the version.
      *
      * @return Version
      *
@@ -403,8 +402,8 @@ class Configuration
     {
         $this->ensureMigrationClassExists($class);
 
-        $version = (string)$version;
-        $class = (string)$class;
+        $version = (string) $version;
+        $class = (string) $class;
         if (isset($this->migrations[$version])) {
             throw MigrationException::duplicateMigrationVersion($version, get_class($this->migrations[$version]));
         }
@@ -564,7 +563,7 @@ class Configuration
         $sql = $this->connection->getDatabasePlatform()->modifyLimitQuery($sql, 1);
         $result = $this->connection->fetchColumn($sql);
 
-        return $result !== false ? (string)$result : '0';
+        return $result !== false ? (string) $result : '0';
     }
 
     /**
@@ -610,7 +609,7 @@ class Configuration
             return null;
         }
 
-        return (string)$versions[$offset + $delta];
+        return (string) $versions[$offset + $delta];
     }
 
     /**
@@ -693,7 +692,7 @@ class Configuration
         $versions = array_keys($this->migrations);
         $latest = end($versions);
 
-        return $latest !== false ? (string)$latest : '0';
+        return $latest !== false ? (string) $latest : '0';
     }
 
     /**
@@ -732,7 +731,7 @@ class Configuration
      * and target version number.
      *
      * @param string $direction The direction we are migrating.
-     * @param string $to The version to migrate to.
+     * @param string $to        The version to migrate to.
      *
      * @return Version[] $migrations   The array of migrations we can execute.
      */
@@ -815,10 +814,10 @@ class Configuration
      * Check if we should execute a migration for a given direction and target
      * migration version.
      *
-     * @param string $direction The direction we are migrating.
-     * @param Version $version The Version instance to check.
-     * @param string $to The version we are migrating to.
-     * @param array $migrated Migrated versions array.
+     * @param string  $direction The direction we are migrating.
+     * @param Version $version   The Version instance to check.
+     * @param string  $to        The version we are migrating to.
+     * @param array   $migrated  Migrated versions array.
      *
      * @return boolean
      */
@@ -846,7 +845,7 @@ class Configuration
      */
     private function ensureMigrationClassExists($class)
     {
-        if (!class_exists($class)) {
+        if ( ! class_exists($class)) {
             throw MigrationException::migrationClassNotFound($class, $this->getMigrationsNamespace());
         }
     }

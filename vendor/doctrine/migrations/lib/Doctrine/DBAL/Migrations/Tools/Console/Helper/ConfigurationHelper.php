@@ -45,7 +45,7 @@ class ConfigurationHelper extends Helper
 
     public function __construct(Connection $connection = null, Configuration $configuration = null)
     {
-        $this->connection = $connection;
+        $this->connection    = $connection;
         $this->configuration = $configuration;
     }
 
@@ -99,11 +99,11 @@ class ConfigurationHelper extends Helper
     private function loadConfig($config, OutputWriter $outputWriter)
     {
         $map = array(
-            'xml' => '\XmlConfiguration',
-            'yaml' => '\YamlConfiguration',
-            'yml' => '\YamlConfiguration',
-            'php' => '\ArrayConfiguration',
-            'json' => '\JsonConfiguration'
+            'xml'   => '\XmlConfiguration',
+            'yaml'  => '\YamlConfiguration',
+            'yml'   => '\YamlConfiguration',
+            'php'   => '\ArrayConfiguration',
+            'json'  => '\JsonConfiguration'
         );
 
         $info = pathinfo($config);
@@ -112,8 +112,8 @@ class ConfigurationHelper extends Helper
             throw new \InvalidArgumentException('Given config file type is not supported');
         }
 
-        $class = 'Doctrine\DBAL\Migrations\Configuration';
-        $class .= $map[$info['extension']];
+        $class         = 'Doctrine\DBAL\Migrations\Configuration';
+        $class        .= $map[$info['extension']];
         $configuration = new $class($this->connection, $outputWriter);
         $configuration->load($config);
 

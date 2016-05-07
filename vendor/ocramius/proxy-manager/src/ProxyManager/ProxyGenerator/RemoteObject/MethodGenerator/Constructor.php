@@ -34,8 +34,8 @@ class Constructor extends MethodGenerator
     /**
      * Constructor
      *
-     * @param ReflectionClass $originalClass Reflection of the class to proxy
-     * @param PropertyGenerator $adapter Adapter property
+     * @param ReflectionClass   $originalClass Reflection of the class to proxy
+     * @param PropertyGenerator $adapter       Adapter property
      */
     public function __construct(ReflectionClass $originalClass, PropertyGenerator $adapter)
     {
@@ -53,7 +53,7 @@ class Constructor extends MethodGenerator
         $body = '$this->' . $adapterName . ' = $' . $adapterName . ';';
 
         foreach ($originalClass->getProperties() as $property) {
-            if ($property->isPublic() && !$property->isStatic()) {
+            if ($property->isPublic() && ! $property->isStatic()) {
                 $body .= "\nunset(\$this->" . $property->getName() . ');';
             }
         }

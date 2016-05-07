@@ -43,11 +43,10 @@ class MagicIsset extends MagicMethodGenerator
         PropertyGenerator $prefixInterceptors,
         PropertyGenerator $suffixInterceptors,
         PublicPropertiesMap $publicProperties
-    )
-    {
+    ) {
         parent::__construct($originalClass, '__isset', array(new ParameterGenerator('name')));
 
-        $override = $originalClass->hasMethod('__isset');
+        $override        = $originalClass->hasMethod('__isset');
         $valueHolderName = $valueHolder->getName();
 
         $this->setDocblock(($override ? "{@inheritDoc}\n" : '') . '@param string $name');
@@ -60,7 +59,7 @@ class MagicIsset extends MagicMethodGenerator
             'returnValue'
         );
 
-        if (!$publicProperties->isEmpty()) {
+        if (! $publicProperties->isEmpty()) {
             $callParent = 'if (isset(self::$' . $publicProperties->getName() . "[\$name])) {\n"
                 . '    $returnValue = isset($this->' . $valueHolderName . '->$name);'
                 . "\n} else {\n    $callParent\n}\n\n";

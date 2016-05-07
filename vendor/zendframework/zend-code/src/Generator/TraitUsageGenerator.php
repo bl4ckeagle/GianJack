@@ -48,7 +48,7 @@ class TraitUsageGenerator extends AbstractGenerator
      */
     public function addUse($use, $useAlias = null)
     {
-        if (!empty($useAlias)) {
+        if (! empty($useAlias)) {
             $use .= ' as ' . $useAlias;
         }
 
@@ -71,7 +71,7 @@ class TraitUsageGenerator extends AbstractGenerator
     {
         $traitName = $trait;
         if (is_array($trait)) {
-            if (!array_key_exists('traitName', $trait)) {
+            if (! array_key_exists('traitName', $trait)) {
                 throw new Exception\InvalidArgumentException('Missing required value for traitName');
             }
             $traitName = $trait['traitName'];
@@ -89,7 +89,7 @@ class TraitUsageGenerator extends AbstractGenerator
             }
         }
 
-        if (!$this->hasTrait($traitName)) {
+        if (! $this->hasTrait($traitName)) {
             $this->traits[] = $traitName;
         }
 
@@ -144,11 +144,11 @@ class TraitUsageGenerator extends AbstractGenerator
     {
         $traitAndMethod = $method;
         if (is_array($method)) {
-            if (!array_key_exists('traitName', $method)) {
+            if (! array_key_exists('traitName', $method)) {
                 throw new Exception\InvalidArgumentException('Missing required argument "traitName" for $method');
             }
 
-            if (!array_key_exists('method', $method)) {
+            if (! array_key_exists('method', $method)) {
                 throw new Exception\InvalidArgumentException('Missing required argument "method" for $method');
             }
 
@@ -161,7 +161,7 @@ class TraitUsageGenerator extends AbstractGenerator
                 'Invalid Format: $method must be in the format of trait::method'
             );
         }
-        if (!is_string($alias)) {
+        if (! is_string($alias)) {
             throw new Exception\InvalidArgumentException('Invalid Alias: $alias must be a string or array.');
         }
         if ($this->classGenerator->hasMethod($alias)) {
@@ -179,12 +179,12 @@ class TraitUsageGenerator extends AbstractGenerator
         }
 
         list($trait, $method) = explode('::', $traitAndMethod);
-        if (!$this->hasTrait($trait)) {
+        if (! $this->hasTrait($trait)) {
             throw new Exception\InvalidArgumentException('Invalid trait: Trait does not exists on this class');
         }
 
         $this->traitAliases[$traitAndMethod] = [
-            'alias' => $alias,
+            'alias'      => $alias,
             'visibility' => $visibility
         ];
 
@@ -210,15 +210,15 @@ class TraitUsageGenerator extends AbstractGenerator
 
         $traitAndMethod = $method;
         if (is_array($method)) {
-            if (!array_key_exists('traitName', $method)) {
+            if (! array_key_exists('traitName', $method)) {
                 throw new Exception\InvalidArgumentException('Missing required argument "traitName" for $method');
             }
 
-            if (!array_key_exists('method', $method)) {
+            if (! array_key_exists('method', $method)) {
                 throw new Exception\InvalidArgumentException('Missing required argument "method" for $method');
             }
 
-            $traitAndMethod = (string)$method['traitName'] . '::' . (string)$method['method'];
+            $traitAndMethod = (string) $method['traitName'] . '::' . (string) $method['method'];
         }
 
         // Validations
@@ -229,22 +229,22 @@ class TraitUsageGenerator extends AbstractGenerator
         }
 
         list($trait, $method) = explode("::", $traitAndMethod);
-        if (!$this->hasTrait($trait)) {
+        if (! $this->hasTrait($trait)) {
             throw new Exception\InvalidArgumentException('Invalid trait: Trait does not exists on this class');
         }
 
-        if (!array_key_exists($traitAndMethod, $this->traitOverrides)) {
+        if (! array_key_exists($traitAndMethod, $this->traitOverrides)) {
             $this->traitOverrides[$traitAndMethod] = [];
         }
 
         foreach ($traitsToReplace as $traitToReplace) {
-            if (!is_string($traitToReplace)) {
+            if (! is_string($traitToReplace)) {
                 throw new Exception\InvalidArgumentException(
                     'Invalid Argument: $traitToReplace must be a string or array of strings'
                 );
             }
 
-            if (!in_array($traitToReplace, $this->traitOverrides[$traitAndMethod])) {
+            if (! in_array($traitToReplace, $this->traitOverrides[$traitAndMethod])) {
                 $this->traitOverrides[$traitAndMethod][] = $traitToReplace;
             }
         }
@@ -257,7 +257,7 @@ class TraitUsageGenerator extends AbstractGenerator
      */
     public function removeTraitOverride($method, $overridesToRemove = null)
     {
-        if (!array_key_exists($method, $this->traitOverrides)) {
+        if (! array_key_exists($method, $this->traitOverrides)) {
             return $this;
         }
 
@@ -266,7 +266,7 @@ class TraitUsageGenerator extends AbstractGenerator
             return $this;
         }
 
-        $overridesToRemove = (!is_array($overridesToRemove))
+        $overridesToRemove = (! is_array($overridesToRemove))
             ? [$overridesToRemove]
             : $overridesToRemove;
         foreach ($overridesToRemove as $traitToRemove) {
@@ -301,7 +301,7 @@ class TraitUsageGenerator extends AbstractGenerator
 
         $output .= $indent . 'use ' . implode(', ', $traits);
 
-        $aliases = $this->getTraitAliases();
+        $aliases   = $this->getTraitAliases();
         $overrides = $this->getTraitOverrides();
         if (empty($aliases) && empty($overrides)) {
             $output .= ";" . self::LINE_FEED . self::LINE_FEED;

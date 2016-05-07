@@ -92,11 +92,11 @@ EOT
     {
         $this->configuration = $this->getMigrationConfiguration($input, $output);
 
-        if (!$input->getOption('add') && !$input->getOption('delete')) {
+        if ( ! $input->getOption('add') && ! $input->getOption('delete')) {
             throw new \InvalidArgumentException('You must specify whether you want to --add or --delete the specified version.');
         }
 
-        $this->markMigrated = (boolean)$input->getOption('add');
+        $this->markMigrated = (boolean) $input->getOption('add');
 
         if ($input->isInteractive()) {
             $question = 'WARNING! You are about to add, delete or synchronize migration versions from the version table that could result in data lost. Are you sure you wish to continue? (y/n)';
@@ -118,9 +118,9 @@ EOT
     {
         $affectedVersion = $input->getArgument('version');
 
-        $allOption = $input->getOption('all');
+        $allOption       = $input->getOption('all');
         $rangeFromOption = $input->getOption('range-from');
-        $rangeToOption = $input->getOption('range-to');
+        $rangeToOption   = $input->getOption('range-to');
 
         if ($allOption && ($rangeFromOption !== null || $rangeToOption !== null)) {
             throw new \InvalidArgumentException('Options --all and --range-to/--range-from both used. You should use only one of them.');
@@ -149,26 +149,26 @@ EOT
 
     private function mark($version, $all = false)
     {
-        if (!$this->configuration->hasVersion($version)) {
+        if ( ! $this->configuration->hasVersion($version)) {
             throw MigrationException::unknownMigrationVersion($version);
         }
 
         $version = $this->configuration->getVersion($version);
         if ($this->markMigrated && $this->configuration->hasVersionMigrated($version)) {
-            if (!$all) {
+            if (! $all) {
                 throw new \InvalidArgumentException(sprintf('The version "%s" already exists in the version table.', $version));
             }
             $marked = true;
         }
 
-        if (!$this->markMigrated && !$this->configuration->hasVersionMigrated($version)) {
-            if (!$all) {
+        if ( ! $this->markMigrated && ! $this->configuration->hasVersionMigrated($version)) {
+            if (! $all) {
                 throw new \InvalidArgumentException(sprintf('The version "%s" does not exists in the version table.', $version));
             }
             $marked = false;
         }
 
-        if (!isset($marked)) {
+        if ( ! isset($marked)) {
             if ($this->markMigrated) {
                 $version->markMigrated();
             } else {

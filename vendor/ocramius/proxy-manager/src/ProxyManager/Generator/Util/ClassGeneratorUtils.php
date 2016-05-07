@@ -31,9 +31,9 @@ use Zend\Code\Generator\MethodGenerator;
 final class ClassGeneratorUtils
 {
     /**
-     * @param ReflectionClass $originalClass
-     * @param ClassGenerator $classGenerator
-     * @param MethodGenerator $generatedMethod
+     * @param ReflectionClass  $originalClass
+     * @param ClassGenerator   $classGenerator
+     * @param MethodGenerator  $generatedMethod
      *
      * @return void|false
      */
@@ -41,8 +41,7 @@ final class ClassGeneratorUtils
         ReflectionClass $originalClass,
         ClassGenerator $classGenerator,
         MethodGenerator $generatedMethod
-    )
-    {
+    ) {
         $methodName = $generatedMethod->getName();
 
         if ($originalClass->hasMethod($methodName) && $originalClass->getMethod($methodName)->isFinal()) {

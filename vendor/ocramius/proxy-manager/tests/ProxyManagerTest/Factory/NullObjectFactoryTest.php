@@ -59,9 +59,9 @@ class NullObjectFactoryTest extends PHPUnit_Framework_TestCase
      */
     public function setUp()
     {
-        $this->config = $this->getMock('ProxyManager\\Configuration');
-        $this->inflector = $this->getMock('ProxyManager\\Inflector\\ClassNameInflectorInterface');
-        $this->signatureChecker = $this->getMock('ProxyManager\\Signature\\SignatureCheckerInterface');
+        $this->config                  = $this->getMock('ProxyManager\\Configuration');
+        $this->inflector               = $this->getMock('ProxyManager\\Inflector\\ClassNameInflectorInterface');
+        $this->signatureChecker        = $this->getMock('ProxyManager\\Signature\\SignatureCheckerInterface');
         $this->classSignatureGenerator = $this->getMock('ProxyManager\\Signature\\ClassSignatureGeneratorInterface');
 
         $this
@@ -101,9 +101,9 @@ class NullObjectFactoryTest extends PHPUnit_Framework_TestCase
             ->with('stdClass')
             ->will($this->returnValue('ProxyManagerTestAsset\\NullObjectMock'));
 
-        $factory = new NullObjectFactory($this->config);
+        $factory    = new NullObjectFactory($this->config);
         /* @var $proxy \ProxyManagerTestAsset\NullObjectMock */
-        $proxy = $factory->createProxy($instance);
+        $proxy      = $factory->createProxy($instance);
 
         $this->assertInstanceOf('ProxyManagerTestAsset\\NullObjectMock', $proxy);
     }
@@ -119,10 +119,10 @@ class NullObjectFactoryTest extends PHPUnit_Framework_TestCase
      */
     public function testWillTryAutoGeneration()
     {
-        $instance = new stdClass();
+        $instance       = new stdClass();
         $proxyClassName = UniqueIdentifierGenerator::getIdentifier('bar');
-        $generator = $this->getMock('ProxyManager\GeneratorStrategy\\GeneratorStrategyInterface');
-        $autoloader = $this->getMock('ProxyManager\\Autoloader\\AutoloaderInterface');
+        $generator      = $this->getMock('ProxyManager\GeneratorStrategy\\GeneratorStrategyInterface');
+        $autoloader     = $this->getMock('ProxyManager\\Autoloader\\AutoloaderInterface');
 
         $this->config->expects($this->any())->method('getGeneratorStrategy')->will($this->returnValue($generator));
         $this->config->expects($this->any())->method('getProxyAutoloader')->will($this->returnValue($autoloader));
@@ -171,9 +171,9 @@ class NullObjectFactoryTest extends PHPUnit_Framework_TestCase
         $this->signatureChecker->expects($this->atLeastOnce())->method('checkSignature');
         $this->classSignatureGenerator->expects($this->once())->method('addSignature')->will($this->returnArgument(0));
 
-        $factory = new NullObjectFactory($this->config);
+        $factory    = new NullObjectFactory($this->config);
         /* @var $proxy \ProxyManagerTestAsset\NullObjectMock */
-        $proxy = $factory->createProxy($instance);
+        $proxy      = $factory->createProxy($instance);
 
         $this->assertInstanceOf($proxyClassName, $proxy);
     }

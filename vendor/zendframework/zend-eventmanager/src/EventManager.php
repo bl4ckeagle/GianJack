@@ -156,7 +156,7 @@ class EventManager implements EventManagerInterface
      */
     public function attach($eventName, callable $listener, $priority = 1)
     {
-        if (!is_string($eventName)) {
+        if (! is_string($eventName)) {
             throw new Exception\InvalidArgumentException(sprintf(
                 '%s expects a string for the event; received %s',
                 __METHOD__,
@@ -164,7 +164,7 @@ class EventManager implements EventManagerInterface
             ));
         }
 
-        $this->events[$eventName][((int)$priority) . '.0'][] = $listener;
+        $this->events[$eventName][((int) $priority) . '.0'][] = $listener;
 
         return $listener;
     }
@@ -177,14 +177,14 @@ class EventManager implements EventManagerInterface
     {
 
         // If event is wildcard, we need to iterate through each listeners
-        if (null === $eventName || ('*' === $eventName && !$force)) {
+        if (null === $eventName || ('*' === $eventName && ! $force)) {
             foreach (array_keys($this->events) as $eventName) {
                 $this->detach($listener, $eventName, true);
             }
             return;
         }
 
-        if (!is_string($eventName)) {
+        if (! is_string($eventName)) {
             throw new Exception\InvalidArgumentException(sprintf(
                 '%s expects a string for the event; received %s',
                 __METHOD__,
@@ -192,7 +192,7 @@ class EventManager implements EventManagerInterface
             ));
         }
 
-        if (!isset($this->events[$eventName])) {
+        if (! isset($this->events[$eventName])) {
             return;
         }
 

@@ -49,7 +49,7 @@ class AccessInterceptorScopeLocalizerTest extends AbstractProxyGeneratorTest
             return parent::testGeneratesValidCode($className);
         }
 
-        if ((!method_exists('Closure', 'bind'))
+        if ((! method_exists('Closure', 'bind'))
             && $reflectionClass->getProperties(ReflectionProperty::IS_PRIVATE)
         ) {
             $this->setExpectedException('ProxyManager\Exception\UnsupportedProxiedClassException');

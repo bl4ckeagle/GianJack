@@ -82,7 +82,7 @@ class LazyLoadingGhostFunctionalTest extends PHPUnit_Framework_TestCase
         $proxyName = $this->generateProxy($className);
 
         /* @var $proxy \ProxyManager\Proxy\GhostObjectInterface|BaseClass */
-        $proxy = new $proxyName($this->createInitializer($className, $instance));
+        $proxy  = new $proxyName($this->createInitializer($className, $instance));
         $cloned = clone $proxy;
 
         $this->assertTrue($cloned->isProxyInitialized());
@@ -105,7 +105,7 @@ class LazyLoadingGhostFunctionalTest extends PHPUnit_Framework_TestCase
     public function testPropertyWriteAccess($instance, $proxy, $publicProperty)
     {
         /* @var $proxy \ProxyManager\Proxy\GhostObjectInterface */
-        $newValue = uniqid();
+        $newValue               = uniqid();
         $proxy->$publicProperty = $newValue;
 
         $this->assertTrue($proxy->isProxyInitialized());
@@ -152,12 +152,12 @@ class LazyLoadingGhostFunctionalTest extends PHPUnit_Framework_TestCase
      */
     public function testCanWriteToArrayKeysInPublicProperty()
     {
-        $instance = new ClassWithPublicArrayProperty();
-        $className = get_class($instance);
+        $instance    = new ClassWithPublicArrayProperty();
+        $className   = get_class($instance);
         $initializer = $this->createInitializer($className, $instance);
-        $proxyName = $this->generateProxy($className);
+        $proxyName   = $this->generateProxy($className);
         /* @var $proxy ClassWithPublicArrayProperty */
-        $proxy = new $proxyName($initializer);
+        $proxy       = new $proxyName($initializer);
 
         $proxy->arrayProperty['foo'] = 'bar';
 
@@ -173,13 +173,13 @@ class LazyLoadingGhostFunctionalTest extends PHPUnit_Framework_TestCase
      */
     public function testWillNotModifyRetrievedPublicProperties()
     {
-        $instance = new ClassWithPublicProperties();
-        $className = get_class($instance);
+        $instance    = new ClassWithPublicProperties();
+        $className   = get_class($instance);
         $initializer = $this->createInitializer($className, $instance);
-        $proxyName = $this->generateProxy($className);
+        $proxyName   = $this->generateProxy($className);
         /* @var $proxy ClassWithPublicProperties */
-        $proxy = new $proxyName($initializer);
-        $variable = $proxy->property0;
+        $proxy       = new $proxyName($initializer);
+        $variable    = $proxy->property0;
 
         $this->assertSame('property0', $variable);
 
@@ -193,13 +193,13 @@ class LazyLoadingGhostFunctionalTest extends PHPUnit_Framework_TestCase
      */
     public function testWillModifyByRefRetrievedPublicProperties()
     {
-        $instance = new ClassWithPublicProperties();
-        $className = get_class($instance);
+        $instance    = new ClassWithPublicProperties();
+        $className   = get_class($instance);
         $initializer = $this->createInitializer($className, $instance);
-        $proxyName = $this->generateProxy($className);
+        $proxyName   = $this->generateProxy($className);
         /* @var $proxy ClassWithPublicProperties */
-        $proxy = new $proxyName($initializer);
-        $variable = &$proxy->property0;
+        $proxy       = new $proxyName($initializer);
+        $variable    = & $proxy->property0;
 
         $this->assertSame('property0', $variable);
 
@@ -210,12 +210,12 @@ class LazyLoadingGhostFunctionalTest extends PHPUnit_Framework_TestCase
 
     public function testKeepsInitializerWhenNotOverwitten()
     {
-        $instance = new BaseClass();
-        $proxyName = $this->generateProxy(get_class($instance));
+        $instance    = new BaseClass();
+        $proxyName   = $this->generateProxy(get_class($instance));
         $initializer = function () {
         };
         /* @var $proxy \ProxyManager\Proxy\GhostObjectInterface */
-        $proxy = new $proxyName($initializer);
+        $proxy       = new $proxyName($initializer);
 
         $proxy->initializeProxy();
 
@@ -227,14 +227,14 @@ class LazyLoadingGhostFunctionalTest extends PHPUnit_Framework_TestCase
      */
     public function testKeepsInitializedPublicProperties()
     {
-        $instance = new BaseClass();
-        $proxyName = $this->generateProxy(get_class($instance));
+        $instance    = new BaseClass();
+        $proxyName   = $this->generateProxy(get_class($instance));
         $initializer = function (BaseClass $proxy, $method, $parameters, & $initializer) {
-            $initializer = null;
+            $initializer           = null;
             $proxy->publicProperty = 'newValue';
         };
         /* @var $proxy \ProxyManager\Proxy\GhostObjectInterface|BaseClass */
-        $proxy = new $proxyName($initializer);
+        $proxy       = new $proxyName($initializer);
 
         $proxy->initializeProxy();
         $this->assertSame('newValue', $proxy->publicProperty);
@@ -251,10 +251,10 @@ class LazyLoadingGhostFunctionalTest extends PHPUnit_Framework_TestCase
      */
     public function testPublicPropertyDefaultWillBePreserved()
     {
-        $instance = new ClassWithPublicProperties();
-        $proxyName = $this->generateProxy(get_class($instance));
+        $instance    = new ClassWithPublicProperties();
+        $proxyName   = $this->generateProxy(get_class($instance));
         /* @var $proxy ClassWithPublicProperties */
-        $proxy = new $proxyName(function () {
+        $proxy       = new $proxyName(function () {
         });
 
         $this->assertSame('property0', $proxy->property0);
@@ -265,10 +265,10 @@ class LazyLoadingGhostFunctionalTest extends PHPUnit_Framework_TestCase
      */
     public function testProtectedPropertyDefaultWillBePreserved()
     {
-        $instance = new ClassWithProtectedProperties();
-        $proxyName = $this->generateProxy(get_class($instance));
+        $instance    = new ClassWithProtectedProperties();
+        $proxyName   = $this->generateProxy(get_class($instance));
         /* @var $proxy ClassWithProtectedProperties */
-        $proxy = new $proxyName(function () {
+        $proxy       = new $proxyName(function () {
         });
 
         // Check protected property via reflection
@@ -283,10 +283,10 @@ class LazyLoadingGhostFunctionalTest extends PHPUnit_Framework_TestCase
      */
     public function testPrivatePropertyDefaultWillBePreserved()
     {
-        $instance = new ClassWithPrivateProperties();
+        $instance  = new ClassWithPrivateProperties();
         $proxyName = $this->generateProxy(get_class($instance));
         /* @var $proxy ClassWithPrivateProperties */
-        $proxy = new $proxyName(function () {
+        $proxy     = new $proxyName(function () {
         });
 
         // Check protected property via reflection
@@ -306,9 +306,9 @@ class LazyLoadingGhostFunctionalTest extends PHPUnit_Framework_TestCase
     private function generateProxy($parentClassName)
     {
         $generatedClassName = __NAMESPACE__ . '\\' . UniqueIdentifierGenerator::getIdentifier('Foo');
-        $generator = new LazyLoadingGhostGenerator();
-        $generatedClass = new ClassGenerator($generatedClassName);
-        $strategy = new EvaluatingGeneratorStrategy();
+        $generator          = new LazyLoadingGhostGenerator();
+        $generatedClass     = new ClassGenerator($generatedClassName);
+        $strategy           = new EvaluatingGeneratorStrategy();
 
         $generator->generate(new ReflectionClass($parentClassName), $generatedClass);
         $strategy->generate($generatedClass);
@@ -319,7 +319,7 @@ class LazyLoadingGhostFunctionalTest extends PHPUnit_Framework_TestCase
     /**
      * @param string $className
      * @param object $realInstance
-     * @param Mock $initializerMatcher
+     * @param Mock   $initializerMatcher
      *
      * @return \Closure
      */
@@ -350,7 +350,7 @@ class LazyLoadingGhostFunctionalTest extends PHPUnit_Framework_TestCase
             $initializerMatcher,
             $realInstance
         ) {
-            $initializer = null;
+            $initializer     = null;
             $reflectionClass = new ReflectionClass($realInstance);
 
             foreach ($reflectionClass->getProperties() as $property) {

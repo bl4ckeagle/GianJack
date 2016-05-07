@@ -32,7 +32,7 @@ class InterfaceGenerator extends ClassGenerator
         }
 
         // class generator
-        $cg = new static($classReflection->getName());
+        $cg      = new static($classReflection->getName());
         $methods = [];
 
         $cg->setSourceContent($cg->getSourceContent());
@@ -82,7 +82,7 @@ class InterfaceGenerator extends ClassGenerator
      */
     public static function fromArray(array $array)
     {
-        if (!isset($array['name'])) {
+        if (! isset($array['name'])) {
             throw new Exception\InvalidArgumentException(
                 'Class generator requires that a name is provided for this object'
             );

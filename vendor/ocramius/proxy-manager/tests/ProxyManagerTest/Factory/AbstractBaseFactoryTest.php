@@ -73,12 +73,12 @@ class AbstractBaseFactoryTest extends PHPUnit_Framework_TestCase
      */
     public function setUp()
     {
-        $configuration = $this->getMock('ProxyManager\\Configuration');
-        $this->generator = $this->getMock('ProxyManager\\ProxyGenerator\\ProxyGeneratorInterface');
-        $this->classNameInflector = $this->getMock('ProxyManager\\Inflector\\ClassNameInflectorInterface');
-        $this->generatorStrategy = $this->getMock('ProxyManager\\GeneratorStrategy\\GeneratorStrategyInterface');
-        $this->proxyAutoloader = $this->getMock('ProxyManager\\Autoloader\\AutoloaderInterface');
-        $this->signatureChecker = $this->getMock('ProxyManager\\Signature\\SignatureCheckerInterface');
+        $configuration                 = $this->getMock('ProxyManager\\Configuration');
+        $this->generator               = $this->getMock('ProxyManager\\ProxyGenerator\\ProxyGeneratorInterface');
+        $this->classNameInflector      = $this->getMock('ProxyManager\\Inflector\\ClassNameInflectorInterface');
+        $this->generatorStrategy       = $this->getMock('ProxyManager\\GeneratorStrategy\\GeneratorStrategyInterface');
+        $this->proxyAutoloader         = $this->getMock('ProxyManager\\Autoloader\\AutoloaderInterface');
+        $this->signatureChecker        = $this->getMock('ProxyManager\\Signature\\SignatureCheckerInterface');
         $this->classSignatureGenerator = $this->getMock('ProxyManager\\Signature\\ClassSignatureGeneratorInterface');
 
         $configuration

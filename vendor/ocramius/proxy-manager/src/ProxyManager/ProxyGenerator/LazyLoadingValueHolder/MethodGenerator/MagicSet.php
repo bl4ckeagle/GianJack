@@ -41,8 +41,7 @@ class MagicSet extends MagicMethodGenerator
         PropertyGenerator $initializerProperty,
         PropertyGenerator $valueHolderProperty,
         PublicPropertiesMap $publicProperties
-    )
-    {
+    ) {
         parent::__construct(
             $originalClass,
             '__set',
@@ -51,13 +50,13 @@ class MagicSet extends MagicMethodGenerator
 
         $initializer = $initializerProperty->getName();
         $valueHolder = $valueHolderProperty->getName();
-        $callParent = '';
+        $callParent  = '';
 
         $this->setDocblock(
             ($originalClass->hasMethod('__set') ? "{@inheritDoc}\n" : '') . "@param string \$name\n@param mixed \$value"
         );
 
-        if (!$publicProperties->isEmpty()) {
+        if (! $publicProperties->isEmpty()) {
             $callParent = 'if (isset(self::$' . $publicProperties->getName() . "[\$name])) {\n"
                 . '    return ($this->' . $valueHolder . '->$name = $value);'
                 . "\n}\n\n";

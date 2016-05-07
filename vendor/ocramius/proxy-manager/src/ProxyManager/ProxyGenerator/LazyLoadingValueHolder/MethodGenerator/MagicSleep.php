@@ -37,8 +37,7 @@ class MagicSleep extends MagicMethodGenerator
         ReflectionClass $originalClass,
         PropertyGenerator $initializerProperty,
         PropertyGenerator $valueHolderProperty
-    )
-    {
+    ) {
         parent::__construct($originalClass, '__sleep');
 
         $initializer = $initializerProperty->getName();

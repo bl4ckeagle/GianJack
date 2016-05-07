@@ -33,7 +33,8 @@ class LatestCommand extends AbstractCommand
     {
         $this
             ->setName('migrations:latest')
-            ->setDescription('Outputs the latest version number');
+            ->setDescription('Outputs the latest version number')
+        ;
 
         parent::configure();
     }

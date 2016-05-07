@@ -48,22 +48,22 @@ class XmlConfiguration extends AbstractFileConfiguration
         $config = [];
 
         if (isset($xml->name)) {
-            $config['name'] = (string)$xml->name;
+            $config['name'] = (string) $xml->name;
         }
         if (isset($xml->table['name'])) {
-            $config['table_name'] = (string)$xml->table['name'];
+            $config['table_name'] = (string) $xml->table['name'];
         }
         if (isset($xml->table['column'])) {
-            $config['column_name'] = (string)$xml->table['column'];
+            $config['column_name'] = (string) $xml->table['column'];
         }
         if (isset($xml->{'migrations-namespace'})) {
-            $config['migrations_namespace'] = (string)$xml->{'migrations-namespace'};
+            $config['migrations_namespace'] = (string) $xml->{'migrations-namespace'};
         }
         if (isset($xml->{'organize-migrations'})) {
             $config['organize_migrations'] = $xml->{'organize-migrations'};
         }
         if (isset($xml->{'migrations-directory'})) {
-            $config['migrations_directory'] = $this->getDirectoryRelativeToFile($file, (string)$xml->{'migrations-directory'});
+            $config['migrations_directory'] = $this->getDirectoryRelativeToFile($file, (string) $xml->{'migrations-directory'});
         }
         if (isset($xml->migrations->migration)) {
             $config['migrations'] = $xml->migrations->migration;

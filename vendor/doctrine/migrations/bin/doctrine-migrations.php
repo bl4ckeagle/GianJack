@@ -51,7 +51,7 @@ foreach ($directories as $directory) {
 
 $helperSet = null;
 if (file_exists($configFile)) {
-    if (!is_readable($configFile)) {
+    if ( ! is_readable($configFile)) {
         trigger_error(
             'Configuration file [' . $configFile . '] does not have read permission.', E_ERROR
         );
@@ -59,7 +59,7 @@ if (file_exists($configFile)) {
 
     $helperSet = require $configFile;
 
-    if (!($helperSet instanceof \Symfony\Component\Console\Helper\HelperSet)) {
+    if ( ! ($helperSet instanceof \Symfony\Component\Console\Helper\HelperSet)) {
         foreach ($GLOBALS as $helperSetCandidate) {
             if ($helperSetCandidate instanceof \Symfony\Component\Console\Helper\HelperSet) {
                 $helperSet = $helperSetCandidate;
@@ -71,7 +71,7 @@ if (file_exists($configFile)) {
 
 $helperSet = ($helperSet) ?: new \Symfony\Component\Console\Helper\HelperSet();
 
-if (class_exists('\Symfony\Component\Console\Helper\QuestionHelper')) {
+if(class_exists('\Symfony\Component\Console\Helper\QuestionHelper')) {
     $helperSet->set(new \Symfony\Component\Console\Helper\QuestionHelper(), 'question');
 } else {
     $helperSet->set(new \Symfony\Component\Console\Helper\DialogHelper(), 'dialog');
@@ -95,10 +95,10 @@ if ($helperSet->has('em')) {
 }
 
 $input = file_exists('migrations-input.php')
-    ? include 'migrations-input.php' : null;
+       ? include 'migrations-input.php' : null;
 
 $output = file_exists('migrations-output.php')
-    ? include 'migrations-output.php' : null;
+        ? include 'migrations-output.php' : null;
 
 $cli->run($input, $output);
 

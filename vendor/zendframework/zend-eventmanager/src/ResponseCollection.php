@@ -35,7 +35,7 @@ class ResponseCollection extends SplStack
      */
     public function setStopped($flag)
     {
-        $this->stopped = (bool)$flag;
+        $this->stopped = (bool) $flag;
     }
 
     /**

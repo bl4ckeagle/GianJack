@@ -75,7 +75,7 @@ You can also time all the different queries if you wanna know which one is takin
 
     <info>%command.full_name% --query-time</info>
 EOT
-            );
+        );
 
         parent::configure();
     }
@@ -114,7 +114,7 @@ EOT
             }
 
             $question = 'Are you sure you wish to continue? (y/n)';
-            if (!$this->canExecute($question, $input, $output)) {
+            if (! $this->canExecute($question, $input, $output)) {
                 $output->writeln('<error>Migration cancelled!</error>');
 
                 return 1;
@@ -125,14 +125,14 @@ EOT
             $path = is_bool($path) ? getcwd() : $path;
             $migration->writeSqlFile($path, $version);
         } else {
-            $dryRun = (boolean)$input->getOption('dry-run');
+            $dryRun = (boolean) $input->getOption('dry-run');
 
             // warn the user if no dry run and interaction is on
-            if (!$dryRun) {
+            if (! $dryRun) {
                 $question = 'WARNING! You are about to execute a database migration'
                     . ' that could result in schema changes and data lost.'
                     . ' Are you sure you wish to continue? (y/n)';
-                if (!$this->canExecute($question, $input, $output)) {
+                if (! $this->canExecute($question, $input, $output)) {
                     $output->writeln('<error>Migration cancelled!</error>');
 
                     return 1;
@@ -156,7 +156,7 @@ EOT
      */
     private function canExecute($question, InputInterface $input, OutputInterface $output)
     {
-        if ($input->isInteractive() && !$this->askConfirmation($question, $input, $output)) {
+        if ($input->isInteractive() && ! $this->askConfirmation($question, $input, $output)) {
             return false;
         }
 

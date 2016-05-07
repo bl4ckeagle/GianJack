@@ -40,7 +40,7 @@ class SetProxyInitializerTest extends PHPUnit_Framework_TestCase
 
         $initializer->expects($this->any())->method('getName')->will($this->returnValue('foo'));
 
-        $setter = new SetProxyInitializer($initializer);
+        $setter     = new SetProxyInitializer($initializer);
         $parameters = $setter->getParameters();
 
         $this->assertSame('setProxyInitializer', $setter->getName());

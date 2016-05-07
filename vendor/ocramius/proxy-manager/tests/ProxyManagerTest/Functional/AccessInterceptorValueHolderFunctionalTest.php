@@ -48,12 +48,12 @@ class AccessInterceptorValueHolderFunctionalTest extends PHPUnit_Framework_TestC
         $proxyName = $this->generateProxy($className);
 
         /* @var $proxy \ProxyManager\Proxy\AccessInterceptorInterface|\ProxyManager\Proxy\ValueHolderInterface */
-        $proxy = new $proxyName($instance);
+        $proxy     = new $proxyName($instance);
 
         $this->assertSame($instance, $proxy->getWrappedValueHolderValue());
         $this->assertSame($expectedValue, call_user_func_array(array($proxy, $method), $params));
 
-        $listener = $this->getMock('stdClass', array('__invoke'));
+        $listener  = $this->getMock('stdClass', array('__invoke'));
         $listener
             ->expects($this->once())
             ->method('__invoke')
@@ -90,8 +90,8 @@ class AccessInterceptorValueHolderFunctionalTest extends PHPUnit_Framework_TestC
         $proxyName = $this->generateProxy($className);
 
         /* @var $proxy \ProxyManager\Proxy\AccessInterceptorInterface|\ProxyManager\Proxy\ValueHolderInterface */
-        $proxy = new $proxyName($instance);
-        $listener = $this->getMock('stdClass', array('__invoke'));
+        $proxy     = new $proxyName($instance);
+        $listener  = $this->getMock('stdClass', array('__invoke'));
         $listener
             ->expects($this->once())
             ->method('__invoke')
@@ -127,7 +127,7 @@ class AccessInterceptorValueHolderFunctionalTest extends PHPUnit_Framework_TestC
     {
         $proxyName = $this->generateProxy($className);
         /* @var $proxy \ProxyManager\Proxy\AccessInterceptorInterface|\ProxyManager\Proxy\ValueHolderInterface */
-        $proxy = unserialize(serialize(new $proxyName($instance)));
+        $proxy     = unserialize(serialize(new $proxyName($instance)));
 
         $this->assertSame($expectedValue, call_user_func_array(array($proxy, $method), $params));
         $this->assertEquals($instance, $proxy->getWrappedValueHolderValue());
@@ -141,8 +141,8 @@ class AccessInterceptorValueHolderFunctionalTest extends PHPUnit_Framework_TestC
         $proxyName = $this->generateProxy($className);
 
         /* @var $proxy \ProxyManager\Proxy\AccessInterceptorInterface|\ProxyManager\Proxy\ValueHolderInterface */
-        $proxy = new $proxyName($instance);
-        $cloned = clone $proxy;
+        $proxy     = new $proxyName($instance);
+        $cloned    = clone $proxy;
 
         $this->assertNotSame($proxy->getWrappedValueHolderValue(), $cloned->getWrappedValueHolderValue());
         $this->assertSame($expectedValue, call_user_func_array(array($cloned, $method), $params));
@@ -165,7 +165,7 @@ class AccessInterceptorValueHolderFunctionalTest extends PHPUnit_Framework_TestC
     public function testPropertyWriteAccess($instance, $proxy, $publicProperty)
     {
         /* @var $proxy \ProxyManager\Proxy\AccessInterceptorInterface|\ProxyManager\Proxy\ValueHolderInterface */
-        $newValue = uniqid();
+        $newValue               = uniqid();
         $proxy->$publicProperty = $newValue;
 
         $this->assertSame($newValue, $proxy->$publicProperty);
@@ -203,11 +203,11 @@ class AccessInterceptorValueHolderFunctionalTest extends PHPUnit_Framework_TestC
      */
     public function testCanWriteToArrayKeysInPublicProperty()
     {
-        $instance = new ClassWithPublicArrayProperty();
-        $className = get_class($instance);
-        $proxyName = $this->generateProxy($className);
+        $instance    = new ClassWithPublicArrayProperty();
+        $className   = get_class($instance);
+        $proxyName   = $this->generateProxy($className);
         /* @var $proxy ClassWithPublicArrayProperty */
-        $proxy = new $proxyName($instance);
+        $proxy       = new $proxyName($instance);
 
         $proxy->arrayProperty['foo'] = 'bar';
 
@@ -223,12 +223,12 @@ class AccessInterceptorValueHolderFunctionalTest extends PHPUnit_Framework_TestC
      */
     public function testWillNotModifyRetrievedPublicProperties()
     {
-        $instance = new ClassWithPublicProperties();
-        $className = get_class($instance);
-        $proxyName = $this->generateProxy($className);
+        $instance    = new ClassWithPublicProperties();
+        $className   = get_class($instance);
+        $proxyName   = $this->generateProxy($className);
         /* @var $proxy ClassWithPublicProperties */
-        $proxy = new $proxyName($instance);
-        $variable = $proxy->property0;
+        $proxy       = new $proxyName($instance);
+        $variable    = $proxy->property0;
 
         $this->assertSame('property0', $variable);
 
@@ -242,12 +242,12 @@ class AccessInterceptorValueHolderFunctionalTest extends PHPUnit_Framework_TestC
      */
     public function testWillModifyByRefRetrievedPublicProperties()
     {
-        $instance = new ClassWithPublicProperties();
-        $className = get_class($instance);
-        $proxyName = $this->generateProxy($className);
+        $instance    = new ClassWithPublicProperties();
+        $className   = get_class($instance);
+        $proxyName   = $this->generateProxy($className);
         /* @var $proxy ClassWithPublicProperties */
-        $proxy = new $proxyName($instance);
-        $variable = &$proxy->property0;
+        $proxy       = new $proxyName($instance);
+        $variable    = & $proxy->property0;
 
         $this->assertSame('property0', $variable);
 
@@ -266,9 +266,9 @@ class AccessInterceptorValueHolderFunctionalTest extends PHPUnit_Framework_TestC
     private function generateProxy($parentClassName)
     {
         $generatedClassName = __NAMESPACE__ . '\\' . UniqueIdentifierGenerator::getIdentifier('Foo');
-        $generator = new AccessInterceptorValueHolderGenerator();
-        $generatedClass = new ClassGenerator($generatedClassName);
-        $strategy = new EvaluatingGeneratorStrategy();
+        $generator          = new AccessInterceptorValueHolderGenerator();
+        $generatedClass     = new ClassGenerator($generatedClassName);
+        $strategy           = new EvaluatingGeneratorStrategy();
 
         $generator->generate(new ReflectionClass($parentClassName), $generatedClass);
         $strategy->generate($generatedClass);
@@ -337,9 +337,9 @@ class AccessInterceptorValueHolderFunctionalTest extends PHPUnit_Framework_TestC
      */
     public function getPropertyAccessProxies()
     {
-        $instance1 = new BaseClass();
+        $instance1  = new BaseClass();
         $proxyName1 = $this->generateProxy(get_class($instance1));
-        $instance2 = new BaseClass();
+        $instance2  = new BaseClass();
         $proxyName2 = $this->generateProxy(get_class($instance2));
 
         return array(

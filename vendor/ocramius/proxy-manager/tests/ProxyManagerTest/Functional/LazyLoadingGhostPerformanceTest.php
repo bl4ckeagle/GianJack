@@ -40,9 +40,9 @@ class LazyLoadingGhostPerformanceTest extends BaseLazyLoadingPerformanceTest
      * @outputBuffering
      * @dataProvider getTestedClasses
      *
-     * @param string $className
-     * @param array $methods
-     * @param array $properties
+     * @param string                $className
+     * @param array                 $methods
+     * @param array                 $properties
      * @param \ReflectionProperty[] $reflectionProperties
      *
      * @return void
@@ -52,15 +52,14 @@ class LazyLoadingGhostPerformanceTest extends BaseLazyLoadingPerformanceTest
         array $methods,
         array $properties,
         array $reflectionProperties
-    )
-    {
-        $proxyName = $this->generateProxy($className);
-        $iterations = 20000;
-        $instances = array();
+    ) {
+        $proxyName    = $this->generateProxy($className);
+        $iterations   = 20000;
+        $instances    = array();
         /* @var $proxies \ProxyManager\Proxy\GhostObjectInterface[] */
-        $proxies = array();
+        $proxies      = array();
         $realInstance = new $className();
-        $initializer = function (
+        $initializer  = function (
             GhostObjectInterface $proxy,
             $method,
             $params,
@@ -129,7 +128,7 @@ class LazyLoadingGhostPerformanceTest extends BaseLazyLoadingPerformanceTest
 
         foreach ($testedClasses as $key => $testedClass) {
             $reflectionProperties = array();
-            $reflectionClass = new ReflectionClass($testedClass[0]);
+            $reflectionClass      = new ReflectionClass($testedClass[0]);
 
             foreach ($reflectionClass->getProperties() as $property) {
                 $property->setAccessible(true);
@@ -149,9 +148,9 @@ class LazyLoadingGhostPerformanceTest extends BaseLazyLoadingPerformanceTest
     protected function generateProxy($parentClassName)
     {
         $generatedClassName = __NAMESPACE__ . '\\' . UniqueIdentifierGenerator::getIdentifier('Foo');
-        $generator = new LazyLoadingGhostGenerator();
-        $generatedClass = new ClassGenerator($generatedClassName);
-        $strategy = new EvaluatingGeneratorStrategy();
+        $generator          = new LazyLoadingGhostGenerator();
+        $generatedClass     = new ClassGenerator($generatedClassName);
+        $strategy           = new EvaluatingGeneratorStrategy();
 
         $generator->generate(new ReflectionClass($parentClassName), $generatedClass);
         $strategy->generate($generatedClass);

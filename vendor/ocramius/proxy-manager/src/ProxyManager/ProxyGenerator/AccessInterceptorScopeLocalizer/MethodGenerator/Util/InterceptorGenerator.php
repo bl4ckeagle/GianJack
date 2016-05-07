@@ -33,12 +33,12 @@ use Zend\Code\Generator\PropertyGenerator;
 class InterceptorGenerator
 {
     /**
-     * @param string $methodBody the body of the previously generated code.
+     * @param string                                  $methodBody         the body of the previously generated code.
      *                                                                    It MUST assign the return value to a variable
      *                                                                    `$returnValue` instead of directly returning
      * @param \ProxyManager\Generator\MethodGenerator $method
-     * @param \Zend\Code\Generator\PropertyGenerator $prefixInterceptors
-     * @param \Zend\Code\Generator\PropertyGenerator $suffixInterceptors
+     * @param \Zend\Code\Generator\PropertyGenerator  $prefixInterceptors
+     * @param \Zend\Code\Generator\PropertyGenerator  $suffixInterceptors
      *
      * @return string
      */
@@ -47,37 +47,36 @@ class InterceptorGenerator
         MethodGenerator $method,
         PropertyGenerator $prefixInterceptors,
         PropertyGenerator $suffixInterceptors
-    )
-    {
-        $name = var_export($method->getName(), true);
+    ) {
+        $name               = var_export($method->getName(), true);
         $prefixInterceptors = $prefixInterceptors->getName();
         $suffixInterceptors = $suffixInterceptors->getName();
-        $params = array();
+        $params             = array();
 
         foreach ($method->getParameters() as $parameter) {
             $parameterName = $parameter->getName();
-            $params[] = var_export($parameterName, true) . ' => $' . $parameter->getName();
+            $params[]      = var_export($parameterName, true) . ' => $' . $parameter->getName();
         }
 
         $paramsString = 'array(' . implode(', ', $params) . ')';
 
         return "if (isset(\$this->$prefixInterceptors" . "[$name])) {\n"
-        . "    \$returnEarly       = false;\n"
-        . "    \$prefixReturnValue = \$this->$prefixInterceptors" . "[$name]->__invoke("
-        . "\$this, \$this, $name, $paramsString, \$returnEarly);\n\n"
-        . "    if (\$returnEarly) {\n"
-        . "        return \$prefixReturnValue;\n"
-        . "    }\n"
-        . "}\n\n"
-        . $methodBody . "\n\n"
-        . "if (isset(\$this->$suffixInterceptors" . "[$name])) {\n"
-        . "    \$returnEarly       = false;\n"
-        . "    \$suffixReturnValue = \$this->$suffixInterceptors" . "[$name]->__invoke("
-        . "\$this, \$this, $name, $paramsString, \$returnValue, \$returnEarly);\n\n"
-        . "    if (\$returnEarly) {\n"
-        . "        return \$suffixReturnValue;\n"
-        . "    }\n"
-        . "}\n\n"
-        . "return \$returnValue;";
+            . "    \$returnEarly       = false;\n"
+            . "    \$prefixReturnValue = \$this->$prefixInterceptors" . "[$name]->__invoke("
+            . "\$this, \$this, $name, $paramsString, \$returnEarly);\n\n"
+            . "    if (\$returnEarly) {\n"
+            . "        return \$prefixReturnValue;\n"
+            . "    }\n"
+            . "}\n\n"
+            . $methodBody . "\n\n"
+            . "if (isset(\$this->$suffixInterceptors" . "[$name])) {\n"
+            . "    \$returnEarly       = false;\n"
+            . "    \$suffixReturnValue = \$this->$suffixInterceptors" . "[$name]->__invoke("
+            . "\$this, \$this, $name, $paramsString, \$returnValue, \$returnEarly);\n\n"
+            . "    if (\$returnEarly) {\n"
+            . "        return \$suffixReturnValue;\n"
+            . "    }\n"
+            . "}\n\n"
+            . "return \$returnValue;";
     }
 }

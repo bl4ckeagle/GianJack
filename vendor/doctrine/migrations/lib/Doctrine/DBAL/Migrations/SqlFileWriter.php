@@ -65,7 +65,7 @@ class SqlFileWriter
      */
     public function write(array $queriesByVersion, $direction)
     {
-        $path = $this->buildMigrationFilePath();
+        $path   = $this->buildMigrationFilePath();
         $string = $this->buildMigrationFile($queriesByVersion, $direction);
 
         if ($this->outputWriter) {

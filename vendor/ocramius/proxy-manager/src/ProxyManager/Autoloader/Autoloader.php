@@ -40,12 +40,12 @@ class Autoloader implements AutoloaderInterface
     protected $classNameInflector;
 
     /**
-     * @param \ProxyManager\FileLocator\FileLocatorInterface $fileLocator
+     * @param \ProxyManager\FileLocator\FileLocatorInterface      $fileLocator
      * @param \ProxyManager\Inflector\ClassNameInflectorInterface $classNameInflector
      */
     public function __construct(FileLocatorInterface $fileLocator, ClassNameInflectorInterface $classNameInflector)
     {
-        $this->fileLocator = $fileLocator;
+        $this->fileLocator        = $fileLocator;
         $this->classNameInflector = $classNameInflector;
     }
 
@@ -54,16 +54,16 @@ class Autoloader implements AutoloaderInterface
      */
     public function __invoke($className)
     {
-        if (class_exists($className, false) || !$this->classNameInflector->isProxyClassName($className)) {
+        if (class_exists($className, false) || ! $this->classNameInflector->isProxyClassName($className)) {
             return false;
         }
 
         $file = $this->fileLocator->getProxyFileName($className);
 
-        if (!file_exists($file)) {
+        if (! file_exists($file)) {
             return false;
         }
 
-        return (bool)require_once $file;
+        return (bool) require_once $file;
     }
 }

@@ -53,9 +53,9 @@ class AutoloaderTest extends PHPUnit_Framework_TestCase
      */
     public function setUp()
     {
-        $this->fileLocator = $this->getMock('ProxyManager\\FileLocator\\FileLocatorInterface');
+        $this->fileLocator        = $this->getMock('ProxyManager\\FileLocator\\FileLocatorInterface');
         $this->classNameInflector = $this->getMock('ProxyManager\\Inflector\\ClassNameInflectorInterface');
-        $this->autoloader = new Autoloader($this->fileLocator, $this->classNameInflector);
+        $this->autoloader         = new Autoloader($this->fileLocator, $this->classNameInflector);
     }
 
     /**
@@ -110,8 +110,8 @@ class AutoloaderTest extends PHPUnit_Framework_TestCase
     {
         $namespace = 'Foo';
         $className = UniqueIdentifierGenerator::getIdentifier('Bar');
-        $fqcn = $namespace . '\\' . $className;
-        $fileName = sys_get_temp_dir() . '/foo_' . uniqid() . '.php';
+        $fqcn      = $namespace . '\\' . $className;
+        $fileName  = sys_get_temp_dir() . '/foo_' . uniqid() . '.php';
 
         file_put_contents($fileName, '<?php namespace ' . $namespace . '; class ' . $className . '{}');
 

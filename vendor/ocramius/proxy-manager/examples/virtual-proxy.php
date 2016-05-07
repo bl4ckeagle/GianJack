@@ -18,13 +18,13 @@ class Foo
 }
 
 $startTime = microtime(true);
-$factory = new LazyLoadingValueHolderFactory();
+$factory   = new LazyLoadingValueHolderFactory();
 
 for ($i = 0; $i < 1000; $i += 1) {
     $proxy = $factory->createProxy(
         'Foo',
         function (& $wrappedObject, $proxy, $method, $parameters, & $initializer) {
-            $initializer = null;
+            $initializer   = null;
             $wrappedObject = new Foo();
 
             return true;

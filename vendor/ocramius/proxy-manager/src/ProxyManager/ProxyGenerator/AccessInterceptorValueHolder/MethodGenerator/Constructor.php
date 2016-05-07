@@ -40,8 +40,7 @@ class Constructor extends MethodGenerator
         PropertyGenerator $valueHolder,
         PropertyGenerator $prefixInterceptors,
         PropertyGenerator $suffixInterceptors
-    )
-    {
+    ) {
         parent::__construct('__construct');
 
         $prefix = new ParameterGenerator('prefixInterceptors');
@@ -58,7 +57,7 @@ class Constructor extends MethodGenerator
 
         /* @var $publicProperties \ReflectionProperty[] */
         $publicProperties = $originalClass->getProperties(ReflectionProperty::IS_PUBLIC);
-        $unsetProperties = array();
+        $unsetProperties  = array();
 
         foreach ($publicProperties as $publicProperty) {
             $unsetProperties[] = '$this->' . $publicProperty->getName();

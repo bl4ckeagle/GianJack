@@ -37,8 +37,7 @@ class MagicClone extends MagicMethodGenerator
         ReflectionClass $originalClass,
         PropertyGenerator $initializerProperty,
         PropertyGenerator $valueHolderProperty
-    )
-    {
+    ) {
         parent::__construct($originalClass, '__clone');
 
         $initializer = $initializerProperty->getName();

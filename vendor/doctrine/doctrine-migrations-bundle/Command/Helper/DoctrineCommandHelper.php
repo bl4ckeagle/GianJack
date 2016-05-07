@@ -30,7 +30,7 @@ abstract class DoctrineCommandHelper extends BaseDoctrineCommandHelper
     public static function setApplicationHelper(Application $application, InputInterface $input)
     {
         $container = $application->getKernel()->getContainer();
-        $doctrine = $container->get('doctrine');
+        $doctrine  = $container->get('doctrine');
         $managerNames = $doctrine->getManagerNames();
 
         if (empty($managerNames)) {

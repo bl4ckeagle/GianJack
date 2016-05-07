@@ -63,8 +63,8 @@ class LazyListener
      */
     public function __construct(array $definition, ContainerInterface $container, array $env = [])
     {
-        if ((!isset($definition['listener'])
-            || !is_string($definition['listener'])
+        if ((! isset($definition['listener'])
+            || ! is_string($definition['listener'])
             || empty($definition['listener']))
         ) {
             throw new Exception\InvalidArgumentException(
@@ -72,8 +72,8 @@ class LazyListener
             );
         }
 
-        if ((!isset($definition['method'])
-            || !is_string($definition['method'])
+        if ((! isset($definition['method'])
+            || ! is_string($definition['method'])
             || empty($definition['method']))
         ) {
             throw new Exception\InvalidArgumentException(
@@ -81,10 +81,10 @@ class LazyListener
             );
         }
 
-        $this->service = $definition['listener'];
-        $this->method = $definition['method'];
+        $this->service   = $definition['listener'];
+        $this->method    = $definition['method'];
         $this->container = $container;
-        $this->env = $env;
+        $this->env       = $env;
     }
 
     /**
@@ -96,7 +96,7 @@ class LazyListener
     public function __invoke(EventInterface $event)
     {
         $listener = $this->fetchListener();
-        $method = $this->method;
+        $method   = $this->method;
         return $listener->{$method}($event);
     }
 
@@ -111,7 +111,7 @@ class LazyListener
 
         // In the future, typehint against Zend\ServiceManager\ServiceLocatorInterface,
         // which defines this message starting in v3.
-        if (method_exists($this->container, 'build') && !empty($this->env)) {
+        if (method_exists($this->container, 'build') && ! empty($this->env)) {
             $this->listener = $this->container->build($this->service, $this->env);
             return $this->listener;
         }

@@ -32,7 +32,7 @@ abstract class AbstractLazyFactory extends AbstractBaseFactory
      * Creates a new lazy proxy instance of the given class with
      * the given initializer
      *
-     * @param string $className name of the class to be proxied
+     * @param string   $className   name of the class to be proxied
      * @param \Closure $initializer initializer to be passed to the proxy
      *
      * @return \ProxyManager\Proxy\LazyLoadingInterface

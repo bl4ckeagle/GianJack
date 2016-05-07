@@ -140,9 +140,17 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
 
         }
 
-        // videos
-        if ($pathinfo === '/videos') {
-            return array (  '_controller' => 'AppBundle\\Controller\\VideoController::indexAction',  '_route' => 'videos',);
+        if (0 === strpos($pathinfo, '/videos')) {
+            // videos
+            if ($pathinfo === '/videos') {
+                return array (  '_controller' => 'AppBundle\\Controller\\VideoController::indexAction',  '_route' => 'videos',);
+            }
+
+            // app_video_getcontainer
+            if (preg_match('#^/videos/(?P<slug>[^/]++)$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'app_video_getcontainer')), array (  '_controller' => 'AppBundle\\Controller\\VideoController::getContainer',));
+            }
+
         }
 
         throw 0 < count($allow) ? new MethodNotAllowedException(array_unique($allow)) : new ResourceNotFoundException();

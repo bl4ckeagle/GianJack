@@ -30,8 +30,8 @@ class MagicMethodGenerator extends MethodGenerator
 {
     /**
      * @param ReflectionClass $originalClass
-     * @param string $name
-     * @param array $parameters
+     * @param string          $name
+     * @param array           $parameters
      */
     public function __construct(ReflectionClass $originalClass, $name, array $parameters = array())
     {

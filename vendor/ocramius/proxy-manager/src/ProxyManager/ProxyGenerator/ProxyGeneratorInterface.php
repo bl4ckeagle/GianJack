@@ -33,7 +33,7 @@ interface ProxyGeneratorInterface
     /**
      * Apply modifications to the provided $classGenerator to proxy logic from $originalClass
      *
-     * @param \ReflectionClass $originalClass
+     * @param \ReflectionClass                    $originalClass
      * @param \Zend\Code\Generator\ClassGenerator $classGenerator
      *
      * @return void

@@ -30,8 +30,8 @@ use Zend\Code\Generator\PropertyGenerator;
  */
 class PublicScopeSimulator
 {
-    const OPERATION_SET = 'set';
-    const OPERATION_GET = 'get';
+    const OPERATION_SET   = 'set';
+    const OPERATION_GET   = 'get';
     const OPERATION_ISSET = 'isset';
     const OPERATION_UNSET = 'unset';
 
@@ -40,12 +40,12 @@ class PublicScopeSimulator
      * This is done by introspecting `debug_backtrace()` and then binding a closure to the scope
      * of the parent caller.
      *
-     * @param string $operationType operation to execute: one of 'get', 'set', 'isset' or 'unset'
-     * @param string $nameParameter name of the `name` parameter of the magic method
-     * @param string|null $valueParameter name of the `value` parameter of the magic method
-     * @param PropertyGenerator $valueHolder name of the property containing the target object from which
+     * @param string            $operationType      operation to execute: one of 'get', 'set', 'isset' or 'unset'
+     * @param string            $nameParameter      name of the `name` parameter of the magic method
+     * @param string|null       $valueParameter     name of the `value` parameter of the magic method
+     * @param PropertyGenerator $valueHolder        name of the property containing the target object from which
      *                                              to read the property. `$this` if none provided
-     * @param string|null $returnPropertyName name of the property to which we want to assign the result of
+     * @param string|null       $returnPropertyName name of the property to which we want to assign the result of
      *                                              the operation. Return directly if none provided
      *
      * @return string
@@ -58,10 +58,9 @@ class PublicScopeSimulator
         $valueParameter = null,
         PropertyGenerator $valueHolder = null,
         $returnPropertyName = null
-    )
-    {
-        $byRef = self::getByRefReturnValue($operationType);
-        $value = static::OPERATION_SET === $operationType ? ', $value' : '';
+    ) {
+        $byRef  = self::getByRefReturnValue($operationType);
+        $value  = static::OPERATION_SET === $operationType ? ', $value' : '';
         $target = '$this';
 
         if ($valueHolder) {
@@ -69,22 +68,22 @@ class PublicScopeSimulator
         }
 
         return '$realInstanceReflection = new \\ReflectionClass(get_parent_class($this));' . "\n\n"
-        . 'if (! $realInstanceReflection->hasProperty($' . $nameParameter . ')) {' . "\n"
-        . '    $targetObject = ' . $target . ';' . "\n\n"
-        . self::getUndefinedPropertyNotice($operationType, $nameParameter)
-        . '    ' . self::getOperation($operationType, $nameParameter, $valueParameter) . ";\n"
-        . "    return;\n"
-        . '}' . "\n\n"
-        . '$targetObject = ' . self::getTargetObject($valueHolder) . ";\n"
-        . '$accessor = function ' . $byRef . '() use ($targetObject, $name' . $value . ') {' . "\n"
-        . '    ' . self::getOperation($operationType, $nameParameter, $valueParameter) . "\n"
-        . "};\n"
-        . self::getScopeReBind()
-        . (
-        $returnPropertyName
-            ? '$' . $returnPropertyName . ' = ' . $byRef . '$accessor();'
-            : '$returnValue = ' . $byRef . '$accessor();' . "\n\n" . 'return $returnValue;'
-        );
+            . 'if (! $realInstanceReflection->hasProperty($' . $nameParameter . ')) {'   . "\n"
+            . '    $targetObject = ' . $target . ';' . "\n\n"
+            . self::getUndefinedPropertyNotice($operationType, $nameParameter)
+            . '    ' . self::getOperation($operationType, $nameParameter, $valueParameter) . ";\n"
+            . "    return;\n"
+            . '}' . "\n\n"
+            . '$targetObject = ' . self::getTargetObject($valueHolder) . ";\n"
+            . '$accessor = function ' . $byRef . '() use ($targetObject, $name' . $value . ') {' . "\n"
+            . '    ' . self::getOperation($operationType, $nameParameter, $valueParameter) . "\n"
+            . "};\n"
+            . self::getScopeReBind()
+            . (
+                $returnPropertyName
+                    ? '$' . $returnPropertyName . ' = ' . $byRef . '$accessor();'
+                    : '$returnValue = ' . $byRef . '$accessor();' . "\n\n" . 'return $returnValue;'
+            );
     }
 
     /**
@@ -103,10 +102,10 @@ class PublicScopeSimulator
 
         //
         return '    $backtrace = debug_backtrace(false);' . "\n"
-        . '    trigger_error(\'Undefined property: \' . get_parent_class($this) . \'::$\' . $'
-        . $nameParameter
-        . ' . \' in \' . $backtrace[0][\'file\'] . \' on line \' . $backtrace[0][\'line\'], \E_USER_NOTICE);'
-        . "\n";
+            . '    trigger_error(\'Undefined property: \' . get_parent_class($this) . \'::$\' . $'
+            . $nameParameter
+            . ' . \' in \' . $backtrace[0][\'file\'] . \' on line \' . $backtrace[0][\'line\'], \E_USER_NOTICE);'
+            . "\n";
     }
 
     /**
@@ -142,8 +141,8 @@ class PublicScopeSimulator
     }
 
     /**
-     * @param string $operationType
-     * @param string $nameParameter
+     * @param string      $operationType
+     * @param string      $nameParameter
      * @param string|null $valueParameter
      *
      * @return string
@@ -156,7 +155,7 @@ class PublicScopeSimulator
             case static::OPERATION_GET:
                 return 'return $targetObject->$' . $nameParameter . ";";
             case static::OPERATION_SET:
-                if (!$valueParameter) {
+                if (! $valueParameter) {
                     throw new \InvalidArgumentException('Parameter $valueParameter not provided');
                 }
 
@@ -177,15 +176,15 @@ class PublicScopeSimulator
      */
     private static function getScopeReBind()
     {
-        if (!method_exists('Closure', 'bind')) {
+        if (! method_exists('Closure', 'bind')) {
             // @codeCoverageIgnoreStart
             return '';
             // @codeCoverageIgnoreEnd
         }
 
         return '    $backtrace = debug_backtrace(true);' . "\n"
-        . '    $scopeObject = isset($backtrace[1][\'object\'])'
-        . ' ? $backtrace[1][\'object\'] : new \stdClass();' . "\n"
-        . '    $accessor = $accessor->bindTo($scopeObject, get_class($scopeObject));' . "\n";
+            . '    $scopeObject = isset($backtrace[1][\'object\'])'
+            . ' ? $backtrace[1][\'object\'] : new \stdClass();' . "\n"
+            . '    $accessor = $accessor->bindTo($scopeObject, get_class($scopeObject));' . "\n";
     }
 }

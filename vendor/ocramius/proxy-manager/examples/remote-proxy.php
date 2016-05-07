@@ -6,10 +6,10 @@ use ProxyManager\Factory\RemoteObject\Adapter\XmlRpc;
 use ProxyManager\Factory\RemoteObjectFactory;
 use Zend\XmlRpc\Client;
 
-if (!class_exists('Zend\XmlRpc\Client')) {
+if (! class_exists('Zend\XmlRpc\Client')) {
     echo "This example needs Zend\\XmlRpc\\Client to run. \n In order to install it, "
-        . "please run following:\n\n"
-        . "\$ php composer.phar require zendframework/zend-xmlrpc:2.*\n\n";
+    . "please run following:\n\n"
+    . "\$ php composer.phar require zendframework/zend-xmlrpc:2.*\n\n";
 
     exit(2);
 }

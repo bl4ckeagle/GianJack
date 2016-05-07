@@ -40,7 +40,7 @@ class MethodGenerator extends ZendMethodGenerator
      */
     public function setReturnsReference($returnsReference)
     {
-        $this->returnsReference = (bool)$returnsReference;
+        $this->returnsReference = (bool) $returnsReference;
     }
 
     /**

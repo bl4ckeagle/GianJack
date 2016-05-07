@@ -37,11 +37,11 @@ class MagicSetTest extends PHPUnit_Framework_TestCase
      */
     public function testBodyStructure()
     {
-        $reflection = new ReflectionClass('ProxyManagerTestAsset\\EmptyClass');
-        $adapter = $this->getMock('Zend\\Code\\Generator\\PropertyGenerator');
+        $reflection   = new ReflectionClass('ProxyManagerTestAsset\\EmptyClass');
+        $adapter      = $this->getMock('Zend\\Code\\Generator\\PropertyGenerator');
         $adapter->expects($this->any())->method('getName')->will($this->returnValue('foo'));
 
-        $magicGet = new MagicSet($reflection, $adapter);
+        $magicGet     = new MagicSet($reflection, $adapter);
 
         $this->assertSame('__set', $magicGet->getName());
         $this->assertCount(2, $magicGet->getParameters());

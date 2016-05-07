@@ -33,7 +33,7 @@ class MagicGet extends MagicMethodGenerator
 {
     /**
      * Constructor
-     * @param ReflectionClass $originalClass
+     * @param ReflectionClass                        $originalClass
      * @param \Zend\Code\Generator\PropertyGenerator $adapterProperty
      */
     public function __construct(ReflectionClass $originalClass, PropertyGenerator $adapterProperty)
