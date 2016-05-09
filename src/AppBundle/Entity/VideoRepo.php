@@ -18,9 +18,9 @@ class VideoRepo extends EntityRepository
     {
        $query=$this->getEntityManager()
            ->createQuery(
-               'SELECT p,c FROM AppBundle:Video p
-                JOIN p.album c
-                where p.album =:id'
+               'SELECT v,a FROM AppBundle:Video v
+                JOIN v.album a
+                where v.album =:id'
            )->setParameter('id',$productId);
 
         return $query->getResult();

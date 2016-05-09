@@ -3,11 +3,9 @@
 namespace AppBundle\Controller;
 
 
-use AppBundle\AppBundle;
 use AppBundle\Entity\Video;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-
 
 
 class VideoController extends Controller
@@ -20,16 +18,12 @@ class VideoController extends Controller
      */
     public function indexAction()
     {
-        $em=$this->getDoctrine()
+        $album = $this->getDoctrine()
             ->getRepository("AppBundle:Album")
             ->findAll();
 
 
-
-
-
-
-        return $this->render(':Videos:video.html.twig', array('name' => $em));
+        return $this->render(':Videos:video.html.twig', array('album' => $album));
     }
 
 
@@ -38,26 +32,25 @@ class VideoController extends Controller
      *
      *
      */
-        public function getContainer($slug)
-        {
-            $em=$this->getDoctrine()
-                ->getRepository("AppBundle:Video");
-            $results=$em->findByalbum($slug);
+    public function getContainer($slug)
+    {
 
-            $te3st1=$this->getDoctrine()
-                ->getRepository("AppBundle:Video")
+
+        $title = $this->getDoctrine()
+            ->getRepository("AppBundle:Video")
             ->VideoLeftJoin($slug);
 
 
 
-            
+        $album= $this->getDoctrine()
+            ->getRepository('AppBundle:Album')
+            ->find($slug);
 
 
 
-            return $this->render(':Videos:video.html.twig', array('name' => $results));
+        return $this->render(':Videos:albumVideo.html.twig', array('title' => $title,'album'=>$album));
 
 
-
-        }
+    }
 
 }

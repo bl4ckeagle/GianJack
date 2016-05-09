@@ -12,6 +12,7 @@
 
 </head>
 
+{% block masterbody %}
 <body>
 
 <div class="homebody">
@@ -89,10 +90,15 @@
 {% block javascripts %}
     <script src="{{ asset('bundles/framework/js/jquery-2.2.3.min.js') }}"></script>
     <script src="{{ asset('bundles/framework/js/bootstrap.js') }}"></script>
+    <script src="{{ asset('bundles/framework/js/reactjs/react.js') }}"></script>
+    <script src="{{ asset('bundles/framework/js/reactjs/react-dom.js') }}"></script>
+    <script src="{{ asset('bundles/framework/js/reactjs/browser.js') }}"></script>
+    <script src="{{ asset('bundles/framework/js/reactjs/marked.min.js') }}"> </script>
+
 
 {% endblock %}
 </body>
-
+{% endblock %}
 
 </html>
 

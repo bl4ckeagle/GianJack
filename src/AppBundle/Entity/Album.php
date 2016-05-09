@@ -37,10 +37,17 @@ class Album
 
 
     /**
+     * @var blob
+     * @ORM\Column(type="blob", nullable=false)
+     */
+    private $picture;
+
+    /**
      * Get albenID
      *
      * @return integer
      */
+
     public function getAlbenID()
     {
         return $this->albenID;
@@ -92,5 +99,29 @@ class Album
     public function getRelease()
     {
         return $this->release;
+    }
+
+    /**
+     * Set picture
+     *
+     * @param string $picture
+     *
+     * @return Album
+     */
+    public function setPicture($picture)
+    {
+        $this->picture = $picture;
+
+        return $this;
+    }
+
+    /**
+     * Get picture
+     *
+     * @return string
+     */
+    public function getPicture()
+    {
+        return $this->picture;
     }
 }
