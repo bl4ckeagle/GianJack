@@ -12,15 +12,16 @@ class VideoController extends Controller
 {
 
     /**
-     *
      * @return \Symfony\Component\HttpFoundation\Response
      * @Route("/videos",name="videos")
      */
     public function indexAction()
     {
-        $album = $this->getDoctrine()
+        $album = $this->getDoctrine()->getManager()
             ->getRepository("AppBundle:Album")
             ->findAll();
+
+        
 
 
         return $this->render(':Videos:video.html.twig', array('album' => $album));
@@ -41,14 +42,12 @@ class VideoController extends Controller
             ->VideoLeftJoin($slug);
 
 
-
-        $album= $this->getDoctrine()
+        $album = $this->getDoctrine()
             ->getRepository('AppBundle:Album')
             ->find($slug);
 
 
-
-        return $this->render(':Videos:albumVideo.html.twig', array('title' => $title,'album'=>$album));
+        return $this->render(':Videos:albumVideo.html.twig', array('title' => $title, 'album' => $album));
 
 
     }

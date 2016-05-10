@@ -20,6 +20,8 @@ class TourController extends Controller
             ->getRepository('AppBundle:Tour')
             ->findAll();
 
+
+
         if (!$tour){
             throw $this->createNotFoundException(
                 'Error occurred please call your administrator immediately');

@@ -37,16 +37,23 @@ class Album
 
 
     /**
-     * @var blob
-     * @ORM\Column(type="blob", nullable=false)
+     * @var string
+     * @ORM\Column(type="text",nullable=false)
+     *
      */
-    private $picture;
+    private $picturepath;
+
+
+
 
     /**
      * Get albenID
      *
      * @return integer
      */
+
+
+
 
     public function getAlbenID()
     {
@@ -100,28 +107,27 @@ class Album
     {
         return $this->release;
     }
-
     /**
-     * Set picture
+     * Set picturepath
      *
-     * @param string $picture
+     * @param string $picturepath
      *
      * @return Album
      */
-    public function setPicture($picture)
+    public function setPicturepath($picturepath)
     {
-        $this->picture = $picture;
+        $this->picturepath = $picturepath;
 
         return $this;
     }
 
     /**
-     * Get picture
+     * Get picturepath
      *
      * @return string
      */
-    public function getPicture()
+    public function getPicturepath()
     {
-        return $this->picture;
+        return $this->picturepath;
     }
 }
