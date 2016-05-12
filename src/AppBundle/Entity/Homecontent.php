@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Homecontent
@@ -25,6 +26,8 @@ class Homecontent
      * @var \DateTime
      *
      * @ORM\Column(name="date", type="datetime", nullable=false)
+     * @Assert\NotBlank()
+     * @Assert\DateTime()
      */
     private $date;
 
@@ -32,6 +35,9 @@ class Homecontent
      * @var string
      *
      * @ORM\Column(name="title", type="text", nullable=false)
+     * @Assert\NotBlank();
+     * @Assert\Length(min=5,max=256)
+     *
      */
     private $title;
 
@@ -39,6 +45,8 @@ class Homecontent
      * @var string
      *
      * @ORM\Column(name="content", type="text", nullable=false)
+     * @Assert\NotBlank()
+     * @Assert\Length(min=20,max=4096)
      */
     private $content;
 
@@ -46,6 +54,7 @@ class Homecontent
      * @var string
      *
      * @ORM\Column(name="picture_path", type="text", nullable=false)
+     * @Assert\NotBlank()
      */
     private $picturePath;
 

@@ -57,7 +57,7 @@ class Photos extends controller
     /**
      * @param $slug
      * @return \Symfony\Component\HttpFoundation\Response
-     * @Route("/photos/{slug}" ,name="album")
+     * @Route("/photos/{slug}" )
      */
 
     public function albumAction($slug)

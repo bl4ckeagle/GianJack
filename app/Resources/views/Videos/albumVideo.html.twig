@@ -5,16 +5,41 @@
 {% block contentmaster %}
     <div class="albumVideos">
 
-        <div class="jumbotron">
 
-            {{ dump() }}
+
+        <div class="container-fluid">
+            <div class="row">
+                <div class="videotitle">
+
+                    <h1>{{ videos.0.album.name }}</h1>
+                </div>
+                {% for vid in videos %}
+                    <div class="col-md-4">
+                        <div class="jumbotron">
+
+                            <h2>{{ vid.title }}</h2>
+                            <div class="embed-responsive embed-responsive-16by9">
+                                <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/{{ vid.link }}"></iframe>
+
+
+                            </div>
+
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
 
 
         </div>
 
 
+    </div>
+
+    <div class="jumbotron">
+
+        {{ dump() }}
 
 
-</div>
+    </div>
 
 {% endblock %}
