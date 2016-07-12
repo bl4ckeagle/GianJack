@@ -31,7 +31,7 @@ class ValidatorExtension extends AbstractExtension
         $metadata = $validator->getMetadataFor('Symfony\Component\Form\Form');
 
         // Register the form constraints in the validator programmatically.
-        // This functionality is required when using the Form component without
+        // This functionality is required when using the Forms component without
         // the DIC, where the XML file is loaded automatically. Thus the following
         // code must be kept synchronized with validation.xml
 

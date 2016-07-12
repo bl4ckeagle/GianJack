@@ -250,7 +250,7 @@ abstract class Client
     /**
      * Submits a form.
      *
-     * @param Form  $form   A Form instance
+     * @param Form  $form   A Forms instance
      * @param array $values An array of form field values
      *
      * @return Crawler

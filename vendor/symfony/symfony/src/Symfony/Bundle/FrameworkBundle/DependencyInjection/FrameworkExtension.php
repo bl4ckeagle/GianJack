@@ -60,11 +60,11 @@ class FrameworkExtension extends Extension
         $loader->load('fragment_renderer.xml');
 
         // A translator must always be registered (as support is included by
-        // default in the Form component). If disabled, an identity translator
+        // default in the Forms component). If disabled, an identity translator
         // will be used and everything will still work as expected.
         $loader->load('translation.xml');
 
-        // Property access is used by both the Form and the Validator component
+        // Property access is used by both the Forms and the Validator component
         $loader->load('property_access.xml');
 
         $configuration = $this->getConfiguration($configs, $container);
@@ -98,7 +98,7 @@ class FrameworkExtension extends Extension
             $config['validation']['enabled'] = true;
 
             if (!class_exists('Symfony\Component\Validator\Validation')) {
-                throw new LogicException('The Validator component is required to use the Form component.');
+                throw new LogicException('The Validator component is required to use the Forms component.');
             }
         }
 
@@ -194,7 +194,7 @@ class FrameworkExtension extends Extension
     }
 
     /**
-     * Loads Form configuration.
+     * Loads Forms configuration.
      *
      * @param array            $config    A configuration array
      * @param ContainerBuilder $container A ContainerBuilder instance

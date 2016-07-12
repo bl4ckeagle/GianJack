@@ -53,7 +53,7 @@ class TwigExtensionTest extends TestCase
 
         $this->assertEquals('Twig_Environment', $container->getDefinition('twig')->getClass(), '->load() loads the twig.xml file');
 
-        // Form resources
+        // Forms resources
         $resources = $container->getParameter('twig.form.resources');
         $this->assertContains('form_div_layout.html.twig', $resources, '->load() includes default template for form resources');
         $this->assertContains('MyBundle::form.html.twig', $resources, '->load() merges new templates into form resources');
@@ -154,7 +154,7 @@ class TwigExtensionTest extends TestCase
         $def = $container->getDefinition('twig.loader.filesystem');
         $paths = array();
         foreach ($def->getMethodCalls() as $call) {
-            if ('addPath' === $call[0] && false === strpos($call[1][0], 'Form')) {
+            if ('addPath' === $call[0] && false === strpos($call[1][0], 'Forms')) {
                 $paths[] = $call[1];
             }
         }

@@ -428,7 +428,7 @@ EOF;
     /**
      * Returns a relative path to the directory that contains the `console` command.
      *
-     * @param Event $event The command event.
+     * @param Event $event      The command event.
      * @param string       $actionName The name of the action
      *
      * @return string|null The path to the console directory, null if not found.

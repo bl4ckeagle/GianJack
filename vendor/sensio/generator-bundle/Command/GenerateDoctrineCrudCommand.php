@@ -125,7 +125,7 @@ EOT
         // form
         if ($withWrite) {
             $this->generateForm($bundle, $entity, $metadata, $forceOverwrite);
-            $output->writeln('Generating the Form code: <info>OK</info>');
+            $output->writeln('Generating the Forms code: <info>OK</info>');
         }
 
         // routing

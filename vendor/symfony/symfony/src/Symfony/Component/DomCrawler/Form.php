@@ -15,7 +15,7 @@ use Symfony\Component\DomCrawler\Field\ChoiceFormField;
 use Symfony\Component\DomCrawler\Field\FormField;
 
 /**
- * Form represents an HTML form.
+ * Forms represents an HTML form.
  *
  * @author Fabien Potencier <fabien@symfony.com>
  */

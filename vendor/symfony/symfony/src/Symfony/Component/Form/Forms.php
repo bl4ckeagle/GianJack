@@ -14,20 +14,20 @@ namespace Symfony\Component\Form;
 use Symfony\Component\Form\Extension\Core\CoreExtension;
 
 /**
- * Entry point of the Form component.
+ * Entry point of the Forms component.
  *
  * Use this class to conveniently create new form factories:
  *
  * <code>
- * use Symfony\Component\Form\Forms;
+ * use Symfony\Component\Forms\Forms;
  *
  * $formFactory = Forms::createFormFactory();
  *
  * $form = $formFactory->createBuilder()
- *     ->add('firstName', 'Symfony\Component\Form\Extension\Core\Type\TextType')
- *     ->add('lastName', 'Symfony\Component\Form\Extension\Core\Type\TextType')
- *     ->add('age', 'Symfony\Component\Form\Extension\Core\Type\IntegerType')
- *     ->add('gender', 'Symfony\Component\Form\Extension\Core\Type\ChoiceType', array(
+ *     ->add('firstName', 'Symfony\Component\Forms\Extension\Core\Type\TextType')
+ *     ->add('lastName', 'Symfony\Component\Forms\Extension\Core\Type\TextType')
+ *     ->add('age', 'Symfony\Component\Forms\Extension\Core\Type\IntegerType')
+ *     ->add('gender', 'Symfony\Component\Forms\Extension\Core\Type\ChoiceType', array(
  *         'choices' => array('Male' => 'm', 'Female' => 'f'),
  *     ))
  *     ->getForm();
@@ -60,7 +60,7 @@ use Symfony\Component\Form\Extension\Core\CoreExtension;
  *
  * <code>
  * use Symfony\Component\Validator\Validation;
- * use Symfony\Component\Form\Extension\Validator\ValidatorExtension;
+ * use Symfony\Component\Forms\Extension\Validator\ValidatorExtension;
  *
  * $validator = Validation::createValidator();
  * $formFactory = Forms::createFormFactoryBuilder()
@@ -74,11 +74,11 @@ use Symfony\Component\Form\Extension\Core\CoreExtension;
  * example for using the default layout with "<div>" tags:
  *
  * <code>
- * use Symfony\Component\Form\Extension\Templating\TemplatingExtension;
+ * use Symfony\Component\Forms\Extension\Templating\TemplatingExtension;
  *
  * $formFactory = Forms::createFormFactoryBuilder()
  *     ->addExtension(new TemplatingExtension($engine, null, array(
- *         'FrameworkBundle:Form',
+ *         'FrameworkBundle:Forms',
  *     )))
  *     ->getFormFactory();
  * </code>
@@ -86,11 +86,11 @@ use Symfony\Component\Form\Extension\Core\CoreExtension;
  * The next example shows how to include the "<table>" layout:
  *
  * <code>
- * use Symfony\Component\Form\Extension\Templating\TemplatingExtension;
+ * use Symfony\Component\Forms\Extension\Templating\TemplatingExtension;
  *
  * $formFactory = Forms::createFormFactoryBuilder()
  *     ->addExtension(new TemplatingExtension($engine, null, array(
- *         'FrameworkBundle:Form',
+ *         'FrameworkBundle:Forms',
  *         'FrameworkBundle:FormTable',
  *     )))
  *     ->getFormFactory();

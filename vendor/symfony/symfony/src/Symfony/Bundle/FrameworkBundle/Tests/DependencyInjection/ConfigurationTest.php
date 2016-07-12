@@ -30,14 +30,14 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
     public function testDoNoDuplicateDefaultFormResources()
     {
         $input = array('templating' => array(
-            'form' => array('resources' => array('FrameworkBundle:Form')),
+            'form' => array('resources' => array('FrameworkBundle:Forms')),
             'engines' => array('php'),
         ));
 
         $processor = new Processor();
         $config = $processor->processConfiguration(new Configuration(true), array($input));
 
-        $this->assertEquals(array('FrameworkBundle:Form'), $config['templating']['form']['resources']);
+        $this->assertEquals(array('FrameworkBundle:Forms'), $config['templating']['form']['resources']);
     }
 
     /**

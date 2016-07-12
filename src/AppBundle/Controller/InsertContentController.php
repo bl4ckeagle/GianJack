@@ -16,7 +16,7 @@ class InsertContentController extends Controller
      * 
      * @param $request
      * @return \Symfony\Component\HttpFoundation\Response
-     * @Route("/content/insert")
+     * @Route("giantcontent/content/insert")
      * 
      */
     public function indexAction(Request $request)
@@ -56,7 +56,7 @@ class InsertContentController extends Controller
 
             return $this->redirectToRoute('worked check index');
         }
-        return $this->render('Form/ContentForm.html.twig', array('form' => $form->createView()));
+        return $this->render('Forms/ContentForm.html.twig', array('form' => $form->createView()));
 
 
     }

@@ -11,19 +11,14 @@
 
     {% for content in homecontent %}
 
-
-
         <div class="homecontent">
             <div class="jumbotron">
-        <img class="img" src="{{ asset('bundles/framework/images/News/') }}{{ content.picturePath}}" > </img>
+                <img class="img" src="{{ asset('bundles/framework/images/News/') }}{{ content.picturePath }}"> </img>
 
                 <h1>{{ content.title }}</h1>
                 <p>{{ content.content }}</p>
                 <small class="text-right">{{ content.date|date('d.m.Y') }}</small>
             </div>
-    </div>
-    
+        </div>
     {% endfor %}
-
-
 {% endblock %}

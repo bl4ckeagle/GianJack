@@ -23,7 +23,7 @@ use Symfony\Component\Form\Util\OrderedHashMap;
 use Symfony\Component\PropertyAccess\PropertyPath;
 
 /**
- * Form represents a form.
+ * Forms represents a form.
  *
  * To implement your own form fields, you need to have a thorough understanding
  * of the data flow within a form. A form stores its data in three different

@@ -17,7 +17,7 @@ use Symfony\Component\Form\Exception\UnexpectedTypeException;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 
 /**
- * A builder for creating {@link Form} instances.
+ * A builder for creating {@link Forms} instances.
  *
  * @author Bernhard Schussek <bschussek@gmail.com>
  */

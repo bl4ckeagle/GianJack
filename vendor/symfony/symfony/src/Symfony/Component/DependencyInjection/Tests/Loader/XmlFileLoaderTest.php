@@ -84,6 +84,19 @@ class XmlFileLoaderTest extends \PHPUnit_Framework_TestCase
         $this->assertInstanceOf('DOMDocument', $xml, '->parseFileToDOM() returns an SimpleXMLElement object');
     }
 
+    public function testLoadWithExternalEntitiesDisabled()
+    {
+        $disableEntities = libxml_disable_entity_loader(true);
+
+        $containerBuilder = new ContainerBuilder();
+        $loader = new XmlFileLoader($containerBuilder, new FileLocator(self::$fixturesPath.'/xml'));
+        $loader->load('services2.xml');
+
+        libxml_disable_entity_loader($disableEntities);
+
+        $this->assertTrue(count($containerBuilder->getParameterBag()->all()) > 0, 'Parameters can be read from the config file.');
+    }
+
     public function testLoadParameters()
     {
         $container = new ContainerBuilder();
@@ -200,7 +213,7 @@ class XmlFileLoaderTest extends \PHPUnit_Framework_TestCase
             $service = $container->getDefinition($id);
         }
         $this->assertEquals('BizClass', $service->getClass(), '->load() uses the same configuration as for the anonymous ones');
-        $this->assertFalse($service->isPublic());
+        $this->assertTrue($service->isPublic());
 
         // anonymous services are shared when using decoration definitions
         $container->compile();
