@@ -56,7 +56,7 @@ class InsertContentController extends Controller
 
             return $this->redirectToRoute('worked check index');
         }
-        return $this->render('Forms/ContentForm.html.twig', array('form' => $form->createView()));
+        return $this->render('Form/ContentForm.html.twig', array('form' => $form->createView()));
 
 
     }

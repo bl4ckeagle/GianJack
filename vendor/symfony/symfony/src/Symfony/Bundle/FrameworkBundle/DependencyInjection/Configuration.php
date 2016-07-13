@@ -328,11 +328,11 @@ class Configuration implements ConfigurationInterface
                             ->children()
                                 ->arrayNode('resources')
                                     ->addDefaultChildrenIfNoneSet()
-                                    ->prototype('scalar')->defaultValue('FrameworkBundle:Forms')->end()
+                                    ->prototype('scalar')->defaultValue('FrameworkBundle:Form')->end()
                                     ->validate()
-                                        ->ifTrue(function ($v) {return !in_array('FrameworkBundle:Forms', $v); })
+                                        ->ifTrue(function ($v) {return !in_array('FrameworkBundle:Form', $v); })
                                         ->then(function ($v) {
-                                            return array_merge(array('FrameworkBundle:Forms'), $v);
+                                            return array_merge(array('FrameworkBundle:Form'), $v);
                                         })
                                     ->end()
                                 ->end()

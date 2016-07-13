@@ -240,11 +240,11 @@ class ViolationMapper implements ViolationMapperInterface
             $scope = $scope->get($it->current());
 
             if ($scope->getConfig()->getInheritData()) {
-                // Forms inherits its parent data
+                // Form inherits its parent data
                 // Cut the piece out of the property path and proceed
                 $propertyPathBuilder->remove($i);
             } elseif (!$scope->getConfig()->getMapped()) {
-                // Forms is not mapped
+                // Form is not mapped
                 // Set the form as new origin and strip everything
                 // we have so far in the path
                 $origin = $scope;

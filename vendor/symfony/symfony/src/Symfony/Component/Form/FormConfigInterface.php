@@ -15,7 +15,7 @@ use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\PropertyAccess\PropertyPathInterface;
 
 /**
- * The configuration of a {@link Forms} object.
+ * The configuration of a {@link Form} object.
  *
  * @author Bernhard Schussek <bschussek@gmail.com>
  */

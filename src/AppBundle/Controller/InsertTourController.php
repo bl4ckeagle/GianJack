@@ -4,11 +4,19 @@ namespace AppBundle\Controller;
 
 use AppBundle\Entity\Tour;
 use AppBundle\Form\TourContentType;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
 class InsertTourController extends Controller
 {
+
+    /**
+     * @param $request
+     * @return  \Symfony\Component\HttpFoundation\Response
+     * @Route("giantcontent/tour/insert",name="InsertTour")
+     */
+
     public function indexAction(Request $request)
     {
         
@@ -19,10 +27,6 @@ class InsertTourController extends Controller
         if ($form->isSubmitted() && $form->isValid())
         {
 
-            $country=$content->getCountry();
-            $date=$content->getDate();
-            $location=$content->getLocation();
-            $ticketLink=$content->getTicketLink();
 
             $em =$this->getDoctrine()
             ->getManager();
@@ -33,6 +37,6 @@ class InsertTourController extends Controller
 
         }
 
-        return $this->render('Forms/TourForm.html.twig', array('form' => $form->createView()));
+        return $this->render('Form/TourForm.html.twig', array('form' => $form->createView()));
     }
 }

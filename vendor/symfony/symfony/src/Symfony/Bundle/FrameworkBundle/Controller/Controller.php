@@ -270,7 +270,7 @@ abstract class Controller implements ContainerAwareInterface
     }
 
     /**
-     * Creates and returns a Forms instance from the type of the form.
+     * Creates and returns a Form instance from the type of the form.
      *
      * @param string $type    The fully qualified class name of the form type
      * @param mixed  $data    The initial data for the form

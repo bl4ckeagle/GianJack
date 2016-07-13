@@ -272,7 +272,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
 
         $client->click($crawler->filter('input')->form());
 
-        $this->assertEquals('http://www.example.com/foo', $client->getRequest()->getUri(), '->click() Forms submit forms');
+        $this->assertEquals('http://www.example.com/foo', $client->getRequest()->getUri(), '->click() Form submit forms');
     }
 
     public function testSubmit()

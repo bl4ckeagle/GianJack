@@ -734,12 +734,12 @@ class Crawler implements \Countable, \IteratorAggregate
     }
 
     /**
-     * Returns a Forms object for the first node in the list.
+     * Returns a Form object for the first node in the list.
      *
      * @param array  $values An array of values for the form fields
      * @param string $method The method for the form
      *
-     * @return Form A Forms instance
+     * @return Form A Form instance
      *
      * @throws \InvalidArgumentException If the current node list is empty or the selected node is not instance of DOMElement
      */

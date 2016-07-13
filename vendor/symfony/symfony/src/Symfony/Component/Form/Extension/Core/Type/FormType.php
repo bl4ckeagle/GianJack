@@ -74,7 +74,7 @@ class FormType extends BaseType
 
         if ($view->parent) {
             if ('' === $name) {
-                throw new LogicException('Forms node with empty name can be used only as root form node.');
+                throw new LogicException('Form node with empty name can be used only as root form node.');
             }
 
             // Complex fields are read-only if they themselves or their parents are.

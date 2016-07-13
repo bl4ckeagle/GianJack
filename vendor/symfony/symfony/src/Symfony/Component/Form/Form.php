@@ -23,7 +23,7 @@ use Symfony\Component\Form\Util\OrderedHashMap;
 use Symfony\Component\PropertyAccess\PropertyPath;
 
 /**
- * Forms represents a form.
+ * Form represents a form.
  *
  * To implement your own form fields, you need to have a thorough understanding
  * of the data flow within a form. A form stores its data in three different
@@ -581,7 +581,7 @@ class Form implements \IteratorAggregate, FormInterface
                 $this->extraData = $submittedData;
             }
 
-            // Forms that inherit their parents' data also are not processed,
+            // Form that inherit their parents' data also are not processed,
             // because then it would be too difficult to merge the changes in
             // the child and the parent form. Instead, the parent form also takes
             // changes in the grandchildren (i.e. children of the form that inherits
@@ -638,7 +638,7 @@ class Form implements \IteratorAggregate, FormInterface
 
             // If $viewData was not yet set, set it to $submittedData so that
             // the erroneous data is accessible on the form.
-            // Forms that inherit data never set any data, because the getters
+            // Form that inherit data never set any data, because the getters
             // forward to the parent form's getters anyway.
             if (null === $viewData && !$this->config->getInheritData()) {
                 $viewData = $submittedData;
