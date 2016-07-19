@@ -12,11 +12,11 @@ class VideoContentType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
 
-        // album is entity from Album.php entity class
+        // album is entity from Alben.php entity class
         $builder
             ->add('title')
             ->add('link')
-            ->add('album', EntityType::class, array('class' => 'AppBundle\Entity\Album', 'choice_label' => 'name'));
+            ->add('album', EntityType::class, array('class' => 'AppBundle\Entity\Alben', 'choice_label' => 'name'));
 
     }
 

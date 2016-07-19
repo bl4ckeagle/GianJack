@@ -4,18 +4,14 @@ namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
-
+/**
+ * Video
+ *
+ * @ORM\Table(name="video", indexes={@ORM\Index(name="IDX_7CC7DA2C39986E43", columns={"album"})})
+ * @ORM\Entity(repositoryClass="AppBundle\Entity\VideoRepo")
+ */
 class Video
 {
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="video_id", type="integer", nullable=false)
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
-     */
-    private $videoId;
-
     /**
      * @var string
      *
@@ -31,44 +27,25 @@ class Video
     private $title;
 
     /**
-     * @var \Contentuser
+     * @var integer
      *
-     * @ORM\ManyToOne(targetEntity="Album")
+     * @ORM\Column(name="video_id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $videoId;
+
+    /**
+     * @var \AppBundle\Entity\Alben
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Alben")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="album", referencedColumnName="alben_id")
      * })
      */
     private $album;
 
-   
-
     /**
-     * Get videoId
-     *
-     * @return integer
-     */
-    public function getVideoId()
-    {
-        return $this->videoId;
-    }
-
-    /**
-     * Set link
-     *
-     * @param string $link
-     *
-     * @return Video
-     */
-    public function setLink($link)
-    {
-        $this->link = $link;
-
-        return $this;
-    }
-
-    /**
-     * Get link
-     *
      * @return string
      */
     public function getLink()
@@ -77,22 +54,14 @@ class Video
     }
 
     /**
-     * Set title
-     *
-     * @param string $title
-     *
-     * @return Video
+     * @param string $link
      */
-    public function setTitle($title)
+    public function setLink($link)
     {
-        $this->title = $title;
-
-        return $this;
+        $this->link = $link;
     }
 
     /**
-     * Get title
-     *
      * @return string
      */
     public function getTitle()
@@ -101,26 +70,47 @@ class Video
     }
 
     /**
-     * Set album
-     *
-     * @param \AppBundle\Entity\Album $album
-     *
-     * @return Video
+     * @param string $title
      */
-    public function setAlbum(\AppBundle\Entity\Album $album = null)
+    public function setTitle($title)
     {
-        $this->album = $album;
-
-        return $this;
+        $this->title = $title;
     }
 
     /**
-     * Get album
-     *
-     * @return \AppBundle\Entity\Album
+     * @return int
+     */
+    public function getVideoId()
+    {
+        return $this->videoId;
+    }
+
+    /**
+     * @param int $videoId
+     */
+    public function setVideoId($videoId)
+    {
+        $this->videoId = $videoId;
+    }
+
+    /**
+     * @return Alben
      */
     public function getAlbum()
     {
         return $this->album;
     }
+
+    /**
+     * @param Alben $album
+     */
+    public function setAlbum($album)
+    {
+        $this->album = $album;
+    }
+
+
+
+
 }
+

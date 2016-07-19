@@ -8,19 +8,10 @@ use Doctrine\ORM\Mapping as ORM;
  * Newsletter
  *
  * @ORM\Table(name="newsletter")
- * @ORM\Entity()
+ * @ORM\Entity
  */
 class Newsletter
 {
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="newsletter_id", type="integer", nullable=false)
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
-     */
-    private $newsletterId;
-
     /**
      * @var string
      *
@@ -35,35 +26,16 @@ class Newsletter
      */
     private $activated;
 
-
-
     /**
-     * Get newsletterId
+     * @var integer
      *
-     * @return integer
+     * @ORM\Column(name="newsletter_id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    public function getNewsletterId()
-    {
-        return $this->newsletterId;
-    }
+    private $newsletterId;
 
     /**
-     * Set email
-     *
-     * @param string $email
-     *
-     * @return Newsletter
-     */
-    public function setEmail($email)
-    {
-        $this->email = $email;
-    
-        return $this;
-    }
-
-    /**
-     * Get email
-     *
      * @return string
      */
     public function getEmail()
@@ -72,26 +44,47 @@ class Newsletter
     }
 
     /**
-     * Set activated
-     *
+     * @param string $email
+     */
+    public function setEmail($email)
+    {
+        $this->email = $email;
+    }
+
+    /**
+     * @return boolean
+     */
+    public function isActivated()
+    {
+        return $this->activated;
+    }
+
+    /**
      * @param boolean $activated
-     *
-     * @return Newsletter
      */
     public function setActivated($activated)
     {
         $this->activated = $activated;
-    
-        return $this;
     }
 
     /**
-     * Get activated
-     *
-     * @return boolean
+     * @return int
      */
-    public function getActivated()
+    public function getNewsletterId()
     {
-        return $this->activated;
+        return $this->newsletterId;
     }
+
+    /**
+     * @param int $newsletterId
+     */
+    public function setNewsletterId($newsletterId)
+    {
+        $this->newsletterId = $newsletterId;
+    }
+
+
+
+
 }
+

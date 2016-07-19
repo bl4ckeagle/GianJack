@@ -8,6 +8,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 
+
 class VideoController extends Controller
 {
 
@@ -18,7 +19,7 @@ class VideoController extends Controller
     public function indexAction()
     {
         $album = $this->getDoctrine()->getManager()
-            ->getRepository("AppBundle:Album")
+            ->getRepository("AppBundle:Alben")
             ->findAll();
 
         

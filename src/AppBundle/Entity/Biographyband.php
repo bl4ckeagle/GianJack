@@ -8,19 +8,10 @@ use Doctrine\ORM\Mapping as ORM;
  * Biographyband
  *
  * @ORM\Table(name="biographyband")
- * @ORM\Entity()
+ * @ORM\Entity
  */
 class Biographyband
 {
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="biography_band_id", type="integer", nullable=false)
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
-     */
-    private $biographyBandId;
-
     /**
      * @var string
      *
@@ -35,35 +26,16 @@ class Biographyband
      */
     private $title;
 
-
-
     /**
-     * Get biographyBandId
+     * @var integer
      *
-     * @return integer
+     * @ORM\Column(name="biography_band_id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    public function getBiographyBandId()
-    {
-        return $this->biographyBandId;
-    }
+    private $biographyBandId;
 
     /**
-     * Set content
-     *
-     * @param string $content
-     *
-     * @return Biographyband
-     */
-    public function setContent($content)
-    {
-        $this->content = $content;
-    
-        return $this;
-    }
-
-    /**
-     * Get content
-     *
      * @return string
      */
     public function getContent()
@@ -72,26 +44,47 @@ class Biographyband
     }
 
     /**
-     * Set title
-     *
-     * @param string $title
-     *
-     * @return Biographyband
+     * @param string $content
      */
-    public function setTitle($title)
+    public function setContent($content)
     {
-        $this->title = $title;
-    
-        return $this;
+        $this->content = $content;
     }
 
     /**
-     * Get title
-     *
      * @return string
      */
     public function getTitle()
     {
         return $this->title;
     }
+
+    /**
+     * @param string $title
+     */
+    public function setTitle($title)
+    {
+        $this->title = $title;
+    }
+
+    /**
+     * @return int
+     */
+    public function getBiographyBandId()
+    {
+        return $this->biographyBandId;
+    }
+
+    /**
+     * @param int $biographyBandId
+     */
+    public function setBiographyBandId($biographyBandId)
+    {
+        $this->biographyBandId = $biographyBandId;
+    }
+
+
+
+
 }
+

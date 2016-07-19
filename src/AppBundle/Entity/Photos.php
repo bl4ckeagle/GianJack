@@ -8,19 +8,10 @@ use Doctrine\ORM\Mapping as ORM;
  * Photos
  *
  * @ORM\Table(name="photos")
- * @ORM\Entity()
+ * @ORM\Entity
  */
 class Photos
 {
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="photos_id", type="integer", nullable=false)
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
-     */
-    private $photosId;
-
     /**
      * @var string
      *
@@ -42,35 +33,16 @@ class Photos
      */
     private $location;
 
-
-
     /**
-     * Get photosId
+     * @var integer
      *
-     * @return integer
+     * @ORM\Column(name="photos_id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    public function getPhotosId()
-    {
-        return $this->photosId;
-    }
+    private $photosId;
 
     /**
-     * Set name
-     *
-     * @param string $name
-     *
-     * @return Photos
-     */
-    public function setName($name)
-    {
-        $this->name = $name;
-    
-        return $this;
-    }
-
-    /**
-     * Get name
-     *
      * @return string
      */
     public function getName()
@@ -79,22 +51,14 @@ class Photos
     }
 
     /**
-     * Set year
-     *
-     * @param \DateTime $year
-     *
-     * @return Photos
+     * @param string $name
      */
-    public function setYear($year)
+    public function setName($name)
     {
-        $this->year = $year;
-    
-        return $this;
+        $this->name = $name;
     }
 
     /**
-     * Get year
-     *
      * @return \DateTime
      */
     public function getYear()
@@ -103,26 +67,47 @@ class Photos
     }
 
     /**
-     * Set location
-     *
-     * @param string $location
-     *
-     * @return Photos
+     * @param \DateTime $year
      */
-    public function setLocation($location)
+    public function setYear($year)
     {
-        $this->location = $location;
-    
-        return $this;
+        $this->year = $year;
     }
 
     /**
-     * Get location
-     *
      * @return string
      */
     public function getLocation()
     {
         return $this->location;
     }
+
+    /**
+     * @param string $location
+     */
+    public function setLocation($location)
+    {
+        $this->location = $location;
+    }
+
+    /**
+     * @return int
+     */
+    public function getPhotosId()
+    {
+        return $this->photosId;
+    }
+
+    /**
+     * @param int $photosId
+     */
+    public function setPhotosId($photosId)
+    {
+        $this->photosId = $photosId;
+    }
+
+
+
+
 }
+

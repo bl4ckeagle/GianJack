@@ -3,23 +3,15 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+
 /**
  * Homecontent
  *
  * @ORM\Table(name="homecontent", indexes={@ORM\Index(name="id_idx", columns={"author_id"})})
- * @ORM\Entity()
+ * @ORM\Entity
  */
 class Homecontent
 {
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="home_id", type="integer", nullable=false)
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
-     */
-    private $homeId;
-
     /**
      * @var \DateTime
      *
@@ -31,7 +23,6 @@ class Homecontent
      * @var string
      *
      * @ORM\Column(name="title", type="text", nullable=false)
-     *
      */
     private $title;
 
@@ -50,44 +41,25 @@ class Homecontent
     private $picturePath;
 
     /**
-     * @var \Contentuser
+     * @var integer
      *
-     * @ORM\ManyToOne(targetEntity="Contentuser")
+     * @ORM\Column(name="home_id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $homeId;
+
+    /**
+     * @var \AppBundle\Entity\Contentuser
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Contentuser")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="author_id", referencedColumnName="content_user_id")
      * })
      */
     private $author;
 
-
-
     /**
-     * Get homeId
-     *
-     * @return integer
-     */
-    public function getHomeId()
-    {
-        return $this->homeId;
-    }
-
-    /**
-     * Set date
-     *
-     * @param \DateTime $date
-     *
-     * @return Homecontent
-     */
-    public function setDate($date)
-    {
-        $this->date = $date;
-    
-        return $this;
-    }
-
-    /**
-     * Get date
-     *
      * @return \DateTime
      */
     public function getDate()
@@ -96,22 +68,14 @@ class Homecontent
     }
 
     /**
-     * Set title
-     *
-     * @param string $title
-     *
-     * @return Homecontent
+     * @param \DateTime $date
      */
-    public function setTitle($title)
+    public function setDate($date)
     {
-        $this->title = $title;
-    
-        return $this;
+        $this->date = $date;
     }
 
     /**
-     * Get title
-     *
      * @return string
      */
     public function getTitle()
@@ -120,22 +84,14 @@ class Homecontent
     }
 
     /**
-     * Set content
-     *
-     * @param string $content
-     *
-     * @return Homecontent
+     * @param string $title
      */
-    public function setContent($content)
+    public function setTitle($title)
     {
-        $this->content = $content;
-    
-        return $this;
+        $this->title = $title;
     }
 
     /**
-     * Get content
-     *
      * @return string
      */
     public function getContent()
@@ -144,22 +100,14 @@ class Homecontent
     }
 
     /**
-     * Set picturePath
-     *
-     * @param string $picturePath
-     *
-     * @return Homecontent
+     * @param string $content
      */
-    public function setPicturePath($picturePath)
+    public function setContent($content)
     {
-        $this->picturePath = $picturePath;
-    
-        return $this;
+        $this->content = $content;
     }
 
     /**
-     * Get picturePath
-     *
      * @return string
      */
     public function getPicturePath()
@@ -168,26 +116,47 @@ class Homecontent
     }
 
     /**
-     * Set author
-     *
-     * @param \AppBundle\Entity\Contentuser $author
-     *
-     * @return Homecontent
+     * @param string $picturePath
      */
-    public function setAuthor(\AppBundle\Entity\Contentuser $author = null)
+    public function setPicturePath($picturePath)
     {
-        $this->author = $author;
-    
-        return $this;
+        $this->picturePath = $picturePath;
     }
 
     /**
-     * Get author
-     *
-     * @return \AppBundle\Entity\Contentuser
+     * @return int
+     */
+    public function getHomeId()
+    {
+        return $this->homeId;
+    }
+
+    /**
+     * @param int $homeId
+     */
+    public function setHomeId($homeId)
+    {
+        $this->homeId = $homeId;
+    }
+
+    /**
+     * @return Contentuser
      */
     public function getAuthor()
     {
         return $this->author;
     }
+
+    /**
+     * @param Contentuser $author
+     */
+    public function setAuthor($author)
+    {
+        $this->author = $author;
+    }
+
+
+
+
 }
+

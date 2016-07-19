@@ -8,19 +8,10 @@ use Doctrine\ORM\Mapping as ORM;
  * Tour
  *
  * @ORM\Table(name="tour")
- * @ORM\Entity()
+ * @ORM\Entity
  */
 class Tour
 {
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="tour_id", type="integer", nullable=false)
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
-     */
-    private $tourId;
-
     /**
      * @var string
      *
@@ -56,35 +47,16 @@ class Tour
      */
     private $ticketLink;
 
-
-
     /**
-     * Get tourId
+     * @var integer
      *
-     * @return integer
+     * @ORM\Column(name="tour_id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    public function getTourId()
-    {
-        return $this->tourId;
-    }
+    private $tourId;
 
     /**
-     * Set location
-     *
-     * @param string $location
-     *
-     * @return Tour
-     */
-    public function setLocation($location)
-    {
-        $this->location = $location;
-    
-        return $this;
-    }
-
-    /**
-     * Get location
-     *
      * @return string
      */
     public function getLocation()
@@ -93,22 +65,14 @@ class Tour
     }
 
     /**
-     * Set date
-     *
-     * @param \DateTime $date
-     *
-     * @return Tour
+     * @param string $location
      */
-    public function setDate($date)
+    public function setLocation($location)
     {
-        $this->date = $date;
-    
-        return $this;
+        $this->location = $location;
     }
 
     /**
-     * Get date
-     *
      * @return \DateTime
      */
     public function getDate()
@@ -117,22 +81,14 @@ class Tour
     }
 
     /**
-     * Set country
-     *
-     * @param string $country
-     *
-     * @return Tour
+     * @param \DateTime $date
      */
-    public function setCountry($country)
+    public function setDate($date)
     {
-        $this->country = $country;
-    
-        return $this;
+        $this->date = $date;
     }
 
     /**
-     * Get country
-     *
      * @return string
      */
     public function getCountry()
@@ -141,22 +97,14 @@ class Tour
     }
 
     /**
-     * Set locationLink
-     *
-     * @param string $locationLink
-     *
-     * @return Tour
+     * @param string $country
      */
-    public function setLocationLink($locationLink)
+    public function setCountry($country)
     {
-        $this->locationLink = $locationLink;
-    
-        return $this;
+        $this->country = $country;
     }
 
     /**
-     * Get locationLink
-     *
      * @return string
      */
     public function getLocationLink()
@@ -165,26 +113,47 @@ class Tour
     }
 
     /**
-     * Set ticketLink
-     *
-     * @param string $ticketLink
-     *
-     * @return Tour
+     * @param string $locationLink
      */
-    public function setTicketLink($ticketLink)
+    public function setLocationLink($locationLink)
     {
-        $this->ticketLink = $ticketLink;
-    
-        return $this;
+        $this->locationLink = $locationLink;
     }
 
     /**
-     * Get ticketLink
-     *
      * @return string
      */
     public function getTicketLink()
     {
         return $this->ticketLink;
     }
+
+    /**
+     * @param string $ticketLink
+     */
+    public function setTicketLink($ticketLink)
+    {
+        $this->ticketLink = $ticketLink;
+    }
+
+    /**
+     * @return int
+     */
+    public function getTourId()
+    {
+        return $this->tourId;
+    }
+
+    /**
+     * @param int $tourId
+     */
+    public function setTourId($tourId)
+    {
+        $this->tourId = $tourId;
+    }
+
+
+
+
 }
+
