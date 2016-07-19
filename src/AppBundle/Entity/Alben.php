@@ -5,6 +5,8 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
+ *
+ * test
  * Alben
  *
  * @ORM\Table(name="alben")
