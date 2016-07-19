@@ -13,17 +13,17 @@ class InsertContentController extends Controller
 {
 
     /**
-     * 
+     *
      * @param $request
      * @return \Symfony\Component\HttpFoundation\Response
-     * @Route("giantcontent/content/insert")
-     * 
+     * @Route("giantcontent/content/insert",name="ContentInsert")
+     *
      */
     public function indexAction(Request $request)
     {
 
         $content = new Homecontent();
-        $form = $this->createForm(HomecontentType::class,$content);
+        $form = $this->createForm(HomecontentType::class, $content);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -33,18 +33,17 @@ class InsertContentController extends Controller
              */
 
             /*get date and save it in variable*/
-            $date=$content->getDate();
-            $dateformated=$date->format('Y_m_d');
-
+            $date = $content->getDate();
+            $dateformated = $date->format('Y_m_d');
 
 
             /*get picture*/
-            $file=$content->getPicturePath();
+            $file = $content->getPicturePath();
             /*creat filename*/
-            $filename=$content->getTitle().$dateformated.'.'.$file->guessExtension();
+            $filename = $content->getTitle() . $dateformated . '.' . $file->guessExtension();
             /* save to dir*/
-            $filedir=$this->container->getParameter('kernel.root_dir').'/../web/bundles/framework/images/News/';
-            $file->move($filedir,$filename);
+            $filedir = $this->container->getParameter('kernel.root_dir') . '/../web/bundles/framework/images/News/';
+            $file->move($filedir, $filename);
             /*setonlythefilename not the data */
             $content->setPicturePath($filename);
 
@@ -54,7 +53,10 @@ class InsertContentController extends Controller
             $em->persist($content);
             $em->flush();
 
-            return $this->redirectToRoute('worked check index');
+            $worked = "<p>worked</p>";
+
+            return $worked;
+
         }
         return $this->render('Form/ContentForm.html.twig', array('form' => $form->createView()));
 

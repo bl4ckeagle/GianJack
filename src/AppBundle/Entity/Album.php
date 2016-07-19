@@ -15,9 +15,9 @@ class Album
     /**
      * @var integer
      *
-     * @ORM\Column(type="integer", nullable=false)
+     * @ORM\Column(type="integer", nullable=false,name="alben_id")
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $albenID;
 
@@ -33,7 +33,7 @@ class Album
      * @var string
      * @ORM\Column(type="date", nullable=false)
      */
-    private $release;
+    private $releasedate;
 
 
     /**
@@ -87,13 +87,13 @@ class Album
     /**
      * Set release
      *
-     * @param \DateTime $release
+     * @param \DateTime $releasedate
      *
      * @return Album
      */
-    public function setRelease($release)
+    public function setReleasedate($releasedate)
     {
-        $this->release = $release;
+        $this->releasedate = $releasedate;
 
         return $this;
     }
@@ -103,9 +103,9 @@ class Album
      *
      * @return \DateTime
      */
-    public function getRelease()
+    public function getReleasedate()
     {
-        return $this->release;
+        return $this->releasedate;
     }
     /**
      * Set picturepath
