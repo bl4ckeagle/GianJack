@@ -19,17 +19,16 @@ class InsertTourController extends Controller
 
     public function indexAction(Request $request)
     {
-        
+
         $content = new Tour();
-        $form= $this->createForm(TourContentType::class,$content);
+        $form = $this->createForm(TourContentType::class, $content);
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid())
-        {
+        if ($form->isSubmitted() && $form->isValid()) {
 
 
-            $em =$this->getDoctrine()
-            ->getManager();
+            $em = $this->getDoctrine()
+                ->getManager();
             $em->persist($content);
             $em->flush();
             return $this->redirectToRoute("Worked check index");

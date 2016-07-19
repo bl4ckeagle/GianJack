@@ -24,8 +24,8 @@ class TourContentType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
 
-        $resolver->setDefaults(array(
-            'data_class' => 'AppBundle\Entity\Tour'
+        $resolver->setDefaults(
+            array('data_class' => 'AppBundle\Entity\Tour'
         ));
     }
 

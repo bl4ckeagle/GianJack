@@ -4,12 +4,7 @@ namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
-/**
- * Video
- *
- * @ORM\Table(name="video")
- * @ORM\Entity(repositoryClass="AppBundle\Entity\VideoRepo")
- */
+
 class Video
 {
     /**
