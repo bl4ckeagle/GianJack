@@ -2,7 +2,7 @@
 
 namespace AppBundle\Controller;
 
-use AppBundle\Entity\Alben;
+use AppBundle\Entity\Album;
 use AppBundle\Form\AlbumContentType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -21,7 +21,7 @@ class InsertAlbumController extends Controller
 
     public function indexAction(Request $request)
     {
-        $content = new Alben();
+        $content = new Album();
         $form = $this->createForm(AlbumContentType::class, $content);
         $form->handleRequest($request);
 

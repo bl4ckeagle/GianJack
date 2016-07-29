@@ -16,7 +16,7 @@ class VideoContentType extends AbstractType
         $builder
             ->add('title')
             ->add('link')
-            ->add('album', EntityType::class, array('class' => 'AppBundle\Entity\Alben', 'choice_label' => 'name'));
+            ->add('album', EntityType::class, array('class' => 'AppBundle\Entity\Album', 'choice_label' => 'name'));
 
     }
 

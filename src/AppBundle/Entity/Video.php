@@ -36,9 +36,9 @@ class Video
     private $videoId;
 
     /**
-     * @var \AppBundle\Entity\Alben
+     * @var \AppBundle\Entity\Album
      *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Alben")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Album")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="album", referencedColumnName="alben_id")
      * })
@@ -94,7 +94,7 @@ class Video
     }
 
     /**
-     * @return Alben
+     * @return Album
      */
     public function getAlbum()
     {
@@ -102,7 +102,7 @@ class Video
     }
 
     /**
-     * @param Alben $album
+     * @param Album $album
      */
     public function setAlbum($album)
     {

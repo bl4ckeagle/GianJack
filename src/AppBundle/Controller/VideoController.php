@@ -19,7 +19,7 @@ class VideoController extends Controller
     public function indexAction()
     {
         $album = $this->getDoctrine()->getManager()
-            ->getRepository("AppBundle:Alben")
+            ->getRepository("AppBundle:Album")
             ->findAll();
 
         

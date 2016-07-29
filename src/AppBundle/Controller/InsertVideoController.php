@@ -18,11 +18,37 @@ class InsertVideoController extends Controller
     public function indexAction(Request $request)
     {
 
+
+
         $content = new Video();
         $form = $this->createForm(VideoContentType::class, $content);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+
+            //get the youtube link
+            $youtubeLink = $content->getLink();
+            //check if the address is from youtube and have a video in it
+            if (strpos($youtubeLink, 'youtube') !== false && strpos($youtubeLink, '?v=') !== false) {
+                $videocode = explode("?v=", $youtubeLink);
+                if (empty($videocode[1]) !== true) {
+                    $content->setLink($videocode[1]);
+
+                } else {
+                    $youtubeError = "please provide the right and full youtube link";
+                    return $this->render('Form/VideoInsert.html.twig', array('form' => $form->createView(), "youtubeError" => $youtubeError, "worked" => ""));
+
+
+                }
+
+
+            } else {
+
+                $youtubeError = "please provide the right and full youtube link";
+                return $this->render('Form/VideoInsert.html.twig', array('form' => $form->createView(), "youtubeError" => "error", "worked" => ""));
+
+            }
 
             /*save to database */
             $em = $this->getDoctrine()
@@ -32,12 +58,12 @@ class InsertVideoController extends Controller
 
             $worked = "<p>worked</p>";
 
-            return $worked;
+            return $this->render('Form/VideoInsert.html.twig', array('form' => $form->createView(),"youtubeError" => "", "worked" => $worked));
 
 
         }
 
 
-        return $this->render('Form/VideoInsert.html.twig', array('form' => $form->createView()));
+        return $this->render('Form/VideoInsert.html.twig', array('form' => $form->createView(), "youtubeError" => "1","worked" => ""));
     }
 }
