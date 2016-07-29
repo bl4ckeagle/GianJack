@@ -1,0 +1,16 @@
+<?php
+        //Enter your code here, enjoy!
+
+$link0="youtube.com/watch?v=Q7y8oHI-W3M";
+
+
+if (strpos($link0, 'youtube')!== false&&strpos($link0, '?v=') !== false) {
+    echo 'true';
+    $link1 = explode("?v=",$link0);
+echo $link1[1];
+    
+}
+
+
+
+?>
