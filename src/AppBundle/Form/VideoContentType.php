@@ -4,6 +4,8 @@ namespace AppBundle\Form;
 
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ButtonType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -16,7 +18,10 @@ class VideoContentType extends AbstractType
         $builder
             ->add('title')
             ->add('link')
-            ->add('album', EntityType::class, array('class' => 'AppBundle\Entity\Album', 'choice_label' => 'name'));
+            ->add('album', EntityType::class, array('class' => 'AppBundle\Entity\Album', 'choice_label' => 'name'))
+            ->add('save',SubmitType::class,array(
+                'attr' => array('class' => 'save')));
+
 
     }
 

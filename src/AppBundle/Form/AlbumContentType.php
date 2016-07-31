@@ -15,7 +15,9 @@ class AlbumContentType extends AbstractType
         $builder
             ->add('name')
             ->add('picturepath', FileType::class, array('label' => 'Picuture'))
-            ->add('releasedate', DateType::class);
+            ->add('releasedate', DateType::class)
+            ->add('save',SubmitType::class,array(
+                'attr' => array('class' => 'save')));
 
 
     }

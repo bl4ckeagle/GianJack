@@ -18,7 +18,8 @@ class InsertVideoController extends Controller
     public function indexAction(Request $request)
     {
 
-
+        $worked=null;
+        $youtubeError=null;
 
         $content = new Video();
         $form = $this->createForm(VideoContentType::class, $content);
@@ -37,7 +38,7 @@ class InsertVideoController extends Controller
 
                 } else {
                     $youtubeError = "please provide the right and full youtube link";
-                    return $this->render('Form/VideoInsert.html.twig', array('form' => $form->createView(), "youtubeError" => $youtubeError, "worked" => ""));
+                    return $this->render('Form/VideoInsert.html.twig', array('form' => $form->createView(), "youtubeError" => $youtubeError, "worked" => $worked));
 
 
                 }
@@ -46,7 +47,7 @@ class InsertVideoController extends Controller
             } else {
 
                 $youtubeError = "please provide the right and full youtube link";
-                return $this->render('Form/VideoInsert.html.twig', array('form' => $form->createView(), "youtubeError" => "error", "worked" => ""));
+                return $this->render('Form/VideoInsert.html.twig', array('form' => $form->createView(), "youtubeError" => "$youtubeError", "worked" => $worked));
 
             }
 
@@ -58,12 +59,12 @@ class InsertVideoController extends Controller
 
             $worked = "<p>worked</p>";
 
-            return $this->render('Form/VideoInsert.html.twig', array('form' => $form->createView(),"youtubeError" => "", "worked" => $worked));
+            return $this->render('Form/VideoInsert.html.twig', array('form' => $form->createView(),"youtubeError" => $youtubeError, "worked" => $worked));
 
 
         }
 
 
-        return $this->render('Form/VideoInsert.html.twig', array('form' => $form->createView(), "youtubeError" => "1","worked" => ""));
+        return $this->render('Form/VideoInsert.html.twig', array('form' => $form->createView(), "youtubeError" => $youtubeError,"worked" => $worked));
     }
 }

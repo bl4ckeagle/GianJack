@@ -102,9 +102,6 @@ interface FormInterface extends \ArrayAccess, \Traversable, \Countable
      *
      * @return FormErrorIterator An iterator over the {@link FormError}
      *                           instances that where added to this form
-     *
-     * @since 2.5 Since version 2.5 this method returns a
-     *            {@link FormErrorIterator} instance instead of an array
      */
     public function getErrors($deep = false, $flatten = true);
 
@@ -215,7 +212,7 @@ interface FormInterface extends \ArrayAccess, \Traversable, \Countable
      * The content of a disabled form is displayed, but not allowed to be
      * modified. The validation of modified disabled forms should fail.
      *
-     * Form whose parents are disabled are considered disabled regardless of
+     * Forms whose parents are disabled are considered disabled regardless of
      * their own state.
      *
      * @return bool

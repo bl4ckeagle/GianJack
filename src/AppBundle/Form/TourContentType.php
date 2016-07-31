@@ -16,7 +16,9 @@ class TourContentType extends AbstractType
             ->add('location')
             ->add('date',DateTimeType::class)
             ->add('country')
-            ->add('ticketLink');
+            ->add('ticketLink')
+            ->add('save',SubmitType::class,array(
+                'attr' => array('class' => 'save')));
 
 
     }

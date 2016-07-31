@@ -12,6 +12,16 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Tour
 {
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="price", type="float", nullable=true)
+     */
+    private $price;
+
+
+
     /**
      * @var string
      *
@@ -155,5 +165,28 @@ class Tour
 
 
 
-}
 
+    /**
+     * Set price
+     *
+     * @param float $price
+     *
+     * @return Tour
+     */
+    public function setPrice($price)
+    {
+        $this->price = $price;
+
+        return $this;
+    }
+
+    /**
+     * Get price
+     *
+     * @return float
+     */
+    public function getPrice()
+    {
+        return $this->price;
+    }
+}

@@ -21,7 +21,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Security\Core\Security;
 
 /**
- * Forms type for use with the Security component's form-based authentication
+ * Form type for use with the Security component's form-based authentication
  * listener.
  *
  * @author Henrik Bjornskov <henrik@bjrnskov.dk>

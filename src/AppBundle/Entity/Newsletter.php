@@ -86,5 +86,14 @@ class Newsletter
 
 
 
-}
 
+    /**
+     * Get activated
+     *
+     * @return boolean
+     */
+    public function getActivated()
+    {
+        return $this->activated;
+    }
+}

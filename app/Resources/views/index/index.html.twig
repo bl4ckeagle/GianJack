@@ -9,16 +9,39 @@
 {% endblock %}
 {% block content %}
 
-    {% for content in homecontent %}
+    {# total items count #}
+    <div class="count">
+        {{ pagination.getTotalItemCount }}
+    </div>
 
+    {% for content in pagination %}
         <div class="homecontent">
             <div class="jumbotron">
                 <img class="img" src="{{ asset('bundles/framework/images/News/') }}{{ content.picturePath }}"> </img>
 
                 <h1>{{ content.title }}</h1>
-                <p>{{ content.content }}</p>
+                <button class="btn btn-primary mybuttons" type="button" data-toggle="collapse" data-target="#collapse{{ content.homeId }}"
+                        aria-expanded="false" aria-controls="collapseExample">
+                    Show More
+                </button>
+                </p>
+                <div class="collapse" id="collapse{{ content.homeId }}">
+                    <div class="card card-block">
+                        <p>{{ content.content }}</p>
+                    </div>
+                </div>
                 <small class="text-right">{{ content.date|date('d.m.Y') }}</small>
             </div>
         </div>
     {% endfor %}
+
+
+
+    {# display navigation #}
+    <div class="navigation">
+        {{ knp_pagination_render(pagination) }}
+    </div>
+
+
+
 {% endblock %}

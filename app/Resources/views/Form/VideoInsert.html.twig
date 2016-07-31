@@ -1,17 +1,15 @@
 {% extends 'AdminTemplate1.html.twig ' %}
-{% block leftside %}
-{% endblock %}
+
 
 {% block rightside %}
 {{ form_start(form) }}
 
-<button type="submit">Submit Content</button>
 {{ form_end(form) }}
 
 
-<p>{{ youtubeError }}</p>
+<p style="color: red">{{ youtubeError }}</p>
 
-<p>{{ worked }}</p>
+<p style="color: green">{{ worked }}</p>
 
     {{ dump() }}
     {% endblock %}

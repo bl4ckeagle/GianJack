@@ -9,6 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Table(name="homecontent", indexes={@ORM\Index(name="id_idx", columns={"author_id"})})
  * @ORM\Entity
+ * @ORM\Entity(repositoryClass="AppBundle\Entity\HomeContentRepo")
  */
 class Homecontent
 {
@@ -159,4 +160,3 @@ class Homecontent
 
 
 }
-

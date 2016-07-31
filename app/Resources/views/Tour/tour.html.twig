@@ -4,38 +4,54 @@
 {% block title %}Tour{% endblock %}
 
 
-{%block contentmaster  %}
- <div class="Tour">
-<div class="jumbotron">
-<table class="table table-striped table-hover ">
-    <caption >Tour</caption>
-    <thead>
-    <tr>
-        <td>Location</td>
-        <td>Date</td>
-        <td>Country</td>
-        <td>Tickets</td>
+{% block contentmaster %}
+    <div class="Tour">
+        <div class="jumbotron">
+            <table class="table table-striped table-hover ">
+                <caption>Tour</caption>
+                <thead>
+                <tr>
+                    <td>Location</td>
+                    <td>Date</td>
+                    <td>Country</td>
+                    <td>Tickets</td>
+                    <td>Tickets</td>
 
 
-    </tr>
-    </thead>
-    <tbody>
+                </tr>
+                </thead>
+                <tbody>
 
-        {% for tours in Tour %}
-        <tr>
-        <td><a href={{ tours.locationLink }}>{{ tours.location }}</a> </td>
-        <td>{{ tours.date|date("d-m-Y h:m") }}</td>
-        <td>{{ tours.country }}</td>
-        <td>{{ tours.ticketLink }}</td>
-        </tr>
-        {% endfor %}
-
-
+                {% for tours in Tour %}
+                    <tr>
+                        <td>
+                            {% if tours.locationLink is empty %}
+                                {{ tours.location }}
+                            {% else %}
+                                <a href="http://{{tours.locationLink }}" target="_blank">{{ tours.location }}</a>
+                            {% endif %}
 
 
-    </tbody>
+                        </td>
+                        <td>{{ tours.date|date("d-m-Y h:m") }}</td>
+                        <td>{{ tours.country }}</td>
+                        <td>
+                            {% if tours.locationLink is empty %}
+                                -
+                            {% else %}
 
-    </table>
-</div>
- </div>
+                                <a href="{{ tours.ticketLink }}" target="_blank">Click me </a>
+                            {% endif %}
+
+                            </td>
+                        <td>{{ tours.price }}€</td>
+                    </tr>
+                {% endfor %}
+
+
+                </tbody>
+
+            </table>
+        </div>
+    </div>
 {% endblock %}

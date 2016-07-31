@@ -23,7 +23,8 @@ class HomecontentType extends AbstractType
             ->add('picturePath',FileType::class, array('label' => 'Picuture'))
             ->add('date',DateTimeType::class)
             ->add('author',EntityType::class,array('class'=>'AppBundle\Entity\Contentuser','choice_label'=>'firstName',))
-        ;
+            ->add('save',SubmitType::class,array(
+                'attr' => array('class' => 'save')));
     }
 
     /**

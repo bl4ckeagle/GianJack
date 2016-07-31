@@ -19,9 +19,9 @@ use Symfony\Component\Form\Extension\Core\CoreExtension;
  * Use this class to conveniently create new form factories:
  *
  * <code>
- * use Symfony\Component\Form\Form;
+ * use Symfony\Component\Form\Forms;
  *
- * $formFactory = Form::createFormFactory();
+ * $formFactory = Forms::createFormFactory();
  *
  * $form = $formFactory->createBuilder()
  *     ->add('firstName', 'Symfony\Component\Form\Extension\Core\Type\TextType')
@@ -36,7 +36,7 @@ use Symfony\Component\Form\Extension\Core\CoreExtension;
  * You can also add custom extensions to the form factory:
  *
  * <code>
- * $formFactory = Form::createFormFactoryBuilder()
+ * $formFactory = Forms::createFormFactoryBuilder()
  *     ->addExtension(new AcmeExtension())
  *     ->getFormFactory();
  * </code>
@@ -48,7 +48,7 @@ use Symfony\Component\Form\Extension\Core\CoreExtension;
  * form factory:
  *
  * <code>
- * $formFactory = Form::createFormFactoryBuilder()
+ * $formFactory = Forms::createFormFactoryBuilder()
  *     ->addType(new PersonType())
  *     ->addType(new PhoneNumberType())
  *     ->addTypeExtension(new FormTypeHelpTextExtension())
@@ -63,7 +63,7 @@ use Symfony\Component\Form\Extension\Core\CoreExtension;
  * use Symfony\Component\Form\Extension\Validator\ValidatorExtension;
  *
  * $validator = Validation::createValidator();
- * $formFactory = Form::createFormFactoryBuilder()
+ * $formFactory = Forms::createFormFactoryBuilder()
  *     ->addExtension(new ValidatorExtension($validator))
  *     ->getFormFactory();
  * </code>
@@ -76,7 +76,7 @@ use Symfony\Component\Form\Extension\Core\CoreExtension;
  * <code>
  * use Symfony\Component\Form\Extension\Templating\TemplatingExtension;
  *
- * $formFactory = Form::createFormFactoryBuilder()
+ * $formFactory = Forms::createFormFactoryBuilder()
  *     ->addExtension(new TemplatingExtension($engine, null, array(
  *         'FrameworkBundle:Form',
  *     )))
@@ -88,7 +88,7 @@ use Symfony\Component\Form\Extension\Core\CoreExtension;
  * <code>
  * use Symfony\Component\Form\Extension\Templating\TemplatingExtension;
  *
- * $formFactory = Form::createFormFactoryBuilder()
+ * $formFactory = Forms::createFormFactoryBuilder()
  *     ->addExtension(new TemplatingExtension($engine, null, array(
  *         'FrameworkBundle:Form',
  *         'FrameworkBundle:FormTable',
@@ -103,7 +103,7 @@ final class Forms
     /**
      * Creates a form factory with the default configuration.
      *
-     * @return FormFactoryInterface The form factory.
+     * @return FormFactoryInterface The form factory
      */
     public static function createFormFactory()
     {
@@ -113,7 +113,7 @@ final class Forms
     /**
      * Creates a form factory builder with the default configuration.
      *
-     * @return FormFactoryBuilderInterface The form factory builder.
+     * @return FormFactoryBuilderInterface The form factory builder
      */
     public static function createFormFactoryBuilder()
     {
