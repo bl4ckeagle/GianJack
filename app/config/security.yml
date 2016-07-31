@@ -27,15 +27,15 @@ security:
     main:
       anonymous: ~
       provider: our_db_provider
-      # form_login:
-      #login_path: /thelogingiant/login
-      #check_path: /thelogingiant/login_check
+      form_login:
+        login_path: adminlogin
+        check_path: adminlogin
 
 
 
-      http_basic: ~
-  access_control:
-    - { path: ^/giantcontent, roles: ROLE_ADMIN }
+   #   http_basic: ~
+  #access_control:
+ #   - { path: ^/giantcontent, roles: ROLE_ADMIN }
 
 # activate different ways to authenticate
 
