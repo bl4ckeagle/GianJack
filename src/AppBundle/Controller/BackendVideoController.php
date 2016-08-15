@@ -17,8 +17,12 @@ class BackendVideoController extends Controller
     public function backendVideoOverviewAction()
     {
 
+        $videos=$this->getDoctrine()
+            ->getRepository("AppBundle:Video")
+            ->findAll();
 
-        return $this->render();
+
+        return $this->render(":AdminBackend:VideoBackEnd.html.twig",array("Video"=>$videos));
 
     }
 

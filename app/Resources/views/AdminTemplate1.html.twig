@@ -40,9 +40,9 @@
                     <!-- Collect the nav links, forms, and other content for toggling -->
                     <div class="collapse navbar-collapse navbar-ex1-collapse">
                         <ul class="nav navbar-nav">
-                            <li><a href="#">Home</a></li>
+
                             <li><a href={{ path('Backendhome') }}>Overview</a></li>
-                            <li><a href="#">Videos</a></li>
+                            <li><a href="{{ path('VideoBackEnd') }}">Videos</a></li>
                             <li><a href="#">Link</a></li>
                             <li><a href="{{ path('logout') }}">Logout </a> </li>
 
@@ -76,6 +76,7 @@
 {% block javascripts %}
     <script src="{{ asset('bundles/framework/js/jquery-2.2.3.min.js') }}"></script>
     <script src="{{ asset('bundles/framework/js/bootstrap.js') }}"></script>
+    <script src="{{ asset('bundles/framework/js/myscripts/ButtonHandler.js') }}"> </script>
 
 
 {% endblock %}

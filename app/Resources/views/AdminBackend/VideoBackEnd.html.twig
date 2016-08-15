@@ -1,0 +1,45 @@
+{% extends 'AdminTemplate1.html.twig ' %}
+
+
+{% block rightside %}
+
+
+{{ dump() }}
+
+    <table class="table table-striped table-hover">
+        <caption>Videos</caption>
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>Title</th>
+
+            <th>Album</th>
+            <th>Edit</th>
+            <th>Delete</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        {% for videos in Video%}
+            <tr>
+                <td>{{ videos.videoId }}</td>
+                <td>{{ videos.title }}</td>
+                <td>{{ videos.album.name }}</td>
+                <td><button class="btn btn-warning" onclick="edit({{ videos.videoId }})">Edit</button></td>
+                <td ><button class="btn  btn-danger "onclick="deleting({{ videos.videoId }}) ">Delete</button></td>
+            </tr>
+
+
+        {% endfor %}
+
+        </tbody>
+
+
+
+
+
+    </table>
+
+
+
+{% endblock %}
