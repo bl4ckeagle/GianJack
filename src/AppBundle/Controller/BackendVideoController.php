@@ -26,6 +26,40 @@ class BackendVideoController extends Controller
 
     }
 
+    /**
+     * @return redirect
+     * @param $slug
+     * @Route("/giantcontent/video/delete/{slug}")
+     */
+    public function deleteVideoAction(Video $slug)
+    {
+
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($slug);
+        $em->flush();
+
+        return "worked";
+
+
+    }
+
+    /**
+     * @return render
+     * @param $slug
+     * @Route("/giantcontent/video/edit/{slug})
+     */
+    public function editVideoForm($slug)
+    {
+
+        $em =$this->getDoctrine()->getManager();
+        $video= $em->getRepository("AppBundle:Video");
+
+
+
+
+
+        return $this->render("Form/VideoUpdateForm.twig");
+    }
 
 
 

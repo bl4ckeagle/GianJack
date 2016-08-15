@@ -19,10 +19,10 @@
     methods:  [GET, POST]
 {% endif %}
 
-{% if 'edit' in actions %}
+{% if 'editing' in actions %}
 {{ route_name_prefix }}_edit:
-    path:     /{id}/edit
-    defaults: { _controller: "{{ bundle }}:{{ entity }}:edit" }
+    path:     /{id}/editing
+    defaults: { _controller: "{{ bundle }}:{{ entity }}:editing" }
     methods:  [GET, POST]
 {% endif %}
 

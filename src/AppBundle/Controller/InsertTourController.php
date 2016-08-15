@@ -36,6 +36,6 @@ class InsertTourController extends Controller
 
         }
 
-        return $this->render('Form/TourForm.html.twig', array('form' => $form->createView()));
+        return $this->render('TourInsertForm.twig', array('form' => $form->createView()));
     }
 }

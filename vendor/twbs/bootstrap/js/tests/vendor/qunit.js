@@ -3020,7 +3020,7 @@ QUnit.diff = ( function() {
 		//   -> <del>abc</del>xxx<ins>def</ins>
 		// e.g: <del>xxxabc</del><ins>defxxx</ins>
 		//   -> <ins>def</ins>xxx<del>abc</del>
-		// Only extract an overlap if it is as big as the edit ahead or behind it.
+		// Only extract an overlap if it is as big as the editing ahead or behind it.
 		pointer = 1;
 		while ( pointer < diffs.length ) {
 			if ( diffs[ pointer - 1 ][ 0 ] === DIFF_DELETE &&
@@ -3207,8 +3207,8 @@ QUnit.diff = ( function() {
 	};
 
 	/**
-	 * Reorder and merge like edit sections.  Merge equalities.
-	 * Any edit section can move as long as it doesn't cross an equality.
+	 * Reorder and merge like editing sections.  Merge equalities.
+	 * Any editing section can move as long as it doesn't cross an equality.
 	 * @param {!Array.<!DiffMatchPatch.Diff>} diffs Array of diff tuples.
 	 */
 	DiffMatchPatch.prototype.diffCleanupMerge = function( diffs ) {
@@ -3316,10 +3316,10 @@ QUnit.diff = ( function() {
 					diffPointer.length - diffs[ pointer - 1 ][ 1 ].length
 				);
 
-				// This is a single edit surrounded by equalities.
+				// This is a single editing surrounded by equalities.
 				if ( position === diffs[ pointer - 1 ][ 1 ] ) {
 
-					// Shift the edit over the previous equality.
+					// Shift the editing over the previous equality.
 					diffs[ pointer ][ 1 ] = diffs[ pointer - 1 ][ 1 ] +
 						diffs[ pointer ][ 1 ].substring( 0, diffs[ pointer ][ 1 ].length -
 							diffs[ pointer - 1 ][ 1 ].length );
@@ -3330,7 +3330,7 @@ QUnit.diff = ( function() {
 				} else if ( diffPointer.substring( 0, diffs[ pointer + 1 ][ 1 ].length ) ===
 						diffs[ pointer + 1 ][ 1 ] ) {
 
-					// Shift the edit over the next equality.
+					// Shift the editing over the next equality.
 					diffs[ pointer - 1 ][ 1 ] += diffs[ pointer + 1 ][ 1 ];
 					diffs[ pointer ][ 1 ] =
 						diffs[ pointer ][ 1 ].substring( diffs[ pointer + 1 ][ 1 ].length ) +

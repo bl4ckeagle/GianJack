@@ -58,7 +58,7 @@ The default command only generates the list and show actions.
 
 <info>php %command.full_name% --entity=AcmeBlogBundle:Post --route-prefix=post_admin</info>
 
-Using the --with-write option allows to generate the new, edit and delete actions.
+Using the --with-write option allows to generate the new, editing and delete actions.
 
 <info>php %command.full_name% doctrine:generate:crud --entity=AcmeBlogBundle:Post --route-prefix=post_admin --with-write</info>
 

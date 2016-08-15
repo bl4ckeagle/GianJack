@@ -19,7 +19,7 @@
     </route>
 {% endif %}
 
-{% if 'edit' in actions %}
+{% if 'editing' in actions %}
     <route id="{{ route_name_prefix }}_edit" path="/{id}/edit" methods="GET|POST">
         <default key="_controller">{{ bundle }}:{{ entity }}:edit</default>
     </route>

@@ -140,7 +140,7 @@ EOT;
         } elseif ('php' == $format) {
             // php
             if (isset($content)) {
-                // edit current file
+                // editing current file
                 $pointer = strpos($content, 'return');
                 if (!preg_match('/(\$[^ ]*).*?new RouteCollection\(\)/', $content, $collection) || false === $pointer) {
                     throw new \RunTimeException('Routing.php file is not correct, please initialize RouteCollection.');

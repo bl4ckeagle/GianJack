@@ -58,7 +58,7 @@ class InsertContentController extends Controller
             return $worked;
 
         }
-        return $this->render('Form/ContentForm.html.twig', array('form' => $form->createView()));
+        return $this->render('ContentInsertForm.twig', array('form' => $form->createView()));
 
 
     }
