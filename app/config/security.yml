@@ -17,25 +17,24 @@ security:
 
   firewalls:
 
-
-
 # disables authentication for assets and the profiler, adapt it according to your needs
     dev:
       pattern: ^/(_(profiler|wdt)|css|images|js)/
       security: false
-
+#login, also path to login form and more!
     main:
       anonymous: ~
       provider: our_db_provider
       form_login:
         login_path: adminlogin
         check_path: adminlogin
+      logout:
+        path: /giantcontent/logout
+        target: /
 
-
-
-   #   http_basic: ~
-  #access_control:
- #   - { path: ^/giantcontent, roles: ROLE_ADMIN }
+   #   access controll path what are checked of login priv.
+  access_control:
+    - { path: ^/giantcontent, roles: ROLE_ADMIN }
 
 # activate different ways to authenticate
 

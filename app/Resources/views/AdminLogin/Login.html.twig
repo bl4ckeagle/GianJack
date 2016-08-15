@@ -1,18 +1,61 @@
 {% if error %}
     <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
 {% endif %}
+<html>
 
-<form action="{{ path('adminlogin') }}" method="post">
-    <label for="username">Username:</label>
-    <input type="text" id="username" name="_username" value="{{ last_username }}" />
 
-    <label for="password">Password:</label>
-    <input type="password" id="password" name="_password" />
+<head>
+    <meta charset="UTF-8"/>
+    {% block stylesheets %}
+        <link href="{{ asset('bundles/framework/css/main.css') }}" rel="stylesheet"/>
+        <link href="{{ asset('bundles/framework/css/bootstrap.min.css') }}" rel="stylesheet"/>
 
-    {#
-        If you want to control the URL the user
-        is redirected to on success (more details below)
-        <input type="hidden" name="_target_path" value="/account" />
-    #}
+    {% endblock %}
 
-    <button type="submit">login</button>
+    <title>{% block title %}Admin Template Change{% endblock %}</title>
+
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"/>
+</head>
+
+<body>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+
+            <form action="{{ path('adminlogin') }}" method="post">
+                <table class="table table-striped table-hover ">
+                    <caption>Login</caption>
+                    <tbody>
+
+                    <tr>
+                        <td><label for="username">Username:</label></td>
+                        <td><input type="text" id="username" name="_username" value="{{ last_username }}"/></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="password">Password:</label>
+                        </td>
+                        <td><input type="password" id="password" name="_password"/>
+                        </td>
+                    </tr>
+                    {#
+                        If you want to control the URL the user
+                        is redirected to on success (more details below)
+                        <input type="hidden" name="_target_path" value="/account" />
+                    #}
+
+
+
+
+
+                    </tbody>
+                </table>
+                <button type="submit">login</button>
+            </form>
+
+        </div>
+    </div>
+</div>
+</body>
+</html>
