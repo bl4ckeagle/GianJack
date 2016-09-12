@@ -3,10 +3,13 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Video;
-use AppBundle\Form\VideoContentType;
+use AppBundle\Entity\VideoCollection;
+use AppBundle\Form\VideoContentInsertType;
+
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Validator\Constraints\Collection;
 
 class BackendVideoController extends Controller
 {
@@ -17,12 +20,12 @@ class BackendVideoController extends Controller
     public function backendVideoOverviewAction()
     {
 
-        $videos=$this->getDoctrine()
+        $videos = $this->getDoctrine()
             ->getRepository("AppBundle:Video")
             ->findAll();
 
 
-        return $this->render(":AdminBackend:VideoBackEnd.html.twig",array("Video"=>$videos));
+        return $this->render(":AdminBackend:VideoBackEnd.html.twig", array("Video" => $videos));
 
     }
 
@@ -44,27 +47,51 @@ class BackendVideoController extends Controller
     }
 
     /**
-     * @return render
+     * @param Request $request
      * @param $slug
-     * @Route("/giantcontent/video/edit/{slug})
+     * @return \Symfony\Component\HttpFoundation\Response
+     * @Route("/giantcontent/video/editing/{slug}")
      */
-    public function editVideoForm($slug)
+    public function editVideoForm(Request $request, $slug)
     {
 
-        $em =$this->getDoctrine()->getManager();
-        $video= $em->getRepository("AppBundle:Video");
+        $worked="";
+        $failed="";
+        $formEntity = new Video();
+        $em = $this->getDoctrine()->getManager();
+        $video = $em->getRepository("AppBundle:Video")->find($slug);
 
 
 
 
 
-        return $this->render("Form/VideoUpdateForm.twig");
+
+
+
+
+
+        $form = $this->createForm(VideoContentInsertType::class, $formEntity);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+
+
+
+            $video->setLink($formEntity->getLink());
+            $video->setAlbum($formEntity->getAlbum());
+            $video->setTitle($formEntity->getTitle());
+            $em->flush();
+            $worked="saved";
+
+
+        }
+
+
+
+        return $this->render("Form/VideoUpdateForm.twig", array(
+            'form' => $form->createView(), "videos" => $video,"worked"=>$worked,"failed"=>$failed));
     }
-
-
-
-
-
 
 
     /**
@@ -75,12 +102,13 @@ class BackendVideoController extends Controller
     public function insertVideoAction(Request $request)
     {
 
-        $worked=null;
-        $youtubeError=null;
+        $worked = null;
+        $youtubeError = null;
 
         $content = new Video();
-        $form = $this->createForm(VideoContentType::class, $content);
+        $form = $this->createForm(VideoContentInsertType::class, $content);
         $form->handleRequest($request);
+
 
         if ($form->isSubmitted() && $form->isValid()) {
 
@@ -116,12 +144,12 @@ class BackendVideoController extends Controller
 
             $worked = "<p>worked</p>";
 
-            return $this->render('Form/VideoInsert.html.twig', array('form' => $form->createView(),"youtubeError" => $youtubeError, "worked" => $worked));
+            return $this->render('Form/VideoInsert.html.twig', array('form' => $form->createView(), "youtubeError" => $youtubeError, "worked" => $worked));
 
 
         }
 
 
-        return $this->render('Form/VideoInsert.html.twig', array('form' => $form->createView(), "youtubeError" => $youtubeError,"worked" => $worked));
+        return $this->render('Form/VideoInsert.html.twig', array('form' => $form->createView(), "youtubeError" => $youtubeError, "worked" => $worked));
     }
 }

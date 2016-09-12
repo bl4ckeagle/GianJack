@@ -1,0 +1,19 @@
+{% extends 'AdminTemplate1.html.twig ' %}
+
+
+{% block rightside %}
+
+    {{ dump() }}
+    {{ form_start(form) }}
+
+
+    {{ form_widget(form.name,{'value':album.name }) }}
+    {{ form_widget(form.releasedate,{'value':album.releasedate }) }}
+    {{ form_widget(form.picturepath,{'value':album.picturepath})}}
+
+
+    {{ form_end(form) }}
+    <p style="color: green">{{ worked }}</p>
+    <p style="color: red">{{ failed }}</p>
+    <p>{{ album.picturepath }}</p>
+{% endblock %}

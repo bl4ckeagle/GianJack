@@ -9,7 +9,7 @@
 
     {% endblock %}
 
-    <title>{% block title %}Admin Template Change{% endblock %}</title>
+    <title>{% block title %}Admin Main{% endblock %}</title>
 
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"/>
 
@@ -43,7 +43,7 @@
 
                             <li><a href={{ path('Backendhome') }}>Overview</a></li>
                             <li><a href="{{ path('VideoBackEnd') }}">Videos</a></li>
-                            <li><a href="#">Link</a></li>
+                            <li><a href="{{ path('AlbumBackEnd') }}">Album</a></li>
                             <li><a href="{{ path('logout') }}">Logout </a> </li>
 
                         </ul>

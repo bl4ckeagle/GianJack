@@ -28,6 +28,10 @@ security:
       form_login:
         login_path: adminlogin
         check_path: adminlogin
+      remember_me:
+        secret: '%secret%' #secret key from parameter.yml
+        lifetime: 604800 #1 weak in seconds
+        path: /
       logout:
         path: /giantcontent/logout
         target: /

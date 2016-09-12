@@ -2,14 +2,18 @@
 
 
 {% block rightside %}
-    {{ form_start(form) }}
-
-    {{ form_end(form) }}
-
-
-    <p style="color: red">{{ youtubeError }}</p>
-
-    <p style="color: green">{{ worked }}</p>
 
     {{ dump() }}
+    {{ form_start(form) }}
+
+
+    {{ form_widget(form.title,{'value':videos.title }) }}
+    {{ form_widget(form.link,{'value':videos.link }) }}
+    {{ form_widget(form.album,{'value':videos.album.albenId|trim })}}
+
+
+    {{ form_end(form) }}
+    <p style="color: green">{{ worked }}</p>
+    <p style="color: red">{{ failed }}</p>
+    <p>{{ videos.album.albenId }}videos.album.albenId</p>
 {% endblock %}

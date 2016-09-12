@@ -1,8 +1,12 @@
-
-{{ form_start(form) }}
-{{ form_row(form.picturepath) }}
-
-<button type="submit">Submit Content</button>
-{{ form_end(form) }}
+{% extends 'AdminTemplate1.html.twig ' %}
 
 
+{% block rightside %}
+    {{ form_start(form) }}
+
+    {{ form_end(form) }}
+
+    <p style="color: green">{{ worked }}</p>
+
+    {{ dump() }}
+{% endblock %}

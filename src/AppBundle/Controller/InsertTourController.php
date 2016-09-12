@@ -3,7 +3,7 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Tour;
-use AppBundle\Form\TourContentType;
+use AppBundle\Form\TourContentInsertType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -21,7 +21,7 @@ class InsertTourController extends Controller
     {
 
         $content = new Tour();
-        $form = $this->createForm(TourContentType::class, $content);
+        $form = $this->createForm(TourContentInsertType::class, $content);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
