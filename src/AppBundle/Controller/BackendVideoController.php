@@ -37,11 +37,19 @@ class BackendVideoController extends Controller
     public function deleteVideoAction(Video $slug)
     {
 
-        $em = $this->getDoctrine()->getManager();
-        $em->remove($slug);
-        $em->flush();
+        try {
+            $em = $this->getDoctrine()->getManager();
+            $name = $slug->getTitle();
+            $em->remove($slug);
+            $em->flush();
 
-        return "worked";
+            return $this->render("deleted.html.twig", array("item" => $name));
+        }
+        catch (\Exception $e)
+        {
+            $errorbody="Database Integrity,maybe ".$name." is allready taken or used";
+            return $this->render("::AdminErrorPage.html.twig",array("errorbody"=>$errorbody));
+        }
 
 
     }
@@ -142,7 +150,7 @@ class BackendVideoController extends Controller
             $em->persist($content);
             $em->flush();
 
-            $worked = "<p>worked</p>";
+            $worked = "saved";
 
             return $this->render('Form/VideoInsert.html.twig', array('form' => $form->createView(), "youtubeError" => $youtubeError, "worked" => $worked));
 

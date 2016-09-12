@@ -16,10 +16,10 @@ class TourController extends Controller
     public function tourAction()
     {
 
+
         $tour=$this->getDoctrine()
             ->getRepository('AppBundle:Tour')
             ->findAll();
-
 
 
         if (!$tour){

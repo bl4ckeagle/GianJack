@@ -15,7 +15,7 @@
                     <td>Date</td>
                     <td>Country</td>
                     <td>Tickets</td>
-                    <td>Tickets</td>
+                    <td>Price</td>
 
 
                 </tr>
@@ -28,16 +28,16 @@
                             {% if tours.locationLink is empty %}
                                 {{ tours.location }}
                             {% else %}
-                                <a href="http://{{tours.locationLink }}" target="_blank">{{ tours.location }}</a>
+                                <a href="{{tours.locationLink }}" target="_blank">{{ tours.location }}</a>
                             {% endif %}
 
 
                         </td>
-                        <td>{{ tours.date|date("d-m-Y h:m") }}</td>
+                        <td>{{ tours.date|date("H:m | d.m.Y ") }}</td>
                         <td>{{ tours.country }}</td>
                         <td>
                             {% if tours.locationLink is empty %}
-                                -
+                                Abend Kasse
                             {% else %}
 
                                 <a href="{{ tours.ticketLink }}" target="_blank">Click me </a>

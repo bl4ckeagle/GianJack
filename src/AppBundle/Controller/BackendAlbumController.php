@@ -14,6 +14,7 @@ use Symfony\Component\HttpFoundation\Request;
 
 class BackendAlbumController extends Controller
 {
+
     /**
      * @Route("giantcontent/album",name="AlbumBackEnd")
      */
@@ -102,6 +103,7 @@ class BackendAlbumController extends Controller
        try {
             $em->remove($slug);
             $em->flush();
+           return $this->render("::deleted.html.twig",array("item"=>$name));
         } catch (\Exception $e)
         {
 
@@ -109,7 +111,9 @@ class BackendAlbumController extends Controller
             return $this->render("::AdminErrorPage.html.twig",array("errorbody"=>$errorbody));
         }
 
-        return $this->renderView(':AdminBackend:AlbumBackEnd.html.twig');
+
+
+
 
     }
 

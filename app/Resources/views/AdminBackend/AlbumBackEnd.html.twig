@@ -17,14 +17,14 @@
             <th>#</th>
             <th>Title</th>
 
-            <th>date</th>
+            <th>Date</th>
             <th>Edit</th>
             <th>Delete</th>
 
         </tr>
         </thead>
         <tbody>
-        {% for album in Album %}
+        {% for album in Album  %}
             <tr>
                 <td>{{ album.albenId}}</td>
                 <td>{{ album.name}}</td>
@@ -50,6 +50,8 @@
 
 
     </div>
+
+
 
 
     {{ dump() }}
