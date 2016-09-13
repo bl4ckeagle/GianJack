@@ -46,7 +46,7 @@ $collection->add('{{ route_name_prefix }}_new', new Route(
 ));
 {% endif %}
 
-{% if 'editing' in actions %}
+{% if 'edit' in actions %}
 $collection->add('{{ route_name_prefix }}_edit', new Route(
     '/{id}/edit',
     array('_controller' => '{{ bundle }}:{{ entity }}:edit'),

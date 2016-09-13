@@ -63,7 +63,7 @@ class DoctrineCrudGenerator extends Generator
     {
         $this->routePrefix = $routePrefix;
         $this->routeNamePrefix = self::getRouteNamePrefix($routePrefix);
-        $this->actions = $needWriteActions ? array('index', 'show', 'new', 'editing', 'delete') : array('index', 'show');
+        $this->actions = $needWriteActions ? array('index', 'show', 'new', 'edit', 'delete') : array('index', 'show');
 
         if (count($metadata->identifier) != 1) {
             throw new \RuntimeException('The CRUD generator does not support entity classes with multiple or no primary keys.');
@@ -94,7 +94,7 @@ class DoctrineCrudGenerator extends Generator
             $this->generateNewView($dir);
         }
 
-        if (in_array('editing', $this->actions)) {
+        if (in_array('edit', $this->actions)) {
             $this->generateEditView($dir);
         }
 
@@ -268,13 +268,13 @@ class DoctrineCrudGenerator extends Generator
     }
 
     /**
-     * Generates the editing.html.twig template in the final bundle.
+     * Generates the edit.html.twig template in the final bundle.
      *
      * @param string $dir The path to the folder that hosts templates in the bundle
      */
     protected function generateEditView($dir)
     {
-        $this->renderFile('crud/views/editing.html.twig.twig', $dir.'/editing.html.twig', array(
+        $this->renderFile('crud/views/edit.html.twig.twig', $dir.'/edit.html.twig', array(
             'route_prefix' => $this->routePrefix,
             'route_name_prefix' => $this->routeNamePrefix,
             'identifier' => $this->metadata->identifier[0],
@@ -287,14 +287,14 @@ class DoctrineCrudGenerator extends Generator
     }
 
     /**
-     * Returns an array of record actions to generate (editing, show).
+     * Returns an array of record actions to generate (edit, show).
      *
      * @return array
      */
     protected function getRecordActions()
     {
         return array_filter($this->actions, function ($item) {
-            return in_array($item, array('show', 'editing'));
+            return in_array($item, array('show', 'edit'));
         });
     }
 

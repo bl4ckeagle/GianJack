@@ -5,9 +5,10 @@
     {{ form_start(form) }}
 
     {{ form_end(form) }}
-    <button onclick="goback()">Go Back</button>
+
 
     <p style="color: green">{{ worked }}</p>
+    <p style="color: red">{{ error }}</p>
 
     {{ dump() }}
 {% endblock %}

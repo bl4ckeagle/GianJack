@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8"/>
     {% block stylesheets %}
+        <link href="{{ asset('') }}" rel="stylesheet"/>
         <link href="{{ asset('bundles/framework/css/main.css') }}" rel="stylesheet"/>
         <link href="{{ asset('bundles/framework/css/bootstrap.min.css') }}" rel="stylesheet"/>
 
@@ -42,8 +43,10 @@
                         <ul class="nav navbar-nav">
 
                             <li><a href={{ path('Backendhome') }}>Overview</a></li>
-                            <li><a href="{{ path('VideoBackEnd') }}">Videos</a></li>
+                            <li><a href="{{ path('HContentBackEnd') }}">HomeContent</a></li>
                             <li><a href="{{ path('AlbumBackEnd') }}">Album</a></li>
+                            <li><a href="{{ path('VideoBackEnd') }}">Videos</a></li>
+
                             <li><a href="{{ path('logout') }}">Logout </a> </li>
 
                         </ul>

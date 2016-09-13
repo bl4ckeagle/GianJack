@@ -2,6 +2,8 @@
 
 namespace AppBundle\Controller;
 
+use Doctrine\ORM\NoResultException;
+use Doctrine\ORM\ORMException;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use AppBundle\Entity\Product;
@@ -18,27 +20,28 @@ class IndexController extends Controller
     public function indexAction(Request $request)
     {
 
-
-        $em = $this->get('doctrine.orm.entity_manager');
-        $dql = "SELECT a FROM AppBundle:Homecontent a";
-        $query = $em->createQuery($dql);
-
-
-        $paginator = $this->get('knp_paginator');
-        $pagination = $paginator->paginate(
-            $query,$request->query->getInt('page',1),5);
+        try {
+            $em = $this->get('doctrine.orm.entity_manager');
+            $dql = "SELECT a FROM AppBundle:Homecontent a";
+            $query = $em->createQuery($dql);
 
 
-        if (!$paginator) {
-            throw $this->createNotFoundException(
-                'Error occurred please call your administrator immediately');
+            $paginator = $this->get('knp_paginator');
+            $pagination = $paginator->paginate(
+                $query, $request->query->getInt('page', 1), 5);
 
 
+            if (!$paginator) {
+                throw $this->createNotFoundException(
+                    'Error occurred please call your administrator immediately');
+
+
+            }
+
+
+            return $this->render("index/index.html.twig", array("pagination" => $pagination));
+        } catch (NoResultException $e) {
+            return $this->render("::FrontEndErrorPage.html.twig");
         }
-
-
-        return $this->render("index/index.html.twig", array("pagination" => $pagination));
     }
-
-
 }

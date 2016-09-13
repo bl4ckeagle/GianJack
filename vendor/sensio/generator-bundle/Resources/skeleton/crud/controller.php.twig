@@ -3,7 +3,7 @@
 namespace {{ namespace }}\Controller{{ entity_namespace ? '\\' ~ entity_namespace : '' }};
 
 {% block use_statements %}
-{% if 'new' in actions or 'editing' in actions or 'delete' in actions %}
+{% if 'new' in actions or 'edit' in actions or 'delete' in actions %}
 use Symfony\Component\HttpFoundation\Request;
 {%- endif %}
 
@@ -14,7 +14,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 {%- endif %}
 
 use {{ namespace }}\Entity\{{ entity }};
-{% if 'new' in actions or 'editing' in actions %}
+{% if 'new' in actions or 'edit' in actions %}
 use {{ namespace }}\Form\{{ entity }}Type;
 {% endif %}
 {% endblock use_statements %}
@@ -47,8 +47,8 @@ class {{ entity_class }}Controller extends Controller
         {%- include 'crud/actions/show.php.twig' %}
     {%- endif %}
 
-    {%- if 'editing' in actions %}
-        {%- include 'crud/actions/editing.php.twig' %}
+    {%- if 'edit' in actions %}
+        {%- include 'crud/actions/edit.php.twig' %}
     {%- endif %}
 
     {%- if 'delete' in actions %}

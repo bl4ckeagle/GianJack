@@ -1,0 +1,29 @@
+{% extends 'AdminTemplate1.html.twig ' %}
+
+
+{% block rightside %}
+
+    {{ form_start(form) }}
+
+    {{ form_label(form.title) }}
+    {{ form_widget(form.title,{'value':content.title }) }}
+    {{ form_label(form.content) }}
+
+    {{ form_widget(form.content,{'value':content.content }) }}
+    {{ form_label(form.picturePath) }}
+
+    {{ form_widget(form.picturePath,{'value':content.picturePath})}}
+    {{ form_label(form.date) }}
+
+    {{ form_widget(form.date,{'value':content.date})}}
+    {{ form_label(form.author) }}
+
+    {{ form_widget(form.author,{'value':content.author.contentUserId|trim})}}
+
+
+    {{ form_end(form) }}
+
+    <p style="color: green">{{ worked }}</p>
+    <p style="color: red">{{ failed }}</p>
+    {{ dump() }}
+{% endblock %}

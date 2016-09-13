@@ -27,7 +27,7 @@
                 </p>
                 <div class="collapse" id="collapse{{ content.homeId }}">
                     <div class="card card-block">
-                        <p>{{ content.content }}</p>
+                      <span>{{ content.content |raw}}</span>
                     </div>
                 </div>
                 <small class="text-right">{{ content.date|date('d.m.Y') }}</small>

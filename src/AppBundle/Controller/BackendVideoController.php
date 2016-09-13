@@ -70,14 +70,6 @@ class BackendVideoController extends Controller
         $video = $em->getRepository("AppBundle:Video")->find($slug);
 
 
-
-
-
-
-
-
-
-
         $form = $this->createForm(VideoContentInsertType::class, $formEntity);
         $form->handleRequest($request);
 

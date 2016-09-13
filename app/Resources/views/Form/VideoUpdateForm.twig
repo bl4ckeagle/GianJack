@@ -3,18 +3,23 @@
 
 {% block rightside %}
 
-    {{ dump() }}
+
     {{ form_start(form) }}
 
-
+    {{ form_label(form.title) }}
     {{ form_widget(form.title,{'value':videos.title }) }}
+    {{ form_label(form.link) }}
+
     {{ form_widget(form.link,{'value':videos.link }) }}
+    {{ form_label(form.album) }}
+
     {{ form_widget(form.album,{'value':videos.album.albenId|trim })}}
 
 
     {{ form_end(form) }}
-    <button onclick="goback()">Go Back</button>
+    
     <p style="color: green">{{ worked }}</p>
     <p style="color: red">{{ failed }}</p>
-    <p>{{ videos.album.albenId }}videos.album.albenId</p>
+
+    {{ dump() }}
 {% endblock %}

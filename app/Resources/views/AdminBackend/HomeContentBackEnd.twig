@@ -1,0 +1,52 @@
+{% extends 'AdminTemplate1.html.twig ' %}
+
+
+{% block rightside %}
+
+    <table class="table table-striped table-hover">
+        <caption> <h1>Videos</h1> </caption>
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>Title</th>
+
+            <th>Date</th>
+            <th>Author</th>
+            <th>Edit</th>
+            <th>Delete</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        {% for contents in Content%}
+            <tr>
+                <td>{{ contents.homeId}}</td>
+                <td>{{ contents.title}}</td>
+                <td>{{ contents.date|date("m.d.Y")}}</td>
+                <td>{{ contents.author.username}}</td>
+                <td>
+                    <button class="btn btn-warning" onclick="editing({{ contents.homeId}})">Edit</button>
+                </td>
+                <td>
+                    <button class="btn  btn-danger " onclick="deleting({{ contents.homeId}}) ">Delete</button>
+                </td>
+            </tr>
+
+
+        {% endfor %}
+
+
+        </tbody>
+
+
+    </table>
+
+    <div class="container-fluid">
+        <td><button class="btn btn-primary" onclick="inserting()">Create New</button></td>
+
+
+    </div>
+
+    {{ dump() }}
+
+{% endblock %}

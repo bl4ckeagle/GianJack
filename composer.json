@@ -29,7 +29,9 @@
         "incenteev/composer-parameter-handler": "^2.0",
         "doctrine/doctrine-migrations-bundle": "^1.0",
         "twbs/bootstrap": "^3.3",
-        "knplabs/knp-paginator-bundle": "^2.5"
+        "knplabs/knp-paginator-bundle": "^2.5",
+        "egeloen/ckeditor-bundle": "^4.0"
+
 
     },
     "require-dev": {

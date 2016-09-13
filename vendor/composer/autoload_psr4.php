@@ -28,6 +28,8 @@ return array(
     'Sensio\\Bundle\\DistributionBundle\\' => array($vendorDir . '/sensio/distribution-bundle'),
     'Monolog\\' => array($vendorDir . '/monolog/monolog/src/Monolog'),
     'Knp\\Bundle\\PaginatorBundle\\' => array($vendorDir . '/knplabs/knp-paginator-bundle'),
+    'Ivory\\JsonBuilder\\' => array($vendorDir . '/egeloen/json-builder/src'),
+    'Ivory\\CKEditorBundle\\' => array($vendorDir . '/egeloen/ckeditor-bundle'),
     'Incenteev\\ParameterHandler\\' => array($vendorDir . '/incenteev/composer-parameter-handler'),
     'Doctrine\\Instantiator\\' => array($vendorDir . '/doctrine/instantiator/src/Doctrine/Instantiator'),
     'Doctrine\\DBAL\\Migrations\\' => array($vendorDir . '/doctrine/migrations/lib/Doctrine/DBAL/Migrations'),

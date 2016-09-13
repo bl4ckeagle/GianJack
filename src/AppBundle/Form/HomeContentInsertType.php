@@ -2,6 +2,8 @@
 
 namespace AppBundle\Form;
 
+use Ivory\CKEditorBundle\Form\Type\CKEditorType;
+use KMS\FroalaEditorBundle\Form\Type\FroalaEditorType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
@@ -20,10 +22,10 @@ class HomeContentInsertType extends AbstractType
     {
         $builder
             ->add('title')
-            ->add('content')
+            ->add('content',CKEditorType::class,array())
             ->add('picturePath',FileType::class, array('label' => 'Picuture'))
-            ->add('date',DateTimeType::class)
-            ->add('author',EntityType::class,array('class'=>'AppBundle\Entity\Contentuser','choice_label'=>'firstName',))
+            ->add('date',DateTimeType::class, array('placeholder'=>'select a value',))
+            ->add('author',EntityType::class,array('class'=>'AppBundle\Entity\Contentuser','choice_label'=>'firstName','placeholder'=>'chose an option'))
             ->add('save',SubmitType::class,array(
                 'attr' => array('class' => 'save')));
 
