@@ -81,12 +81,12 @@ class BackendAlbumController extends Controller
 
             $worked = "saved";
 
-            return $this->render('Form/AlbumInsertForm.html.twig', array('form' => $form->createView(), "worked" => $worked));
+            return $this->render('Form/AlbumInsertForm.html.twig', array('form' => $form->createView(), "worked" => $worked,"error"=>$error));
 
 
         }
 
-        return $this->render('Form/AlbumInsertForm.html.twig', array('form' => $form->createView(), "worked" => $worked));
+        return $this->render('Form/AlbumInsertForm.html.twig', array('form' => $form->createView(), "worked" => $worked,"error"=>$error));
     }
 
     /**

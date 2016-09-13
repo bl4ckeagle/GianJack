@@ -61,7 +61,7 @@ class Photos extends controller
      * @Route("/photos/{slug}" )
      */
 
-    public function albumAction($slug)
+    public function photoAlbumAction($slug)
     {
 
         $finder = new Finder;
@@ -78,7 +78,7 @@ class Photos extends controller
 
 
 
-        return $this->render("photos/album.html.twig", array("Values" => $pictures, "path" => $slug));
+        return $this->render("Photos/photoAlbum.html.twig", array("Values" => $pictures, "path" => $slug));
 
 
     }
