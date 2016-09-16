@@ -1,0 +1,40 @@
+{% extends 'AdminTemplate1.html.twig ' %}
+
+{% block rightside %}
+
+
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                {% set i=0 %}
+                {% for key, path in picutes %}
+                    <div class="picturesDeleteForm">
+                        <span><input type="checkbox" id="{{ i }}"></span>
+                        <span>
+<img id="img{{ i }}" src="{{ asset('bundles/framework/images/album/2/') }}{{ path }}  " class="img-rounded"
+     alt="Cinque Terre" width="304" height="236">
+    </span>
+                    </div>
+                    {% set i=i+1 %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+
+    <button id="button1" class="btn btn-danger">Delete</button>
+
+
+
+
+    {{ dump() }}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+    <script src="{{ asset('bundles/framework/js/myscripts/checkBoxHandler.js') }}"></script>
+
+{% endblock %}
+

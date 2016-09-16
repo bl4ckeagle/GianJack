@@ -35,19 +35,13 @@ class Photos extends controller
          */
         foreach ($directory as $find) {
 
-
             $files = ($finder2->files()->in($find->getPathname()));
 
             foreach ($files as $founds) {
 
 
                 $filename[$find->getRelativePathname()] = $founds->getFilename();
-
-
-
             }
-
-
         }
 
 

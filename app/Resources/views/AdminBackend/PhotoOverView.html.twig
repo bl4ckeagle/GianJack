@@ -1,0 +1,46 @@
+{% extends 'AdminTemplate1.html.twig ' %}
+
+
+
+{% block rightside %}
+
+    <table class="table table-striped table-hover">
+    <caption> <h1>Videos</h1> </caption>
+    <thead>
+    <tr>
+        <th>#</th>
+        <th>Title</th>
+        <th>Date</th>
+        <th>Location</th>
+        <th>Edit/Add</th>
+        <th>Delete</th>
+
+    </tr>
+    </thead>
+    <tbody>
+    {% for photos in photoAlbum %}
+        <tr>
+            <td>{{ photos.photosId }}</td>
+            <td>{{ photos.name }}</td>
+            <td>{{ photos.year |date}}</td>
+            <td>{{ photos.location }}</td>
+            <td>
+                <button class="btn btn-warning" onclick="editing({{ photos.name }})">Edit</button>
+            </td>
+            <td>
+                <button class="btn  btn-danger " onclick="deleting({{ photos.name }}) ">Delete</button>
+            </td>
+        </tr>
+
+
+    {% endfor %}
+    </tbody>
+    </table>
+    {{ dump() }}
+
+
+
+
+
+
+{% endblock %}
