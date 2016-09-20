@@ -7,23 +7,37 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
-                {% set i=0 %}
-                {% for key, path in picutes %}
-                    <div class="picturesDeleteForm">
-                        <span><input type="checkbox" id="{{ i }}"></span>
-                        <span>
-<img id="img{{ i }}" src="{{ asset('bundles/framework/images/album/2/') }}{{ path }}  " class="img-rounded"
+                {% if  picutes == 0 %}
+                    <div class="jumbotron">
+                        <h1>No Pictures</h1>
+                        <p>Nothing to see here, go and add some</p>
+                    </div>
+                {% else %}
+
+
+                    {% set i=0 %}
+                    {% for key, path in picutes %}
+                        <div class="picturesDeleteForm">
+                            <span><input type="checkbox" id="{{ i }}"></span>
+                            <span>
+<img id="img{{ i }}" src="{{ asset('bundles/framework/images/album/') }}{{ path }}  " class="img-rounded"
      alt="Cinque Terre" width="304" height="236">
     </span>
-                    </div>
-                    {% set i=i+1 %}
-                {% endfor %}
+                        </div>
+                        {% set i=i+1 %}
+                    {% endfor %}
+
+                {% endif %}
             </div>
         </div>
     </div>
 
 
-    <button id="button1" class="btn btn-danger">Delete</button>
+        <button id="button1" class="btn btn-primary" name="insert" onclick="photoInserter()">Insert</button>
+        <button id="button2" class="btn btn-danger" name="deleting">Delete</button>
+
+
+
 
 
 

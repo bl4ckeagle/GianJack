@@ -29,6 +29,29 @@ class Photos
     /**
      * @var string
      *
+     * @ORM\Column(name="$pictures", type="text", nullable=false)
+     */
+    private $pictures;
+
+    /**
+     * @return string
+     */
+    public function getPictures()
+    {
+        return $this->pictures;
+    }
+
+    /**
+     * @param string $pictures
+     */
+    public function setPictures($pictures)
+    {
+        $this->pictures = $pictures;
+    }
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="location", type="text", nullable=false)
      */
     private $location;
