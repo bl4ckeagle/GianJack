@@ -16,6 +16,8 @@ class VideoRepo extends EntityRepository
         return $query->getResult();
     }
     /*
+     * Query Join for video and album
+     *
     SELECT alben.alben_id,alben.name,alben.release
     FROM alben
     INNER JOIN video

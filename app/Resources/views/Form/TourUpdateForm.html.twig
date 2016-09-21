@@ -1,0 +1,40 @@
+{% extends 'AdminTemplate1.html.twig ' %}
+
+{% block rightside %}
+
+
+    {{ form_start(form) }}
+
+    {{ form_label(form.location) }}
+    {{ form_widget(form.location,{'value':tour.location}) }}
+    {{ form_label(form.location) }}
+
+    {{ form_label(form.date) }}
+    {{ form_widget(form.date,{'value':tour.date}) }}
+    {{ form_label(form.date) }}
+
+    {{ form_label(form.country) }}
+    {{ form_widget(form.country,{'value':tour.country}) }}
+    {{ form_label(form.country) }}
+
+    {{ form_label(form.ticketLink) }}
+    {{ form_widget(form.ticketLink,{'value':tour.ticketLink}) }}
+    {{ form_label(form.ticketLink) }}
+
+    {{ form_label(form.locationLink) }}
+    {{ form_widget(form.locationLink,{'value':tour.locationLink}) }}
+    {{ form_label(form.locationLink) }}
+
+    {{ form_label(form.price) }}
+    {{ form_widget(form.price,{'value':tour.price}) }}
+    {{ form_label(form.price) }}
+
+
+
+    {{ form_end(form) }}
+
+    <p style="color: green">{{ worked }}</p>
+    <p style="color: red">{{ failed }}</p>
+
+    {{ dump() }}
+{% endblock %}

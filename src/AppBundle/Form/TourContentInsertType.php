@@ -18,6 +18,8 @@ class TourContentInsertType extends AbstractType
             ->add('date',DateTimeType::class)
             ->add('country')
             ->add('ticketLink')
+            ->add('locationLink')
+            ->add('price')
             ->add('save',SubmitType::class,array(
                 'attr' => array('class' => 'save')));
 
@@ -36,4 +38,6 @@ class TourContentInsertType extends AbstractType
     {
         return 'app_bundle_tour_content_type';
     }
+
+
 }
