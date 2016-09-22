@@ -1,0 +1,19 @@
+{% extends 'AdminTemplate1.html.twig ' %}
+
+
+
+{% block rightside %}
+
+    {% for bands in band  %}
+    <div class="jumbotron">
+        <H1>{{ bands.title }}</H1>
+        <p>{{ bands.content|raw }}</p>
+
+        <button class="btn btn-warning" onclick="editing({{ bands.biographyBandId}})">Edit</button>
+
+
+
+    </div>
+    {% endfor   %}
+
+{% endblock %}

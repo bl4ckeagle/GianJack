@@ -21,7 +21,7 @@ class HomeContentInsertType extends AbstractType
     {
         $builder
             ->add('title')
-            ->add('content',CKEditorType::class,array())
+            ->add('content',CKEditorType::class,array('config_name'=>'my_config'))
             ->add('picturePath',FileType::class, array('label' => 'Picuture'))
             ->add('date',DateTimeType::class, array('placeholder'=>'select a value',))
             ->add('author',EntityType::class,array('class'=>'AppBundle\Entity\Contentuser','choice_label'=>'firstName','placeholder'=>'chose an option'))
