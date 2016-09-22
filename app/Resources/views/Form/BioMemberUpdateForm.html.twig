@@ -1,0 +1,28 @@
+{% extends 'AdminTemplate1.html.twig ' %}
+
+{% block rightside %}
+
+    {{ form_start(form) }}
+
+    {{ form_label(form.firstName) }}
+    {{ form_widget(form.firstName,{'value':content.firstName }) }}
+
+
+    {{ form_label(form.lastName) }}
+    {{ form_widget(form.lastName,{'value': content.lastName}) }}
+
+    {{ form_label(form.content) }}
+    {{ form_widget(form.content,{'value':content.content }) }}
+
+
+
+
+
+    {{ form_end(form) }}
+
+
+
+    <p style="color: green">{{ worked }}</p>
+    <p style="color: red">{{ failed }}</p>
+    
+{% endblock %}

@@ -119,7 +119,7 @@ class BackEndHomeContentController extends Controller
      * @return \Symfony\Component\HttpFoundation\Response
      * @Route("/giantcontent/homecontent/editing/{slug}")
      */
-    PUBLIC function editAction(Request $request,$slug)
+    public function editAction(Request $request,$slug)
     {
         $worked="";
         $failed="";

@@ -19,8 +19,13 @@ class BiographyController extends Controller
             ->getRepository('AppBundle:Biographyband')
             ->findAll();
 
+        $member = $this->getDoctrine()
+            ->getManager()
+            ->getRepository("AppBundle:Biographymember")
+            ->findAll();
 
-        return $this->render(':Biography:bandbiography.html.twig', array('band' => $biography));
+
+        return $this->render(':Biography:bandbiography.html.twig', array('band' => $biography, 'members'=>$member));
     }
 
 
@@ -39,4 +44,6 @@ class BiographyController extends Controller
 
 
     }
+
+
 }
