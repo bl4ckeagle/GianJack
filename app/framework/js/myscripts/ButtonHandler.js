@@ -1,6 +1,5 @@
-var Button;
 {
-    del:function deleting(id) {
+   function deleting(id) {
         var r = confirm("Are you sure?");
         /*Get old link*/
         var oldLink = window.location.href;
@@ -15,23 +14,17 @@ var Button;
 
         }
     }
-    edit:function editing(id) {
+    function editing(id) {
 
 
         /*Get old link*/
         var oldLink = window.location.href;
-        if (r == true) {
-
-//rideriect
-            window.location.href = oldLink + "/editing" + "/" + id;
-        }
-        else {
-            //ABORT
-
-
-        }
+        window.location.href = oldLink + "/editing" + "/" + id;
     }
-   insert:function inserting ()
+
+
+
+ function inserting ()
    {
        /*Get old link*/
        var oldLink = window.location.href;
@@ -39,12 +32,37 @@ var Button;
 
    }
 
-   goBack:function goback()
+  function goback()
     {
+
         location.href = document.referrer
 
 
     }
 
-}
+    function photoInserter()
+    {
+        /*Get old link*/
+        var oldLink = window.location.href;
+        window.location.href = oldLink + "/photoinsert"
 
+    }
+
+    function bandmembers()
+    {
+
+        location.href='bioband/members'
+    }
+    
+    function frontendmembers(name) {
+
+        location.href='biography/'+name
+
+
+
+
+
+        
+    }
+
+}
