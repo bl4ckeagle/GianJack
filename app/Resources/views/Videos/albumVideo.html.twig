@@ -9,9 +9,26 @@
 
         <div class="container-fluid">
             <div class="row">
-                <div class="videotitle">
 
+
+                    {% if videos is  empty  %}
+
+                        <div class="col-md-4">
+                            <div class="jumbotron">
+                                <h1>Nothing to see here</h1>
+                                <p>...yet!</p>
+
+
+                            </div>
+                        </div>
+
+
+
+
+                {% else %}
+                    <div class="lpTitle">
                     <h1>{{ videos.0.album.name }}</h1>
+
                 </div>
                 {% for vid in videos %}
                     <div class="col-md-4">
@@ -27,6 +44,8 @@
                         </div>
                     </div>
                 {% endfor %}
+
+                {% endif %}
             </div>
 
 

@@ -4,10 +4,22 @@
 {% block title %}Photos{% endblock %}
 {% block contentmaster %}
 
-    <div class="photos" xmlns:margin="http://www.w3.org/1999/xhtml">
+    <div class="photos" >
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
+
+                {% if Values is empty %}
+
+                        <div class="jumbotron">
+                            <h1>Nothing to see here</h1>
+                            <p>...yet!</p>
+
+
+                        </div>
+                    </div>
+
+                    {% else %}
 
                     {#Start of carousell#}
                     <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
@@ -79,6 +91,7 @@
                     </a>
                 </div>
                 {#end of carousell#}
+                    {% endif %}
             </div>
         </div>
 

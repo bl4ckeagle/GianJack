@@ -5,16 +5,28 @@
 {% block contentmaster %}
     <div class="videos">
 
-        <div class="jumbotron">
 
-            {{ dump() }}
-
-        </div>
 
 
         <div>
+
+
+
+
+
             <div class="container-fluid">
                 <div class="row">
+                    {% if album  is empty  %}
+                    <div class="col-md-4">
+                        <div class="jumbotron">
+                            <h1>Nothing to see here</h1>
+                            <p>...yet!</p>
+
+
+                            </div>
+                        </div>
+                        {% else %}
+
                     {% for alb in album %}
                         <div class="col-md-4">
                             <div class="jumbotron">
@@ -25,13 +37,14 @@
                             </div>
                         </div>
                     {% endfor %}
-                    <div class="row">
+
+                    {% endif %}
+                    </div>
                     </div>
 
                 </div>
             </div>
-        </div>
-    </div>
+
 
 
 {% endblock %}

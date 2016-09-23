@@ -1,0 +1,38 @@
+{% extends 'BaseTemplate1.html.twig ' %}
+
+{% block title %}Biography{% endblock %}
+
+{% block sidebarcontent %}
+
+
+    <h1>Band Members</h1>
+    {% for members in members %}
+
+        <p><button class="btn btn-info" onclick="frontendmembers('{{ members.firstName }}')">{{ members.firstName }}</button>
+
+        </p>
+    {% endfor %}
+
+
+
+{% endblock %}
+
+{% block content %}
+
+
+    <div class="jumbotron">
+        {% for band in band %}
+            <h1>{{ band.title }}</h1>
+            <p>
+                {{ band.content|raw }}
+            </p>
+
+
+
+
+        {% endfor %}
+    </div>
+    {{ dump() }}
+
+
+{% endblock %}
