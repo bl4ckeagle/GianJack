@@ -57,6 +57,28 @@ class Contentuser implements UserInterface, \Serializable
      */
     private $email;
 
+    /**
+     * @var string
+     * @ORM\Column(name="plainPassword", type="string", length=999, nullable=false)
+     */
+    private $plainPassword;
+
+    /**
+     * @return mixed
+     */
+    public function getPlainPassword()
+    {
+        return $this->plainPassword;
+    }
+
+    /**
+     * @param mixed $plainPassword
+     */
+    public function setPlainPassword($plainPassword)
+    {
+        $this->plainPassword = $plainPassword;
+    }
+
 
 
     /**

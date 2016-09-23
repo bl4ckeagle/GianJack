@@ -23,8 +23,7 @@ class TourController extends Controller
 
 
         if (!$tour){
-            throw $this->createNotFoundException(
-                'Error occurred please call your administrator immediately');
+            $tour=null;
 
 
         }

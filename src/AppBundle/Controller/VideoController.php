@@ -21,11 +21,12 @@ class VideoController extends Controller
         $album = $this->getDoctrine()->getManager()
             ->getRepository("AppBundle:Album")
             ->findAll();
+        dump($album);
 
         
 
 
-        return $this->render(':Videos:video.html.twig', array('album' => $album));
+        return $this->render('Videos/video.html.twig', array('album' => $album));
     }
 
 
@@ -46,7 +47,7 @@ class VideoController extends Controller
 
 
 
-        return $this->render(':Videos:albumVideo.html.twig', array('videos' => $title));
+        return $this->render('Videos/albumVideo.html.twig', array('videos' => $title));
 
 
     }

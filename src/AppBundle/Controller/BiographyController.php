@@ -4,6 +4,7 @@ namespace AppBundle\Controller;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\Console\Tests\Fixtures\DummyOutput;
 
 class BiographyController extends Controller
 {
@@ -25,7 +26,7 @@ class BiographyController extends Controller
             ->findAll();
 
 
-        return $this->render(':Biography:bandbiography.html.twig', array('band' => $biography, 'members'=>$member));
+        return $this->render('Biography/BandBiography.html.twig', array('band' => $biography, 'members'=>$member));
     }
 
 
@@ -35,12 +36,21 @@ class BiographyController extends Controller
      */
     public function memberAction($slug)
     {
-        $member = $this->getDoctrine()
+
+        $allmember = $this->getDoctrine()
             ->getManager()
             ->getRepository("AppBundle:Biographymember")
-            ->findBy($slug);
+            ->findAll();
 
-        return $this->render(':Biography:member.html.twig', array('member' => $member));
+        $specificMember = $this->getDoctrine()
+            ->getManager()
+            ->getRepository("AppBundle:Biographymember")
+            ->findByfirstName($slug);
+
+
+        dump($specificMember);
+
+        return $this->render('Biography/Member.html.twig', array('members' => $allmember,'spMember'=>$specificMember));
 
 
     }

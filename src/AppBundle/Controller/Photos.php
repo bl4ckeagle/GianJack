@@ -27,22 +27,28 @@ class Photos extends controller
         $finder = new Finder();
         $finder2 = new Finder();
         $directory = $finder->directories()->in('../web/bundles/framework/images/album/');
+        $filename=null;
 
 
-        /**
-         * @var SplFileInfo $founds
-         * @var SplFileInfo $find
-         */
-        foreach ($directory as $find) {
+            /**
+             * @var SplFileInfo $founds
+             * @var SplFileInfo $find
+             */
+            foreach ($directory as $find) {
 
-            $files = ($finder2->files()->in($find->getPathname()));
+                $files = ($finder2->files()->in($find->getPathname()));
 
-            foreach ($files as $founds) {
+                    foreach ($files as $founds) {
 
 
-                $filename[$find->getRelativePathname()] = $founds->getFilename();
+
+                        $filename[$find->getRelativePathname()] = $founds->getFilename();
+                    }
+
+
             }
-        }
+
+
 
 
         return $this->render("photos/photos.html.twig", array("Values" => $filename));
