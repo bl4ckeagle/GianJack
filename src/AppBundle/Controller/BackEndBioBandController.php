@@ -26,6 +26,54 @@ class BackEndBioBandController extends Controller
         return $this->render('AdminBackend/BioBandOverview.html.twig', array('band' => $band));
     }
 
+
+    /**
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\Response
+     * @Route("giantcontent/bioband/insert")
+     */
+    public function bioInsert(Request $request)
+    {
+        $checkIfEmpty = $this->getDoctrine()->getRepository("AppBundle:Biographyband")->findAll();
+
+       if (!empty($checkIfEmpty))
+       {
+
+           return $this->redirect($this->generateUrl('bioband'));
+
+
+
+       }else {
+
+           $worked = null;
+           $error = null;
+           $youtubeError = null;
+           $bioBand = new Biographyband();
+           $form = $this->createForm(BioBandType::class, $bioBand);
+           $form->handleRequest($request);
+
+
+           if ($form->isSubmitted() && $form->isValid()) {
+
+
+               $em = $this->getDoctrine()
+                   ->getManager();
+               $em->persist($bioBand);
+               try {
+                   $em->flush();
+                   $worked = "saved";
+               } catch (Exception $e) {
+                   $error = "Error please check";
+                   return $this->render('Form/BioMemberInsertForm.html.twig', array('form' => $form->createView(), "error" => $error, "worked" => $worked));
+               }
+               return $this->redirect($this->generateUrl('bioband'));
+           }
+           return $this->render('Form/BioMemberInsertForm.html.twig', array('form' => $form->createView(), "error" => $error, "worked" => $worked));
+
+       }
+
+    }
+
     /**
      * @param Request $request
      * @param $slug
@@ -52,15 +100,15 @@ class BackEndBioBandController extends Controller
             try {
                 $em->flush();
                 $worked = "saved";
-                return $this->render("Form/BioBandInsertForm.html.twig", array(
+                return $this->render("Form/BioBandUpdateForm.html.twig", array(
                     'form' => $form->createView(), "content" => $biocontent, "worked" => $worked, "failed" => $failed));
             } catch (\Exception $e) {
                 $failed = $e;
-                return $this->render("Form/BioBandInsertForm.html.twig", array(
+                return $this->render("Form/BioBandUpdateForm.html.twig", array(
                     'form' => $form->createView(), "content" => $biocontent, "worked" => $worked, "failed" => $failed));
             }}
 
-            return $this->render("Form/BioBandInsertForm.html.twig", array(
+            return $this->render("Form/BioBandUpdateForm.html.twig", array(
                 'form' => $form->createView(), "content" => $biocontent, "worked" => $worked, "failed" => $failed));
 
 

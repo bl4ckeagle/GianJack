@@ -31,7 +31,7 @@ class Album
     /**
      * @var string
      *
-     * @ORM\Column(name="picturepath", type="text", nullable=true)
+     * @ORM\Column(name="picturepath", type="text", nullable=false)
      */
     private $picturepath;
 

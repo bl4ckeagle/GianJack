@@ -6,6 +6,7 @@ use AppBundle\Entity\Album;
 use AppBundle\Form\AlbumContentInsertType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -62,7 +63,7 @@ class BackendAlbumController extends Controller
             /*get picture*/
             $file = $formEntity->getPicturepath();
             /*create filename*/
-            $filename = $formEntity->getName() . '.' . $file->guessExtension();
+            $filename = $formEntity->getName() .time(). '.' . $file->guessExtension();
             /*save to dir*/
             $filedir = $this->container->getParameter('kernel.root_dir') . '/../web/bundles/framework/images/video_pictures';
             $file->move($filedir, $filename);
@@ -95,10 +96,11 @@ class BackendAlbumController extends Controller
 
     public function deleteAction(Album $slug)
     {
-
+        $fs = new Filesystem();
             $em = $this->getDoctrine()->getManager();
             $name= $slug->getName();
        try {
+           $fs->remove("../web/bundles/framework/images/video_pictures/".$slug->getPicturepath());
             $em->remove($slug);
             $em->flush();
            return $this->render("::deleted.html.twig",array("item"=>$name));
@@ -124,7 +126,7 @@ class BackendAlbumController extends Controller
      */
     public function editAction(Request $request ,$slug)
     {
-
+        $fs = new Filesystem();
         $worked=null;
         $failed=null;
         $formEntity = new Album();
@@ -135,13 +137,10 @@ class BackendAlbumController extends Controller
 
         if($form->isSubmitted() && $form->isValid())
         {
+            $fs->remove("../web/bundles/framework/images/video_pictures/".$album->getPicturepath());
 
-            if (empty($album->getPicturepath()))
-            {
-                $path=$this->container->getParameter('kernel.root_dir').'../web/bundles/framework/images/video_pictures/'.$album->getPicturepath();
-                $album->setPicturepath($path);
 
-            }else {
+
                 /*
                  * Picture Saving
                  *
@@ -155,7 +154,7 @@ class BackendAlbumController extends Controller
                 $file->move($filedir, $filename);
                 /*set filename to database*/
                 $formEntity->setPicturepath($filename);
-            }
+
 
             $album->setName($formEntity->getName());
             $album->setPicturepath($formEntity->getPicturepath());

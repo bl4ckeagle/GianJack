@@ -8,6 +8,7 @@ use AppBundle\Form\HomeContentInsertType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Config\Definition\Exception\Exception;
+use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -96,9 +97,13 @@ class BackEndHomeContentController extends Controller
      */
     public function deleteAction(Homecontent $slug)
     {
+        $fs=new Filesystem();
         $em = $this->getDoctrine()->getManager();
         $name= $slug->getTitle();
+
+
         try {
+            $fs->remove("../web/bundles/framework/images/News/".$slug->getPicturePath());
             $em->remove($slug);
             $em->flush();
             return $this->render("::deleted.html.twig",array("item"=>$name));
@@ -121,6 +126,7 @@ class BackEndHomeContentController extends Controller
      */
     public function editAction(Request $request,$slug)
     {
+        $fs =new Filesystem();
         $worked="";
         $failed="";
         $formEntity = new Homecontent();
@@ -129,15 +135,39 @@ class BackEndHomeContentController extends Controller
 
         $form=$this->createForm(HomeContentInsertType::class,$formEntity);
         $form->handleRequest($request);
+        dump($content);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+
+            $fs->remove("../web/bundles/framework/images/News/".$content->getPicturePath());
+
+            /**
+             * @var UploadedFile $file
+             */
+
+            /*get date and save it in variable*/
+            $date = $content->getDate();
+            $dateformated = $date->format('Y_m_d_H_M');
+
+
+            /*get picture*/
+            $file = $formEntity->getPicturePath();
+            /*creat filename*/
+            $filename = $formEntity->getTitle() . $dateformated . '.' . $file->guessExtension();
+            /* save to dir*/
+            $filedir = $this->container->getParameter('kernel.root_dir') . '/../web/bundles/framework/images/News/';
+            $file->move($filedir, $filename);
+            /*setonlythefilename not the data */
+            $formEntity->setPicturePath($filename);
+
 
 
 
 
             $content->setTitle($formEntity->getTitle());
             $content->setContent($formEntity->getContent());
-            $content->setPicturePath($formEntity->getPicturePath());
+
             $content->setDate($formEntity->getDate());
             $content->getAuthor($formEntity->getAuthor());
             try {

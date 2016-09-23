@@ -1,18 +1,9 @@
 {% extends 'AdminTemplate1.html.twig ' %}
 
+
 {% block rightside %}
 
     {{ form_start(form) }}
-
-    {{ form_label(form.title) }}
-    {{ form_widget(form.title,{'value':content.title }) }}
-
-
-    {{ form_label(form.content) }}
-    {{ form_widget(form.content,{'value':content.content }) }}
-
-
-
 
 
     {{ form_end(form) }}
@@ -20,6 +11,6 @@
 
 
     <p style="color: green">{{ worked }}</p>
-    <p style="color: red">{{ failed }}</p>
-    {{ dump() }}
+    <p style="color: red">{{ error }}</p>
+
 {% endblock %}

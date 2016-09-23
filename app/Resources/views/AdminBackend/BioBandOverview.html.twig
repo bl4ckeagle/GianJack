@@ -15,6 +15,13 @@
 
     </div>
     {% endfor   %}
-    <button class="btn btn-primary" onclick="bandmembers()">Go to the Band Members</button>
+    <div class="container-fluid">
+        {% if band is empty %}
+        <button class="btn btn-primary" onclick="inserting()">Create New</button>
+        {% endif %}
+            <button class="btn btn-primary" onclick="bandmembers()">Go to the Band Members</button>
+
+    </div>
+
 
 {% endblock %}

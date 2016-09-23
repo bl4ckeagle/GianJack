@@ -57,10 +57,10 @@ class BackEndTourConrollerController extends Controller
             } catch (Exception $e) {
                 $error = "Error please check";
             }
-            return $this->render('Form/ContentInsertForm.twig', array('form' => $form->createView(), "error" => $error, "worked" => $worked));
+            return $this->render('Form/TourInsertForm.twig', array('form' => $form->createView(), "error" => $error, "worked" => $worked));
 
         }
-        return $this->render('Form/ContentInsertForm.twig', array('form' => $form->createView(), "error" => $error, "worked" => $worked));
+        return $this->render('Form/TourInsertForm.twig', array('form' => $form->createView(), "error" => $error, "worked" => $worked));
 
     }
 

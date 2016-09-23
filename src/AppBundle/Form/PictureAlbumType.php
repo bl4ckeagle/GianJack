@@ -18,7 +18,7 @@ class PictureAlbumType extends AbstractType
             ->add('name')
             ->add('location')
             ->add('year',DateTimeType::class, array('placeholder'=>'select a value',))
-            ->add('pictures',FileType::class,array('label' => 'Picuture','required'=>'true','multiple'=>'true'))
+            ->add('pictures',FileType::class,array('label' => 'Pictures','multiple'=>'true'))
             ->add('save',SubmitType::class,array(
                 'attr' => array('class' => 'save')));
 
