@@ -20,7 +20,17 @@
     {% block mainLeft %}
     {% endblock %}
 
-    {% if pagination is empty %}
+    {% if data is empty %}
+
+        <div class="homecontent">
+        <div class="jumbotron">
+
+            <h1>Nothing to see here</h1>
+            <p>...yet!</p>
+        </div>
+        </div>
+
+
 
         {% else %}
 

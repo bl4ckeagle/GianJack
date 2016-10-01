@@ -126,6 +126,7 @@ class BackEndHomeContentController extends Controller
      */
     public function editAction(Request $request,$slug)
     {
+
         $fs =new Filesystem();
         $worked="";
         $failed="";
@@ -167,6 +168,7 @@ class BackEndHomeContentController extends Controller
 
             $content->setTitle($formEntity->getTitle());
             $content->setContent($formEntity->getContent());
+            $content->setPicturePath($formEntity->getPicturePath());
 
             $content->setDate($formEntity->getDate());
             $content->getAuthor($formEntity->getAuthor());

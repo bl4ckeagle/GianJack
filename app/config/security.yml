@@ -39,6 +39,8 @@ security:
    #   access controll path what are checked of login priv.
   access_control:
     - { path: ^/giantcontent, roles: ROLE_ADMIN }
+   #full https for the whole site, needs https server
+   # - { path: ^/, roles: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: https }
 
 # activate different ways to authenticate
 
