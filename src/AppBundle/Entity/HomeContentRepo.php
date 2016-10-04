@@ -11,8 +11,18 @@ use Doctrine\ORM\EntityRepository;
  */
 class HomeContentRepo extends EntityRepository
 {
+    public function contentJoin()
+    {
+        $query=$this->getEntityManager()
+            ->createQuery(
+                '
+                SELECT h,c
+                FROM AppBundle:Homecontent h
+                JOIN h.author c
+                ');
+        return $query->getResult();
 
-
+    }
 
 
 

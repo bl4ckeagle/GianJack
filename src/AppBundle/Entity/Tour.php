@@ -9,6 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Table(name="tour")
  * @ORM\Entity
+ * @ORM\Entity(repositoryClass="AppBundle\Entity\TourRepo")
  */
 class Tour
 {
@@ -189,4 +190,7 @@ class Tour
     {
         return $this->price;
     }
+
+
+
 }

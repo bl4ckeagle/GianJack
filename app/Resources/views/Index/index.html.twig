@@ -50,7 +50,7 @@
                         <span>{{ content.content |raw}}</span>
                     </div>
                 </div>
-                <small class="text-right">{{ content.date|date('d.m.Y') }}</small>
+                <small class="text-right">{{ content.date|date('d.m.Y') }}, {{content.author.firstName  }} {{content.author.lastName  }} </small>
             </div>
         </div>
     {% endfor %}

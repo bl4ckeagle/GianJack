@@ -16,14 +16,13 @@ class IndexController extends Controller
     public function indexAction(Request $request)
     {
         try {
-            $data = $this->getDoctrine()->getManager()->getRepository("AppBundle:Homecontent")->findAll();
-            $em = $this->get('doctrine.orm.entity_manager');
-            $dql = "SELECT a FROM AppBundle:Homecontent a";
-            $query = $em->createQuery($dql);
+
+            $newData= $this->getDoctrine()->getRepository("AppBundle:Homecontent")->contentJoin();
             $paginator = $this->get('knp_paginator');
             $pagination = $paginator->paginate(
-                $query, $request->query->getInt('page', 1), 5);
-            dump($data);
+                $newData, $request->query->getInt('page', 1), 5);
+            dump($newData);
+
 
             if (!$paginator) {
                 throw $this->createNotFoundException(
@@ -31,7 +30,7 @@ class IndexController extends Controller
             }
 
 
-            return $this->render("index/index.html.twig", array("pagination" => $pagination,"data"=>$data));
+            return $this->render("index/index.html.twig", array("pagination" => $pagination,"data"=>$newData));
         } catch (NoResultException $e) {
             return $this->render("FrontEndErrorPage.html.twig");
         }
