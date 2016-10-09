@@ -12,9 +12,12 @@
     {{ form_label(form.lastName) }}
     {{ form_widget(form.lastName,{'value':data.lastName}) }}
 
+    {{ form_label(form.email) }}
+    {{ form_widget(form.email,{'value':data.email}) }}
+
+
     <div class="hidden">
         {{ form_widget(form.username,{'value':data.username})  }}
-        {{ form_widget(form.email,{'value':data.email}) }}
 
     </div>
 

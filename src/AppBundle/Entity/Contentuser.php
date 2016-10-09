@@ -5,6 +5,7 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 
 /**
@@ -12,6 +13,16 @@ use Symfony\Component\Validator\Constraints as Assert;
  *
  * @ORM\Table(name="contentuser")
  * @ORM\Entity()
+ * @UniqueEntity(
+ *     fields={"email"},
+ *     message="Email is allready taken!"
+ *
+ * )
+ *
+ *  @UniqueEntity(!
+ *     fields={"username"},
+ *     message="Username is allready taken!"
+ * )
  */
 class Contentuser implements UserInterface, \Serializable
 {
