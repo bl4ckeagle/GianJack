@@ -4,6 +4,8 @@ namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Validator\Constraints as Assert;
+
 
 /**
  * Contentuser
@@ -60,7 +62,13 @@ class Contentuser implements UserInterface, \Serializable
     /**
      * @var string
      * @ORM\Column(name="plainPassword", type="string", length=999, nullable=false)
+     * @Assert\Regex(
+     *     pattern="/^(?=.*[\d])(?=.*[A-Z])(?=.*[a-z])[\w\d!@#$%_]{6,40}$/",
+     *      message="Password must be 6-40 characters - {6,40} Must have no spaces, at least 1 digit (?=.*[\d]), at least 1 uppercase letter (?=.*[A-Z]) and at least one lowercase letter (?=.*[a-z]). Allows specifying special characters - !@#$%_"
+     * )
+     *
      */
+
     private $plainPassword;
 
     /**

@@ -8,6 +8,7 @@ use Ivory\CKEditorBundle\Exception\Exception;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Session\Session;
 
 class BackEndTourConrollerController extends Controller
 {
@@ -19,6 +20,8 @@ class BackEndTourConrollerController extends Controller
     public function tourOverview()
     {
 
+
+        
 
         $tour = $this->getDoctrine()
             ->getRepository("AppBundle:Tour")

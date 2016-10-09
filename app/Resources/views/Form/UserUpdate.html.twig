@@ -1,0 +1,26 @@
+{% extends 'AdminTemplate1.html.twig ' %}
+
+
+{% block rightside %}
+    {{ form_start(form) }}
+
+
+    {{ form_label(form.firstName) }}
+    {{ form_widget(form.firstName,{'value':data.firstName}) }}
+
+
+    {{ form_label(form.lastName) }}
+    {{ form_widget(form.lastName,{'value':data.lastName}) }}
+
+    <div class="hidden">
+        {{ form_widget(form.username,{'value':data.username})  }}
+        {{ form_widget(form.email,{'value':data.email}) }}
+
+    </div>
+
+
+    {{ form_end(form) }}
+
+
+
+{% endblock %}

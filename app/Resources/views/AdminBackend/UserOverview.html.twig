@@ -17,7 +17,7 @@
             <th>Name</th>
             <th>LastName</th>
             <th>Username</th>
-            <th>Edit</th>
+
 
 
         </tr>
@@ -28,9 +28,6 @@
                 <td>{{ users.firstName}}</td>
                 <td>{{ users.lastName}}</td>
                 <td>{{ users.username}}</td>
-                <td>
-                    <button class="btn btn-warning" onclick="editing({{ users.username}})">Edit</button>
-                </td>
 
             </tr>
 
@@ -43,7 +40,10 @@
     </table>
 
     <div class="container-fluid">
-        <td><button class="btn btn-primary" onclick="inserting()">Create New</button></td>
+        <button class="btn btn-primary" onclick="inserting()">Create New</button>
+        <button class="btn btn-warning" onclick="editing({{ userID }})">Edit my User</button>
+        <button class="btn btn-danger" onclick="deleting({{ userID }})">Delete my User</button>
+
 
 
     </div>
