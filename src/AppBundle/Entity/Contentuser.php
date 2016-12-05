@@ -19,7 +19,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  *
  * )
  *
- *  @UniqueEntity(!
+ *  @UniqueEntity(
  *     fields={"username"},
  *     message="Username is allready taken!"
  * )

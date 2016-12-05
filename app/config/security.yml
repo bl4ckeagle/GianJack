@@ -35,6 +35,8 @@ security:
       logout:
         path: /giantcontent/logout
         target: /
+      # For unit testing
+      http_basic: ~
 
    #   access controll path what are checked of login priv.
   access_control:
