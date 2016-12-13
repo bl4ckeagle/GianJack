@@ -39,7 +39,7 @@ class AdminLoginControllerTest extends WebTestCase
             ],
             "Wrong username/password" => [
                 "test1",
-                "Hallo",
+                "wrong password",
                 302,
                 "http://localhost/thelogingiant/login"
             ],

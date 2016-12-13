@@ -138,9 +138,6 @@ class BackendAlbumController extends Controller
         if($form->isSubmitted() && $form->isValid())
         {
             $fs->remove("../web/bundles/framework/images/video_pictures/".$album->getPicturepath());
-
-
-
                 /*
                  * Picture Saving
                  *

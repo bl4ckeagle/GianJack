@@ -1,0 +1,201 @@
+/*Own Classes*/
+.banner
+{
+    background-color: #ececec !important;
+}
+.banner .img-responsive
+{
+    margin:auto;
+}
+body
+{
+    background-color: #ececec !important;
+}
+
+
+
+.homelogo {
+
+    max-height: 6em;
+    max-width: 6em;
+    margin-left:44em;
+    margin-right:1em;
+    margin-top:-3em;
+    background-color: rgba(255, 255, 255, 0.84);
+
+    /*BorderForm*/
+    border-radius: 4px 123px 101px 158px;
+    -moz-border-radius: 4px 123px 101px 158px;
+    -webkit-border-radius: 4px 123px 101px 158px;
+    border: 4px ridge #ffffff;
+    /*Shadow*/
+    -webkit-box-shadow: 19px 13px 15px -8px rgba(255, 255, 255, 0.41);
+    -moz-box-shadow: 19px 13px 15px -8px rgba(254, 254, 254, 0.41);
+    box-shadow: 19px 13px 15px -8px rgba(255, 255, 255, 0.41);
+}
+@media screen and (max-width:767px){
+
+    img.homelogo{ margin-left: -15px !important;}
+
+
+}
+
+.homecontent{}
+
+.homecontent .jumbotron img
+{
+    max-width: 100%;
+    max-height: 100%;
+
+
+}
+
+.homecontent p
+{
+    word-wrap:break-word
+}
+
+.photos .thumb
+{
+    max-height: 120px;
+    max-width: 100%;
+    min-height: inherit;
+
+    overflow: auto ;
+
+
+}
+.lpTitle
+{
+    background-color: #080808;
+    color: #ffffff;
+    border-radius: 10px 10px 10px 10px;
+    -moz-border-radius: 10px 10px 10px 10px;
+    -webkit-border-radius: 10px 10px 10px 10px;
+    border: 0px inset #ffffff;
+
+}
+
+.lpTitle h1
+{
+    margin-left: 1em;
+
+}
+.mybuttons
+{
+    background-color: #9b9b9b !important;
+    border-color: #9b9b9b !important;
+
+
+
+}
+
+.mybuttons:hover
+{
+    background-color: #ffffff !important;
+    border-color: #ffffff !important;
+    color: #212121 !important;
+
+
+
+}
+
+.column
+{
+
+    word-wrap: break-word !important;
+}
+
+.carouselpictures
+{
+
+
+
+}
+
+.carousel-inner img {
+    margin: auto !important;
+    width: auto !important;
+    height: 400px !important;
+    max-height: 400px !important;
+
+}
+
+.picturesDeleteForm
+{
+
+    display: inline-block;
+    margin-bottom: 20px !important;
+
+}
+
+.adminNavbarLinks >#Main a
+{
+    font-weight: bold;
+    font-size: larger;
+}
+
+.biographyleftblock
+{
+    display: inline-block;
+
+
+}
+
+.biographyleftblock h1
+{
+    font-size: 2em !important;
+
+
+}
+
+
+
+.save.btn {
+    -moz-box-shadow:inset 0px 1px 3px 0px #e3e3e3;
+    -webkit-box-shadow:inset 0px 1px 3px 0px #e3e3e3;
+    box-shadow:inset 0px 1px 3px 0px #e3e3e3;
+    background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #768d87), color-stop(1, #6c7c7c));
+    background:-moz-linear-gradient(top, #768d87 5%, #6c7c7c 100%);
+    background:-webkit-linear-gradient(top, #768d87 5%, #6c7c7c 100%);
+    background:-o-linear-gradient(top, #768d87 5%, #6c7c7c 100%);
+    background:-ms-linear-gradient(top, #768d87 5%, #6c7c7c 100%);
+    background:linear-gradient(to bottom, #768d87 5%, #6c7c7c 100%);
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#768d87', endColorstr='#6c7c7c',GradientType=0);
+    background-color:#768d87;
+    -moz-border-radius:5px;
+    -webkit-border-radius:5px;
+    border-radius:5px;
+    border:1px solid #566963;
+    display:inline-block;
+    cursor:pointer;
+    color:#ffffff;
+    font-family:Arial;
+    font-size:15px;
+    font-weight:bold;
+    padding:11px 23px;
+    text-decoration:none;
+    text-shadow:0px -1px 0px #2b665e;
+}
+.save.btn:hover {
+    background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #6c7c7c), color-stop(1, #768d87));
+    background:-moz-linear-gradient(top, #6c7c7c 5%, #768d87 100%);
+    background:-webkit-linear-gradient(top, #6c7c7c 5%, #768d87 100%);
+    background:-o-linear-gradient(top, #6c7c7c 5%, #768d87 100%);
+    background:-ms-linear-gradient(top, #6c7c7c 5%, #768d87 100%);
+    background:linear-gradient(to bottom, #6c7c7c 5%, #768d87 100%);
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#6c7c7c', endColorstr='#768d87',GradientType=0);
+    background-color:#6c7c7c;
+}
+.save.btn:active {
+    position:relative;
+    top:1px;
+}
+
+
+/*Navbar costum*/
+
+
+
+
+/*nabar end*/
