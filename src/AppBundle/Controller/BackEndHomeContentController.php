@@ -136,7 +136,7 @@ class BackEndHomeContentController extends Controller
 
         $form=$this->createForm(HomeContentInsertType::class,$formEntity);
         $form->handleRequest($request);
-        dump($content);
+
 
         if ($form->isSubmitted() && $form->isValid()) {
 

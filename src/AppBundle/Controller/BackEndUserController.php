@@ -25,7 +25,7 @@ class BackEndUserController extends Controller
         $usr = $this->get('security.token_storage')->getToken()->getUsername();
         $query = $this->getDoctrine()->getManager()->getRepository("AppBundle:Contentuser")->findByUsername($usr);
         $userId = $query[0]->getContentUserId();
-        dump($userId);
+
 
 
         $users = $this->getDoctrine()->getRepository('AppBundle:Contentuser')->findAll();

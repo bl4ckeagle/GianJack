@@ -21,7 +21,7 @@ class VideoController extends Controller
         $album = $this->getDoctrine()->getManager()
             ->getRepository("AppBundle:Album")
             ->findAll();
-        dump($album);
+
 
         
 

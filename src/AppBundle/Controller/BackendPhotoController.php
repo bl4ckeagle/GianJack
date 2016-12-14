@@ -114,7 +114,7 @@ class BackendPhotoController extends Controller
 
             $checkSameName = $this->getDoctrine()->getRepository('AppBundle:Photos')
                 ->findByName($formEntity->getName());
-    dump($checkSameName);
+
             if (!empty($checkSameName)) {
 
 
@@ -182,7 +182,7 @@ class BackendPhotoController extends Controller
 
         $em = $this->getDoctrine()->getManager();
         $name= $slug->getName();
-        dump($name);
+
         $fs = new Filesystem();
         try {
             $em->remove($slug);
@@ -220,7 +220,7 @@ class BackendPhotoController extends Controller
         $picturesEntitiy=$em->getRepository("AppBundle:Photos")->find($slug);
         $form = $this->createForm(PictureInsertForm::class, $formEntity);
         $form->handleRequest($request);
-        dump($picturesEntitiy);
+
 
 
        if ($form->isSubmitted()&&$form->isValid())
@@ -248,7 +248,7 @@ class BackendPhotoController extends Controller
 
                 $i++;
 
-                dump($pictures);
+
             }
 
 

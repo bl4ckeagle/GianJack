@@ -48,7 +48,7 @@ class BiographyController extends Controller
             ->findByfirstName($slug);
 
 
-        dump($specificMember);
+
 
         return $this->render('Biography/Member.html.twig', array('members' => $allmember,'spMember'=>$specificMember));
 

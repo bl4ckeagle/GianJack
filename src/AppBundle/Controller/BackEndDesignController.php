@@ -63,8 +63,7 @@ class BackEndDesignController extends Controller
 
             $submittedTheme = $form["Theme"]->getData();
             $submittedStyle = $form["Style"]->getData();
-            dump($submittedStyle);
-            dump($submittedTheme);
+
 
             $fileDir_CSS_1 =$this->container->getParameter('kernel.root_dir').'../web/bundles/framework/css/';
             $fileDir_CSS = $this->container->getParameter('kernel.root_dir').'/../web/bundles/framework/css/';

@@ -21,7 +21,7 @@ class IndexController extends Controller
             $paginator = $this->get('knp_paginator');
             $pagination = $paginator->paginate(
                 $newData, $request->query->getInt('page', 1), 5);
-            dump($newData);
+
 
 
             if (!$paginator) {
